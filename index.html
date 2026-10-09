@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rudi Irawan - Jasa Pembuatan Website Profesional</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        darkBg: '#080c14',
+                        cardBg: '#111827',
+                        accentCyan: '#06b6d4',
+                        accentViolet: '#8b5cf6',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #080c14;
+            color: #f3f4f6;
+        }
+        .glow-effect {
+            box-shadow: 0 0 40px rgba(6, 182, 212, 0.2);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #22d3ee 0%, #a855f7 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass-card {
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card:hover {
+            border-color: rgba(6, 182, 212, 0.3);
+        }
+    </style>
+</head>
+<body class="selection:bg-cyan-500 selection:text-white">
+
+    <!-- Navigation Bar -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-white/10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Hanya Teks RUDI IRAWAN Tanpa Logo -->
+            <a href="#" class="text-xl sm:text-2xl font-extrabold tracking-wider gradient-text">
+                RUDI IRAWAN
+            </a>
+            
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#about" class="hover:text-cyan-400 transition-colors">Tentang</a>
+                <a href="#services" class="hover:text-cyan-400 transition-colors">Layanan & Demo</a>
+                <a href="#portfolio" class="hover:text-cyan-400 transition-colors">Keunggulan</a>
+                <a href="#contact" class="hover:text-cyan-400 transition-colors">Kontak</a>
+            </nav>
+
+            <!-- Social Quick Links -->
+            <div class="hidden sm:flex items-center space-x-3">
+                <a href="https://instagram.com/rudiirwnke20" target="_blank" class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-pink-400 hover:bg-pink-500 hover:text-white transition-all shadow-sm">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20tertarik%20ingin%20membuat%20website." target="_blank" class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-green-400 hover:bg-green-500 hover:text-white transition-all shadow-sm">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden text-gray-300 hover:text-white focus:outline-none p-2 rounded-lg bg-white/5">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-card border-b border-white/10 px-6 py-4 space-y-3">
+            <a href="#about" class="block py-2 text-sm hover:text-cyan-400 font-medium">Tentang</a>
+            <a href="#services" class="block py-2 text-sm hover:text-cyan-400 font-medium">Layanan & Demo</a>
+            <a href="#portfolio" class="block py-2 text-sm hover:text-cyan-400 font-medium">Keunggulan</a>
+            <a href="#contact" class="block py-2 text-sm hover:text-cyan-400 font-medium">Kontak</a>
+            <div class="flex items-center space-x-3 pt-3 border-t border-white/10">
+                <a href="https://instagram.com/rudiirwnke20" target="_blank" class="flex-1 py-2.5 rounded-xl bg-pink-500/10 text-pink-400 flex items-center justify-center gap-2 text-sm font-semibold">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+                <a href="https://wa.me/62895635427099" target="_blank" class="flex-1 py-2.5 rounded-xl bg-green-500/10 text-green-400 flex items-center justify-center gap-2 text-sm font-semibold">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section (Banner Foto Utama Anda) -->
+    <section class="pt-36 pb-20 md:pt-44 md:pb-32 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
+        <div class="flex-1 text-center md:text-left">
+            <div class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-cyan-500/10 text-cyan-400 text-xs font-semibold tracking-wider uppercase mb-6 border border-cyan-500/20 shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span> Professional Web Developer
+            </div>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
+                Wujudkan Website Impian Anda Bersama <br><span class="gradient-text">RUDI IRAWAN</span>
+            </h1>
+            <p class="text-gray-400 text-base sm:text-lg mb-8 max-w-xl mx-auto md:mx-0 leading-relaxed">
+                Spesialis pembuatan website profesional untuk Undangan Pernikahan, Toko Online, Profil Sekolah, Kampus Universitas, hingga UMKM & Pedagang dengan desain estetis dan performa optimal.
+            </p>
+            <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20ingin%20konsultasi%20pembuatan%20website." target="_blank" class="px-7 py-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-violet-600 text-white font-bold shadow-lg shadow-cyan-500/25 hover:opacity-90 transition-all flex items-center gap-3">
+                    <i class="fab fa-whatsapp text-xl"></i> Pesan Website Sekarang
+                </a>
+                <a href="#services" class="px-7 py-4 rounded-2xl bg-white/5 border border-white/10 font-bold hover:bg-white/10 transition-all">
+                    Lihat Layanan & Demo
+                </a>
+            </div>
+        </div>
+
+        <!-- Banner Foto Utama -->
+        <div class="relative flex-shrink-0">
+            <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-cyan-500 to-violet-600 opacity-30 blur-lg"></div>
+            <div class="w-72 h-72 sm:w-88 sm:h-88 rounded-3xl overflow-hidden border-2 border-white/10 glow-effect relative bg-cardBg">
+                <img src="https://i.ibb.co.com/bMCpYqpd/d21b6784-e4f3-48c5-aebd-2925c033e699.jpg" alt="Rudi Irawan Banner" class="w-full h-full object-cover">
+            </div>
+            <!-- Floating Badge -->
+            <div class="absolute -bottom-5 -right-5 glass-card px-5 py-3 rounded-2xl border border-white/10 flex items-center gap-3 shadow-2xl">
+                <div class="w-3.5 h-3.5 rounded-full bg-green-500 animate-ping"></div>
+                <div>
+                    <p class="text-xs text-gray-400 font-medium">Status Proyek</p>
+                    <p class="text-xs font-bold text-white">Menerima Pesanan</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        <div class="glass-card rounded-3xl p-8 sm:p-12 border border-white/10 relative overflow-hidden">
+            <div class="absolute -right-24 -top-24 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold mb-6 text-center md:text-left flex items-center gap-3">
+                <i class="fas fa-user-shield text-cyan-400"></i> Tentang Rudi Irawan
+            </h2>
+            <p class="text-gray-300 leading-relaxed mb-6 text-base sm:text-lg">
+                Halo! Saya <strong class="text-white">Rudi Irawan</strong>, seorang developer yang berfokus khusus pada penyedia jasa pembuatan website fungsional dan estetis. Saya mendedikasikan keahlian saya untuk membantu individu, instansi, maupun pelaku usaha dalam membangun kehadiran digital yang profesional melalui website berkualitas tinggi.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t border-white/10">
+                <div class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5">
+                    <div class="w-12 h-12 rounded-xl bg-pink-500/10 text-pink-400 flex items-center justify-center text-xl flex-shrink-0">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-400">Instagram Resmi</p>
+                        <a href="https://instagram.com/rudiirwnke20" target="_blank" class="font-bold text-sm text-white hover:text-pink-400 transition-colors">@rudiirwnke20</a>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5">
+                    <div class="w-12 h-12 rounded-xl bg-green-500/10 text-green-400 flex items-center justify-center text-xl flex-shrink-0">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-400">WhatsApp Pemesanan</p>
+                        <a href="https://wa.me/62895635427099" target="_blank" class="font-bold text-sm text-white hover:text-green-400 transition-colors">+62 895-6354-27099</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services / Layanan Website Section + Tombol Demo -->
+    <section id="services" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <span class="text-cyan-400 text-xs font-bold uppercase tracking-widest bg-cyan-500/10 px-3.5 py-1.5 rounded-full border border-cyan-500/20">Layanan Pembuatan Website & Demo</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold mt-4 mb-3">Pilih Kategori & Coba Demo</h2>
+            <p class="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto">Klik tombol <strong>"Lihat Demo"</strong> di bawah untuk melihat situs demo asli atau simulasi tampilan website pilihan Anda!</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Layanan 1: Undangan Pernikahan (Direct Link ke nisa-diki.my.id) -->
+            <div class="glass-card p-6 rounded-3xl border border-white/10 hover:border-cyan-500/50 transition-all group flex flex-col justify-between">
+                <div>
+                    <div class="w-14 h-14 rounded-2xl bg-pink-500/10 text-pink-400 flex items-center justify-center text-2xl mb-6 group-hover:bg-pink-500 group-hover:text-white transition-all shadow-sm">
+                        <i class="fas fa-ring"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3">Undangan Pernikahan</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Website undangan digital modern interaktif lengkap dengan hitung mundur, peta lokasi, buku tamu, dan musik latar romantis.
+                    </p>
+                </div>
+                <div class="space-y-2 pt-4 border-t border-white/10">
+                    <a href="https://nisa-diki.my.id" target="_blank" class="w-full py-2.5 rounded-xl bg-pink-500/20 hover:bg-pink-500 text-pink-300 hover:text-white font-bold text-xs transition-all flex items-center justify-center gap-2">
+                        <i class="fas fa-external-link-alt"></i> Lihat Demo Asli
+                    </a>
+                    <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20mau%20pesan%20Website%20Undangan%20Pernikahan." target="_blank" class="w-full py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-white font-bold text-xs transition-all flex items-center justify-center gap-2">
+                        <i class="fab fa-whatsapp text-green-400"></i> Pesan Website
+                    </a>
+                </div>
+            </div>
+
+            <!-- Layanan 2: Toko Online -->
+            <div class="glass-card p-6 rounded-3xl border border-white/10 hover:border-cyan-500/50 transition-all group flex flex-col justify-between">
+                <div>
+                    <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-2xl mb-6 group-hover:bg-cyan-500 group-hover:text-white transition-all shadow-sm">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3">Toko Online & E-Commerce</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Website katalog produk dan toko online profesional yang siap pakai untuk mendongkrak penjualan produk bisnis Anda secara online.
+                    </p>
+                </div>
+                <div class="space-y-2 pt-4 border-t border-white/10">
+                    <button onclick="openDemo('store')" class="w-full py-2.5 rounded-xl bg-cyan-500/20 hover:bg-cyan-500 text-cyan-300 hover:text-white font-bold text-xs transition-all flex items-center justify-center gap-2">
+                        <i class="fas fa-eye"></i> Lihat Demo
+                    </button>
+                    <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20mau%20pesan%20Website%20Toko%20Online." target="_blank" class="w-full py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-white font-bold text-xs transition-all flex items-center justify-center gap-2">
+                        <i class="fab fa-whatsapp text-green-400"></i> Pesan Website
+                    </a>
+                </div>
+            </div>
+
+            <!-- Layanan 3: Kampus & Sekolah -->
+            <div class="glass-card p-6 rounded-3xl border border-white/10 hover:border-cyan-500/50 transition-all group flex flex-col justify-between">
+                <div>
+                    <div class="w-14 h-14 rounded-2xl bg-violet-500/10 text-violet-400 flex items-center justify-center text-2xl mb-6 group-hover:bg-violet-500 group-hover:text-white transition-all shadow-sm">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3">Universitas & Sekolah</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Portal informasi akademik resmi, profil institusi pendidikan, pendaftaran siswa baru online, hingga sistem informasi sekolah.
+                    </p>
+                </div>
+                <div class="space-y-2 pt-4 border-t border-white/10">
+                    <button onclick="openDemo('school')" class="w-full py-2.5 rounded-xl bg-violet-500/20 hover:bg-violet-500 text-violet-300 hover:text-white font-bold text-xs transition-all flex items-center justify-center gap-2">
+                        <i class="fas fa-eye"></i> Lihat Demo
+                    </button>
+                    <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20mau%20pesan%20Website%20Sekolah%20atau%20Universitas." target="_blank" class="w-full py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-white font-bold text-xs transition-all flex items-center justify-center gap-2">
+                        <i class="fab fa-whatsapp text-green-400"></i> Pesan Website
+                    </a>
+                </div>
+            </div>
+
+            <!-- Layanan 4: UMKM & Pedagang -->
+            <div class="glass-card p-6 rounded-3xl border border-white/10 hover:border-cyan-500/50 transition-all group flex flex-col justify-between">
+                <div>
+                    <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-2xl mb-6 group-hover:bg-amber-500 group-hover:text-white transition-all shadow-sm">
+                        <i class="fas fa-shop"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3">UMKM & Pedagang</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Website profil usaha kecil, menengah, dan pedagang lokal agar produk atau jasa Anda lebih mudah ditemukan di Google.
+                    </p>
+                </div>
+                <div class="space-y-2 pt-4 border-t border-white/10">
+                    <button onclick="openDemo('umkm')" class="w-full py-2.5 rounded-xl bg-amber-500/20 hover:bg-amber-500 text-amber-300 hover:text-white font-bold text-xs transition-all flex items-center justify-center gap-2">
+                        <i class="fas fa-eye"></i> Lihat Demo
+                    </button>
+                    <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20mau%20pesan%20Website%20UMKM%20atau%20Pedagang." target="_blank" class="w-full py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-white font-bold text-xs transition-all flex items-center justify-center gap-2">
+                        <i class="fab fa-whatsapp text-green-400"></i> Pesan Website
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio / Keunggulan Section -->
+    <section id="portfolio" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <span class="text-cyan-400 text-xs font-bold uppercase tracking-widest bg-cyan-500/10 px-3.5 py-1.5 rounded-full border border-cyan-500/20">Kualitas & Fitur</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold mt-4 mb-3">Keunggulan Website Buatan Rudi</h2>
+            <p class="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto">Setiap website yang dikerjakan dirancang dengan standar kualitas terbaik untuk kepuasan Anda.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="glass-card p-8 rounded-3xl border border-white/10">
+                <div class="text-cyan-400 text-3xl mb-4"><i class="fas fa-mobile-screen-button"></i></div>
+                <h3 class="text-xl font-bold mb-3">100% Responsif</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Tampilan website dijamin rapi, cepat, dan sempurna saat diakses melalui smartphone, tablet, maupun komputer/laptop.</p>
+            </div>
+            <div class="glass-card p-8 rounded-3xl border border-white/10">
+                <div class="text-violet-400 text-3xl mb-4"><i class="fas fa-wand-magic-sparkles"></i></div>
+                <h3 class="text-xl font-bold mb-3">Desain Estetik & Modern</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Menggunakan gaya desain kekinian yang bersih, elegan, dan menarik perhatian pengunjung sejak detik pertama.</p>
+            </div>
+            <div class="glass-card p-8 rounded-3xl border border-white/10">
+                <div class="text-pink-400 text-3xl mb-4"><i class="fas fa-headset"></i></div>
+                <h3 class="text-xl font-bold mb-3">Revisi & Konsultasi</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Dapatkan layanan konsultasi ramah serta kemudahan revisi agar hasil website benar-benar sesuai dengan keinginan Anda.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA Section -->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        <div class="glass-card rounded-3xl p-8 sm:p-14 border border-white/10 text-center relative overflow-hidden shadow-2xl">
+            <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-violet-500/10 to-pink-500/15 pointer-events-none"></div>
+            <h2 class="text-2xl sm:text-4xl font-extrabold mb-4">Siap Membuat Website Bersama Rudi Irawan?</h2>
+            <p class="text-gray-300 mb-8 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
+                Konsultasikan kebutuhan website Anda sekarang juga melalui WhatsApp atau kunjungi Instagram saya untuk melihat informasi lainnya.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20ingin%20membuat%20website%20sekarang." target="_blank" class="px-8 py-4 rounded-2xl bg-green-600 hover:bg-green-500 text-white font-bold shadow-lg shadow-green-600/30 transition-all flex items-center gap-3">
+                    <i class="fab fa-whatsapp text-2xl"></i> Chat WhatsApp (0895-6354-27099)
+                </a>
+                <a href="https://instagram.com/rudiirwnke20" target="_blank" class="px-8 py-4 rounded-2xl bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 hover:opacity-90 text-white font-bold shadow-lg transition-all flex items-center gap-3">
+                    <i class="fab fa-instagram text-2xl"></i> Kunjungi Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 py-8 text-center text-gray-500 text-xs sm:text-sm">
+        <p>&copy; 2026 Rudi Irawan. All Rights Reserved. Professional Web Developer Services.</p>
+    </footer>
+
+    <!-- Demo Modal Popup for other categories -->
+    <div id="demo-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
+        <div class="glass-card w-full max-w-2xl rounded-3xl border border-white/20 p-6 sm:p-8 relative shadow-2xl animate-in fade-in zoom-in duration-200">
+            <button onclick="closeDemo()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="modal-content">
+                <!-- Dynamic Content injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Script for Mobile Menu Toggle & Interactive Demo Modal -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const demoModal = document.getElementById('demo-modal');
+        const modalContent = document.getElementById('modal-content');
+
+        const demoData = {
+            store: {
+                title: "Demo: Toko Online / E-Commerce",
+                icon: "fa-store text-cyan-400",
+                desc: "Katalog produk interaktif siap jual untuk bisnis Anda.",
+                previewHtml: `
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-center space-y-2">
+                            <div class="w-full h-24 rounded-xl bg-cyan-500/20 flex items-center justify-center text-cyan-400"><i class="fas fa-shirt text-2xl"></i></div>
+                            <h4 class="font-bold text-sm">Kemeja Premium</h4>
+                            <p class="text-xs text-cyan-400 font-bold">Rp 150.000</p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-center space-y-2">
+                            <div class="w-full h-24 rounded-xl bg-cyan-500/20 flex items-center justify-center text-cyan-400"><i class="fas fa-shoe-prints text-2xl"></i></div>
+                            <h4 class="font-bold text-sm">Sepatu Sneakers</h4>
+                            <p class="text-xs text-cyan-400 font-bold">Rp 299.000</p>
+                        </div>
+                    </div>
+                `
+            },
+            school: {
+                title: "Demo: Universitas & Sekolah",
+                icon: "fa-graduation-cap text-violet-400",
+                desc: "Portal informasi resmi dan pendaftaran online instansi pendidikan.",
+                previewHtml: `
+                    <div class="p-6 rounded-2xl bg-violet-500/10 border border-violet-500/20 text-center space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-violet-500/20 mx-auto flex items-center justify-center text-violet-400"><i class="fas fa-university text-xl"></i></div>
+                        <h3 class="text-xl font-bold text-white">Universitas Nusantara Jaya</h3>
+                        <p class="text-sm text-gray-300">Mencetak generasi unggul, cerdas, dan berkarakter global.</p>
+                        <div class="inline-block px-4 py-2 rounded-xl bg-violet-600 text-white text-xs font-bold">Pendaftaran Mahasiswa Baru Dibuka</div>
+                    </div>
+                `
+            },
+            umkm: {
+                title: "Demo: UMKM & Pedagang Lokal",
+                icon: "fa-shop text-amber-400",
+                desc: "Profil usaha kuliner atau jasa lokal agar mudah ditemukan pelanggan.",
+                previewHtml: `
+                    <div class="p-6 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-center space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-amber-500/20 mx-auto flex items-center justify-center text-amber-400"><i class="fas fa-utensils text-xl"></i></div>
+                        <h3 class="text-xl font-bold text-white">Kedai Kopi & Kuliner Nusantara</h3>
+                        <p class="text-sm text-gray-300">Nikmati cita rasa kopi pilihan asli nusantara dengan harga terjangkau.</p>
+                        <div class="inline-block px-4 py-2 rounded-xl bg-amber-600 text-white text-xs font-bold">📍 Buka Setiap Hari (09.00 - 22.00)</div>
+                    </div>
+                `
+            }
+        };
+
+        function openDemo(type) {
+            const data = demoData[type];
+            if (!data) return;
+
+            modalContent.innerHTML = `
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-xl">
+                        <i class="fas ${data.icon}"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">${data.title}</h3>
+                        <p class="text-xs text-gray-400">${data.desc}</p>
+                    </div>
+                </div>
+                <div class="my-6">
+                    ${data.previewHtml}
+                </div>
+                <div class="flex gap-3 pt-4 border-t border-white/10">
+                    <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20tertarik%20dengan%20demo%20website%20${encodeURIComponent(data.title)}" target="_blank" class="flex-1 py-3 rounded-xl bg-green-600 hover:bg-green-500 text-white font-bold text-xs text-center transition-all flex items-center justify-center gap-2">
+                        <i class="fab fa-whatsapp text-base"></i> Pesan Model Ini via WhatsApp
+                    </a>
+                    <button onclick="closeDemo()" class="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-all">
+                        Tutup
+                    </button>
+                </div>
+            `;
+            demoModal.classList.remove('hidden');
+        }
+
+        function closeDemo() {
+            demoModal.classList.add('hidden');
+        }
+
+        // Close modal when clicking outside
+        demoModal.addEventListener('click', (e) => {
+            if (e.target === demoModal) {
+                closeDemo();
+            }
+        });
+    </script>
+</body>
+</html>
