@@ -58,7 +58,33 @@
             100% { background-position: 60px 60px, 60px 90px, 90px 30px, 30px 60px; }
         }
 
-        /* Header Mengikuti Scroll (Sticky) dengan Sudut Melengkung */
+        /* Header Tetap di Atas (Fixed Header 1) */
+        .fixed-top-nav {
+            background: rgba(18, 21, 28, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Header Kedua yang Muncul Mulus Saat Scroll */
+        .scroll-reveal-header {
+            position: sticky;
+            top: 16px;
+            z-index: 40;
+            display: flex;
+            justify-content: center;
+            padding: 0 12px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .scroll-reveal-header.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
         .floating-nav {
             background: rgba(18, 21, 28, 0.9);
             backdrop-filter: blur(20px);
@@ -121,13 +147,22 @@
             user-select: none;
         }
         .spring-photo {
-            transform-origin: top center;
+            transform-origin: center center;
             cursor: grab;
             will-change: transform;
             transition: transform 0.05s ease-out;
         }
         .spring-photo:active {
             cursor: grabbing;
+        }
+
+        /* Animasi Gerak Perlahan untuk Banner Baru di Atas Tentang Saya */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(0.5deg); }
+        }
+        .animate-float-slow {
+            animation: floatSlow 6s ease-in-out infinite;
         }
 
         /* Efek Kursor Mengetik */
@@ -219,71 +254,105 @@
             <div class="w-40 sm:w-48 h-1.5 bg-gray-800 rounded-full overflow-hidden mx-auto">
                 <div id="loading-bar" class="h-full bg-gray-300 w-0 transition-all duration-75"></div>
             </div>
-            <p class="text-[11px] sm:text-xs text-gray-400 uppercase tracking-widest">Memuat Website Kelas Dunia...</p>
+            <p class="text-[11px] sm:text-xs text-gray-400 uppercase tracking-widest">Memuat Website...</p>
         </div>
     </div>
 
-    <!-- Header Sticky dengan Logo Transparan Pas & Tidak Terpotong -->
-    <header class="sticky top-3 sm:top-4 z-50 px-3 sm:px-4 flex justify-center">
-        <div class="w-full max-w-2xl floating-nav rounded-2xl px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between border border-gray-200/25">
+    <!-- HEADER 1: Tetap di Atas (Fixed) dengan Tombol Garis 3 Menu Navigasi Utama -->
+    <header class="fixed top-3 sm:top-4 left-0 right-0 z-50 px-3 sm:px-4 flex justify-center pointer-events-none">
+        <div class="w-full max-w-2xl fixed-top-nav rounded-2xl px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between pointer-events-auto border border-gray-200/25 shadow-xl">
             <a href="#" class="flex items-center group">
-                <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-full p-1 bg-transparent flex items-center justify-center overflow-visible logo-glow">
-                    <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Logo Transparan" class="w-full h-full object-contain scale-125 bg-transparent" style="mix-blend-mode: screen;">
+                <div class="w-9 h-9 sm:w-10 sm:h-10 p-0.5 bg-transparent flex items-center justify-center overflow-hidden logo-glow">
+                    <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Logo Transparan" class="w-full h-full object-contain bg-transparent" style="filter: drop-shadow(0 0 2px rgba(255,255,255,0.3));">
                 </div>
             </a>
             
-            <button id="menu-btn" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/5 hover:bg-white/10 text-gray-200 flex items-center justify-center focus:outline-none transition-all">
-                <i id="menu-icon" class="fas fa-bars text-base sm:text-lg"></i>
+            <button id="menu-btn-1" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/5 hover:bg-white/10 text-gray-200 flex items-center justify-center focus:outline-none transition-all">
+                <i id="menu-icon-1" class="fas fa-bars text-base sm:text-lg"></i>
             </button>
 
-            <!-- Dropdown Menu Navigasi Lengkap -->
-            <div id="dropdown-menu" class="absolute top-16 right-3 left-3 sm:left-auto sm:right-4 sm:w-64 glass-card rounded-2xl p-3 shadow-2xl hidden flex-col space-y-1 border border-gray-200/20 z-50">
-                <a href="#" onclick="toggleMenu()" class="px-4 py-2.5 rounded-xl hover:bg-white/10 text-sm font-bold text-gray-100 transition-all flex items-center justify-between">
+            <!-- Dropdown Menu untuk Header 1 -->
+            <div id="dropdown-menu-1" class="absolute top-16 right-3 left-3 sm:left-auto sm:right-4 sm:w-64 glass-card rounded-2xl p-3 shadow-2xl hidden flex-col space-y-1 border border-gray-200/20 z-50">
+                <a href="#" onclick="toggleMenu1()" class="px-4 py-2.5 rounded-xl hover:bg-white/10 text-sm font-bold text-gray-100 transition-all flex items-center justify-between">
                     <span>Home</span> <i class="fas fa-home text-gray-300 text-xs"></i>
                 </a>
-                <a href="#about" onclick="toggleMenu()" class="px-4 py-2.5 rounded-xl hover:bg-white/10 text-sm font-semibold text-gray-300 hover:text-white transition-all flex items-center justify-between">
+                <a href="#about" onclick="toggleMenu1()" class="px-4 py-2.5 rounded-xl hover:bg-white/10 text-sm font-semibold text-gray-300 hover:text-white transition-all flex items-center justify-between">
                     <span>Tentang Saya</span> <i class="fas fa-user text-xs text-gray-400"></i>
                 </a>
-                <a href="#services" onclick="toggleMenu()" class="px-4 py-2.5 rounded-xl hover:bg-white/10 text-sm font-semibold text-gray-300 hover:text-white transition-all flex items-center justify-between">
+                <a href="#services" onclick="toggleMenu1()" class="px-4 py-2.5 rounded-xl hover:bg-white/10 text-sm font-semibold text-gray-300 hover:text-white transition-all flex items-center justify-between">
                     <span>Demo & Layanan</span> <i class="fas fa-layer-group text-xs text-gray-400"></i>
                 </a>
-                <a href="#pricing" onclick="toggleMenu()" class="px-4 py-2.5 rounded-xl hover:bg-white/10 text-sm font-semibold text-gray-300 hover:text-white transition-all flex items-center justify-between">
+                <a href="#pricing" onclick="toggleMenu1()" class="px-4 py-2.5 rounded-xl hover:bg-white/10 text-sm font-semibold text-gray-300 hover:text-white transition-all flex items-center justify-between">
                     <span>Prices (Harga)</span> <i class="fas fa-tag text-xs text-gray-400"></i>
                 </a>
-                <a href="#contact" onclick="toggleMenu()" class="px-4 py-2.5 rounded-xl bg-green-600/20 hover:bg-green-600/30 text-sm font-bold text-green-300 transition-all flex items-center justify-between border-t border-white/10 mt-1 pt-3">
-                    <span>Order (Kontak)</span> <i class="fab fa-whatsapp text-green-400 text-base"></i>
+                <a href="#contact" onclick="toggleMenu1()" class="px-4 py-2.5 rounded-xl bg-green-600/20 hover:bg-green-600/30 text-sm font-bold text-green-300 transition-all flex items-center justify-between border-t border-white/10 mt-1 pt-3">
+                    <span>Order / Kontak WhatsApp</span> <i class="fab fa-whatsapp text-green-400 text-base"></i>
                 </a>
             </div>
-
-            <!-- Garis Indikator Putih Tipis Menempel di Bawah Lengkungan Header -->
-            <div id="scroll-timer-bar"></div>
         </div>
     </header>
 
-    <!-- Main Container -->
-    <main class="max-w-4xl mx-auto px-4 pt-10 sm:pt-14 pb-16 sm:pb-20 space-y-10 sm:space-y-14 relative z-10">
+    <!-- HEADER 2: Otomatis Muncul Mulus Saat Digulir ke Bawah -->
+    <div id="scroll-header" class="scroll-reveal-header">
+        <div class="w-full max-w-2xl floating-nav rounded-2xl px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between border border-gray-200/25">
+            <a href="#" class="flex items-center group">
+                <div class="w-9 h-9 sm:w-10 sm:h-10 p-0.5 bg-transparent flex items-center justify-center overflow-hidden">
+                    <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Logo Transparan" class="w-full h-full object-contain bg-transparent" style="filter: drop-shadow(0 0 2px rgba(255,255,255,0.3));">
+                </div>
+            </a>
+            
+            <button id="menu-btn-2" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/5 hover:bg-white/10 text-gray-200 flex items-center justify-center focus:outline-none transition-all">
+                <i id="menu-icon-2" class="fas fa-bars text-base sm:text-lg"></i>
+            </button>
 
-        <!-- Hero Section dengan 3 Foto Banner Baru & Sisi Belakang Sangat Rapat -->
+            <!-- Dropdown Menu untuk Header 2 -->
+            <div id="dropdown-menu-2" class="absolute top-16 right-3 left-3 sm:left-auto sm:right-4 sm:w-64 glass-card rounded-2xl p-3 shadow-2xl hidden flex-col space-y-1 border border-gray-200/20 z-50">
+                <a href="#" onclick="toggleMenu2()" class="px-4 py-2.5 rounded-xl hover:bg-white/10 text-sm font-bold text-gray-100 transition-all flex items-center justify-between">
+                    <span>Home</span> <i class="fas fa-home text-gray-300 text-xs"></i>
+                </a>
+                <a href="#about" onclick="toggleMenu2()" class="px-4 py-2.5 rounded-xl hover:bg-white/10 text-sm font-semibold text-gray-300 hover:text-white transition-all flex items-center justify-between">
+                    <span>Tentang Saya</span> <i class="fas fa-user text-xs text-gray-400"></i>
+                </a>
+                <a href="#services" onclick="toggleMenu2()" class="px-4 py-2.5 rounded-xl hover:bg-white/10 text-sm font-semibold text-gray-300 hover:text-white transition-all flex items-center justify-between">
+                    <span>Demo & Layanan</span> <i class="fas fa-layer-group text-xs text-gray-400"></i>
+                </a>
+                <a href="#pricing" onclick="toggleMenu2()" class="px-4 py-2.5 rounded-xl hover:bg-white/10 text-sm font-semibold text-gray-300 hover:text-white transition-all flex items-center justify-between">
+                    <span>Prices (Harga)</span> <i class="fas fa-tag text-xs text-gray-400"></i>
+                </a>
+                <a href="#contact" onclick="toggleMenu2()" class="px-4 py-2.5 rounded-xl bg-green-600/20 hover:bg-green-600/30 text-sm font-bold text-green-300 transition-all flex items-center justify-between border-t border-white/10 mt-1 pt-3">
+                    <span>Order / Kontak WhatsApp</span> <i class="fab fa-whatsapp text-green-400 text-base"></i>
+                </a>
+            </div>
+
+            <!-- Garis Indikator Putih Tipis Menempel di Bawah Lengkungan Header 2 -->
+            <div id="scroll-timer-bar"></div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <main class="max-w-4xl mx-auto px-4 pt-6 sm:pt-10 pb-16 sm:pb-20 space-y-10 sm:space-y-14 relative z-10">
+
+        <!-- Hero Section dengan 3 Foto Banner Bisa Memantul ke Kiri, Kanan, Atas, Bawah -->
         <section class="text-center space-y-4 sm:space-y-6">
             <div class="trio-container">
                 <!-- Foto Kiri -->
                 <div id="spring-left" class="spring-photo w-36 sm:w-48 opacity-80 scale-90 -rotate-3 translate-x-8 sm:translate-x-12 z-10 drop-shadow-[0_15px_25px_rgba(0,0,0,0.6)]">
-                    <img src="https://i.ibb.co.com/PGK1mLbC/11851.png" alt="Banner Kiri" class="w-full h-auto object-contain mx-auto">
+                    <img src="https://i.ibb.co.com/PGK1mLbC/11851.png" alt="Banner Kiri" class="w-full h-auto object-contain mx-auto pointer-events-none">
                 </div>
 
                 <!-- Foto Utama Tengah -->
                 <div id="spring-center" class="spring-photo w-42 sm:w-56 z-30 scale-105 drop-shadow-[0_25px_40px_rgba(0,0,0,0.9)]">
-                    <img src="https://i.ibb.co.com/PGK1mLbC/11851.png" alt="Banner Utama" class="w-full h-auto object-contain mx-auto">
+                    <img src="https://i.ibb.co.com/PGK1mLbC/11851.png" alt="Banner Utama" class="w-full h-auto object-contain mx-auto pointer-events-none">
                 </div>
 
                 <!-- Foto Kanan -->
                 <div id="spring-right" class="spring-photo w-36 sm:w-48 opacity-80 scale-90 rotate-3 -translate-x-8 sm:-translate-x-12 z-10 drop-shadow-[0_15px_25px_rgba(0,0,0,0.6)]">
-                    <img src="https://i.ibb.co.com/PGK1mLbC/11851.png" alt="Banner Kanan" class="w-full h-auto object-contain mx-auto">
+                    <img src="https://i.ibb.co.com/PGK1mLbC/11851.png" alt="Banner Kanan" class="w-full h-auto object-contain mx-auto pointer-events-none">
                 </div>
             </div>
             
             <div>
-                <span class="text-[10px] text-gray-400 uppercase tracking-widest font-semibold"><i class="fas fa-hand-pointer mr-1"></i> (Tarik foto mana saja ke bawah / goyangkan untuk memantul)</span>
+                <span class="text-[10px] text-gray-400 uppercase tracking-widest font-semibold"><i class="fas fa-hand-pointer mr-1"></i> (Tarik foto ke segala arah / kiri-kanan untuk memantul bebas)</span>
             </div>
 
             <div class="space-y-3 sm:space-y-4 max-w-xl mx-auto px-2">
@@ -291,7 +360,7 @@
                     Halo! Saya <span class="text-gray-300">RUDI IRAWAN</span>
                 </h1>
                 <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
-                    Spesialis pembuatan website profesional berstandar agensi kelas dunia untuk Undangan Pernikahan, Toko Online, Profil Sekolah, Kampus Universitas, hingga UMKM & Pedagang.
+                    Spesialis pembuatan website profesional untuk Undangan Pernikahan, Toko Online, Profil Sekolah, Kampus Universitas, hingga UMKM & Pedagang.
                 </p>
 
                 <!-- Intro Time / Countdown Timer -->
@@ -345,10 +414,17 @@
             </div>
         </div>
 
+        <!-- Banner Baru Bergerak Perlahan di Atas Tentang Saya -->
+        <div class="w-full flex justify-center py-2">
+            <div class="w-full max-w-md sm:max-w-lg animate-float-slow drop-shadow-[0_20px_35px_rgba(0,0,0,0.7)]">
+                <img src="https://i.ibb.co.com/fdyqfy2V/11886.png" alt="Banner Baru Rudi Irawan" class="w-full h-auto object-contain mx-auto bg-transparent" style="filter: drop-shadow(0 0 3px rgba(255,255,255,0.2));">
+            </div>
+        </div>
+
         <!-- About Section dengan Efek Mengetik Otomatis -->
         <section id="about" class="modern-world-card rounded-3xl p-6 sm:p-10 border border-gray-200/20">
             <h2 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 flex items-center gap-2 text-white">
-                <i class="fas fa-user-circle text-gray-300"></i> Tentang Saya
+                <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Logo" class="w-6 h-6 object-contain inline-block bg-transparent" style="filter: drop-shadow(0 0 2px rgba(255,255,255,0.3));"> Tentang Saya
             </h2>
             <p id="typing-text" class="text-gray-300 leading-relaxed text-xs sm:text-base typing-cursor min-h-[70px] sm:min-h-[60px]"></p>
         </section>
@@ -375,10 +451,13 @@
                 <!-- Card 1: Undangan Pernikahan -->
                 <div class="scroll-item modern-world-card p-5 sm:p-6 rounded-3xl space-y-4 flex flex-col justify-between border border-gray-200/20">
                     <div>
-                        <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-gray-200/10 text-gray-200 flex items-center justify-center text-lg sm:text-xl mb-3 sm:mb-4 border border-gray-200/20">
-                            <i class="fas fa-ring"></i>
+                        <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-gray-200/10 text-gray-200 flex items-center justify-center mb-3 sm:mb-4 border border-gray-200/20 p-2">
+                            <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Logo" class="w-full h-full object-contain bg-transparent" style="filter: drop-shadow(0 0 2px rgba(255,255,255,0.3));">
                         </div>
-                        <h3 class="font-bold text-base sm:text-lg mb-2 text-white">Undangan Pernikahan</h3>
+                        <h3 class="font-bold text-base sm:text-lg mb-2 text-white flex items-center gap-2">
+                            <span>Undangan Pernikahan</span>
+                            <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Logo" class="w-4 h-4 object-contain inline-block bg-transparent" style="filter: drop-shadow(0 0 2px rgba(255,255,255,0.3));">
+                        </h3>
                         <p class="text-gray-300 text-xs leading-relaxed">Website undangan digital modern interaktif lengkap dengan hitung mundur, peta lokasi, buku tamu, dan musik romantis.</p>
                     </div>
                     <div class="space-y-2 pt-2">
@@ -394,10 +473,13 @@
                 <!-- Card 2: Toko Online -->
                 <div class="scroll-item modern-world-card p-5 sm:p-6 rounded-3xl space-y-4 flex flex-col justify-between border border-gray-200/20">
                     <div>
-                        <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-gray-200/10 text-gray-200 flex items-center justify-center text-lg sm:text-xl mb-3 sm:mb-4 border border-gray-200/20">
-                            <i class="fas fa-store"></i>
+                        <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-gray-200/10 text-gray-200 flex items-center justify-center mb-3 sm:mb-4 border border-gray-200/20 p-2">
+                            <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Logo" class="w-full h-full object-contain bg-transparent" style="filter: drop-shadow(0 0 2px rgba(255,255,255,0.3));">
                         </div>
-                        <h3 class="font-bold text-base sm:text-lg mb-2 text-white">Toko Online / E-Commerce</h3>
+                        <h3 class="font-bold text-base sm:text-lg mb-2 text-white flex items-center gap-2">
+                            <span>Toko Online / E-Commerce</span>
+                            <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Logo" class="w-4 h-4 object-contain inline-block bg-transparent" style="filter: drop-shadow(0 0 2px rgba(255,255,255,0.3));">
+                        </h3>
                         <p class="text-gray-300 text-xs leading-relaxed">Katalog produk interaktif siap jual untuk mendongkrak penjualan bisnis online Anda.</p>
                     </div>
                     <div class="space-y-2 pt-2">
@@ -413,10 +495,13 @@
                 <!-- Card 3: Universitas & Sekolah -->
                 <div class="scroll-item modern-world-card p-5 sm:p-6 rounded-3xl space-y-4 flex flex-col justify-between border border-gray-200/20">
                     <div>
-                        <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-gray-200/10 text-gray-200 flex items-center justify-center text-lg sm:text-xl mb-3 sm:mb-4 border border-gray-200/20">
-                            <i class="fas fa-graduation-cap"></i>
+                        <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-gray-200/10 text-gray-200 flex items-center justify-center mb-3 sm:mb-4 border border-gray-200/20 p-2">
+                            <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Logo" class="w-full h-full object-contain bg-transparent" style="filter: drop-shadow(0 0 2px rgba(255,255,255,0.3));">
                         </div>
-                        <h3 class="font-bold text-base sm:text-lg mb-2 text-white">Universitas & Sekolah</h3>
+                        <h3 class="font-bold text-base sm:text-lg mb-2 text-white flex items-center gap-2">
+                            <span>Universitas & Sekolah</span>
+                            <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Logo" class="w-4 h-4 object-contain inline-block bg-transparent" style="filter: drop-shadow(0 0 2px rgba(255,255,255,0.3));">
+                        </h3>
                         <p class="text-gray-300 text-xs leading-relaxed">Portal informasi akademik resmi, profil institusi, dan pendaftaran siswa baru online.</p>
                     </div>
                     <div class="space-y-2 pt-2">
@@ -432,10 +517,13 @@
                 <!-- Card 4: UMKM & Pedagang -->
                 <div class="scroll-item modern-world-card p-5 sm:p-6 rounded-3xl space-y-4 flex flex-col justify-between border border-gray-200/20">
                     <div>
-                        <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-gray-200/10 text-gray-200 flex items-center justify-center text-lg sm:text-xl mb-3 sm:mb-4 border border-gray-200/20">
-                            <i class="fas fa-shop"></i>
+                        <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-gray-200/10 text-gray-200 flex items-center justify-center mb-3 sm:mb-4 border border-gray-200/20 p-2">
+                            <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Logo" class="w-full h-full object-contain bg-transparent" style="filter: drop-shadow(0 0 2px rgba(255,255,255,0.3));">
                         </div>
-                        <h3 class="font-bold text-base sm:text-lg mb-2 text-white">UMKM & Pedagang Lokal</h3>
+                        <h3 class="font-bold text-base sm:text-lg mb-2 text-white flex items-center gap-2">
+                            <span>UMKM & Pedagang Lokal</span>
+                            <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Logo" class="w-4 h-4 object-contain inline-block bg-transparent" style="filter: drop-shadow(0 0 2px rgba(255,255,255,0.3));">
+                        </h3>
                         <p class="text-gray-300 text-xs leading-relaxed">Website profil usaha kecil dan menengah agar produk atau jasa lebih mudah ditemukan di Google.</p>
                     </div>
                     <div class="space-y-2 pt-2">
@@ -565,17 +653,32 @@
 
         window.addEventListener('pageshow', () => { runLoader(); });
 
-        // Scroll Timer / Progres Bar Menyatu di Bawah Header
+        // Munculkan Header Kedua Mulus Saat Scroll ke Bawah & Progress Bar
+        const scrollHeader = document.getElementById('scroll-header');
         window.addEventListener('scroll', () => {
             const scrollTop = window.scrollY;
             const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrollPercent = (scrollTop / docHeight) * 100;
+            
+            // Progress Bar
             document.getElementById('scroll-timer-bar').style.width = scrollPercent + '%';
+
+            // Munculkan Header 2 jika scroll lebih dari 80px
+            if (scrollTop > 80) {
+                scrollHeader.classList.add('visible');
+            } else {
+                scrollHeader.classList.remove('visible');
+                // Tutup menu header 2 jika ada yang terbuka
+                dropdownMenu2.classList.add('hidden');
+                dropdownMenu2.classList.remove('flex');
+                menuIcon2.classList.remove('fa-times');
+                menuIcon2.classList.add('fa-bars');
+            }
         });
 
         // Efek Mengetik Otomatis (Typing Effect) pada Bagian Tentang Saya
         const typingTextElement = document.getElementById('typing-text');
-        const aboutMessage = "Saya menyediakan jasa pembuatan website fungsional, responsif, dan estetis dengan sentuhan animasi modern berstandar internasional. Berpengalaman membantu individu, instansi, maupun pelaku usaha dalam membangun kehadiran digital yang profesional dan berkelas dunia.";
+        const aboutMessage = "Saya menyediakan jasa pembuatan website fungsional, responsif, dan estetis dengan sentuhan animasi modern. Berpengalaman membantu individu, instansi, maupun pelaku usaha dalam membangun kehadiran digital yang profesional.";
         let charIndex = 0;
 
         setTimeout(() => {
@@ -589,75 +692,122 @@
             safeType();
         }, 1200);
 
-        // Toggle Floating Dropdown Menu
-        const menuBtn = document.getElementById('menu-btn');
-        const dropdownMenu = document.getElementById('dropdown-menu');
-        const menuIcon = document.getElementById('menu-icon');
+        // Toggle Floating Dropdown Menu untuk Header 1
+        const menuBtn1 = document.getElementById('menu-btn-1');
+        const dropdownMenu1 = document.getElementById('dropdown-menu-1');
+        const menuIcon1 = document.getElementById('menu-icon-1');
 
-        function toggleMenu() {
-            dropdownMenu.classList.toggle('hidden');
-            dropdownMenu.classList.toggle('flex');
-            if (dropdownMenu.classList.contains('flex')) {
-                menuIcon.classList.remove('fa-bars');
-                menuIcon.classList.add('fa-times');
+        function toggleMenu1() {
+            dropdownMenu1.classList.toggle('hidden');
+            dropdownMenu1.classList.toggle('flex');
+            if (dropdownMenu1.classList.contains('flex')) {
+                menuIcon1.classList.remove('fa-bars');
+                menuIcon1.classList.add('fa-times');
             } else {
-                menuIcon.classList.remove('fa-times');
-                menuIcon.classList.add('fa-bars');
+                menuIcon1.classList.remove('fa-times');
+                menuIcon1.classList.add('fa-bars');
             }
         }
 
-        menuBtn.addEventListener('click', (e) => {
+        menuBtn1.addEventListener('click', (e) => {
             e.stopPropagation();
-            toggleMenu();
+            toggleMenu1();
+            dropdownMenu2.classList.add('hidden');
+            dropdownMenu2.classList.remove('flex');
+            menuIcon2.classList.remove('fa-times');
+            menuIcon2.classList.add('fa-bars');
+        });
+
+        // Toggle Floating Dropdown Menu untuk Header 2
+        const menuBtn2 = document.getElementById('menu-btn-2');
+        const dropdownMenu2 = document.getElementById('dropdown-menu-2');
+        const menuIcon2 = document.getElementById('menu-icon-2');
+
+        function toggleMenu2() {
+            dropdownMenu2.classList.toggle('hidden');
+            dropdownMenu2.classList.toggle('flex');
+            if (dropdownMenu2.classList.contains('flex')) {
+                menuIcon2.classList.remove('fa-bars');
+                menuIcon2.classList.add('fa-times');
+            } else {
+                menuIcon2.classList.remove('fa-times');
+                menuIcon2.classList.add('fa-bars');
+            }
+        }
+
+        menuBtn2.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleMenu2();
+            dropdownMenu1.classList.add('hidden');
+            dropdownMenu1.classList.remove('flex');
+            menuIcon1.classList.remove('fa-times');
+            menuIcon1.classList.add('fa-bars');
         });
 
         window.addEventListener('click', (e) => {
-            if (!dropdownMenu.contains(e.target) && !menuBtn.contains(e.target)) {
-                dropdownMenu.classList.add('hidden');
-                dropdownMenu.classList.remove('flex');
-                menuIcon.classList.remove('fa-times');
-                menuIcon.classList.add('fa-bars');
+            if (!dropdownMenu1.contains(e.target) && !menuBtn1.contains(e.target)) {
+                dropdownMenu1.classList.add('hidden');
+                dropdownMenu1.classList.remove('flex');
+                menuIcon1.classList.remove('fa-times');
+                menuIcon1.classList.add('fa-bars');
+            }
+            if (!dropdownMenu2.contains(e.target) && !menuBtn2.contains(e.target)) {
+                dropdownMenu2.classList.add('hidden');
+                dropdownMenu2.classList.remove('flex');
+                menuIcon2.classList.remove('fa-times');
+                menuIcon2.classList.add('fa-bars');
             }
         });
 
-        // Spring Physics Terpisah untuk Ketiga Foto (Tarik & Memantul Alami)
-        function initSpringPhoto(elementId, stiffness = 0.12, damping = 0.78) {
+        // Spring Physics Bebas (Bisa Ditarik & Memantul ke Segala Arah: Atas, Bawah, Kiri, Kanan)
+        function initOmniSpringPhoto(elementId, stiffness = 0.1, damping = 0.8) {
             const el = document.getElementById(elementId);
             if (!el) return;
 
             let isDragging = false;
+            let startX = 0;
             let startY = 0;
+            let currentX = 0;
             let currentY = 0;
+            let velocityX = 0;
             let velocityY = 0;
+            let springX = 0;
             let springY = 0;
 
             function animate() {
                 if (!isDragging) {
-                    let force = -stiffness * springY;
-                    velocityY = velocityY * damping + force;
+                    let forceX = -stiffness * springX;
+                    let forceY = -stiffness * springY;
+                    velocityX = velocityX * damping + forceX;
+                    velocityY = velocityY * damping + forceY;
+                    springX += velocityX;
                     springY += velocityY;
                 }
-                el.style.transform = `translateY(${springY}px) rotate(${springY * 0.03}deg)`;
+                el.style.transform = `translate(${springX}px, ${springY}px) rotate(${springX * 0.05}deg)`;
                 requestAnimationFrame(animate);
             }
             requestAnimationFrame(animate);
 
             el.addEventListener('pointerdown', (e) => {
                 isDragging = true;
-                startY = e.clientY;
+                startX = e.clientX - springX;
+                startY = e.clientY - springY;
                 el.setPointerCapture(e.pointerId);
             });
 
             el.addEventListener('pointermove', (e) => {
                 if (!isDragging) return;
+                currentX = e.clientX - startX;
                 currentY = e.clientY - startY;
-                springY = Math.max(-20, Math.min(90, currentY));
+                springX = Math.max(-100, Math.min(100, currentX));
+                springY = Math.max(-50, Math.min(120, currentY));
             });
 
             el.addEventListener('pointerup', (e) => {
                 if (!isDragging) return;
                 isDragging = false;
-                velocityY = (springY - currentY) * 0.15;
+                velocityX = (springX - currentX) * 0.1;
+                velocityY = (springY - currentY) * 0.1;
                 el.releasePointerCapture(e.pointerId);
             });
 
@@ -666,9 +816,9 @@
             });
         }
 
-        initSpringPhoto('spring-left', 0.1, 0.75);
-        initSpringPhoto('spring-center', 0.13, 0.8);
-        initSpringPhoto('spring-right', 0.1, 0.75);
+        initOmniSpringPhoto('spring-left', 0.1, 0.75);
+        initOmniSpringPhoto('spring-center', 0.12, 0.78);
+        initOmniSpringPhoto('spring-right', 0.1, 0.75);
 
         // Countdown Timer
         const countdownDate = new Date().getTime() + (3 * 24 * 60 * 60 * 1000);
@@ -743,34 +893,6 @@
             }
         };
 
-        function openDemo(type) {
-            const data = demoData[type];
-            if (!data) return;
-            modalContent.innerHTML = `
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="w-10 h-10 rounded-2xl bg-white/15 flex items-center justify-center text-lg border border-gray-200/20">
-                        <i class="fas ${data.icon}"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-base font-bold text-white">${data.title}</h3>
-                        <p class="text-[11px] text-gray-400">${data.desc}</p>
-                    </div>
-                </div>
-                <div class="my-4">${data.previewHtml}</div>
-                <div class="flex gap-2 pt-3 border-t border-gray-200/20">
-                    <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20tertarik%20dengan%20demo%20website%20${encodeURIComponent(data.title)}" target="_blank" class="flex-1 py-3 rounded-2xl bg-green-600 hover:bg-green-500 text-white font-bold text-xs text-center transition-all flex items-center justify-center gap-2 shadow-lg">
-                        <i class="fab fa-whatsapp"></i> Pesan via WhatsApp
-                    </a>
-                    <button onclick="closeDemo()" class="px-5 py-3 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-all border border-gray-200/20">
-                        Tutup
-                    </button>
-                </div>
-            `;
-            demoModal.classList.remove('hidden');
-        }
-
-        function closeDemo() { demoModal.classList.add('hidden'); }
-        demoModal.addEventListener('click', (e) => { if (e.target === demoModal) closeDemo(); });
     </script>
 </body>
-    </html>
+                                  </html>
