@@ -18,7 +18,7 @@
                         sans: ['"Plus Jakarta Sans"', 'sans-serif'],
                     },
                     colors: {
-                        darkBg: '#0c0d12',
+                        darkBg: '#08090c',
                         cardBg: '#12151c',
                     }
                 }
@@ -26,39 +26,51 @@
         }
     </script>
     <style>
-        body {
-            background-color: #0c0d12;
+        html, body {
+            background-color: #08090c;
             color: #f3f4f6;
             font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
         }
-        /* Latar Belakang Meja Catur */
-        .checkerboard-bg {
-            position: fixed;
+
+        /* Latar Belakang Grid */
+        .grid-bg-reference {
+            position: absolute;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
+            width: 100%;
+            height: 100%;
+            min-height: 100vh;
             z-index: -1;
-            background-color: #0c0d12;
+            background-color: #08090c;
             background-image: 
-                linear-gradient(45deg, #A9A9A9 25%, transparent 25%), 
-                linear-gradient(-45deg, #A9A9A9 25%, transparent 25%), 
-                linear-gradient(45deg, transparent 75%, #A9A9A9 75%), 
-                linear-gradient(-45deg, transparent 75%, #A9A9A9 75%);
-            background-size: 60px 60px;
-            background-position: 0 0, 0 30px, 30px -30px, -30px 0px;
-            opacity: 0.35;
-            animation: moveGrid 20s linear infinite;
+                linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        /* Efek Sentuhan Ripple */
+        .touch-ripple {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 70%);
+            transform: translate(-50%, -50%) scale(0);
+            animation: rippleEffect 0.6s ease-out forwards;
             pointer-events: none;
+            z-index: 9998;
         }
 
-        @keyframes moveGrid {
-            0% { background-position: 0 0, 0 30px, 30px -30px, -30px 0px; }
-            100% { background-position: 60px 60px, 60px 90px, 90px 30px, 30px 60px; }
+        @keyframes rippleEffect {
+            0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(12); opacity: 0; }
         }
 
-        /* Header Tetap di Atas (Fixed Header 1 Asli) */
+       /* Header Tetap di Atas (Fixed Header 1 Asli) */
         .fixed-top-nav {
             background: rgba(18, 21, 28, 0.95);
             backdrop-filter: blur(20px);
@@ -147,8 +159,6 @@
         .nav-animated-text:nth-child(2) { animation-delay: 0.5s; }
         .nav-animated-text:nth-child(3) { animation-delay: 1s; }
         .nav-animated-text:nth-child(4) { animation-delay: 1.5s; }
-
-        /* Kontainer 3 Foto Sejajar */
         .trio-container {
             display: flex;
             align-items: center;
@@ -214,7 +224,6 @@
             animation: pulse-glow 3s infinite ease-in-out;
         }
 
-        /* Styling Slider Horizontal Kartu Demo & Layanan */
         .horizontal-scroll {
             display: flex;
             gap: 1.5rem;
@@ -241,8 +250,8 @@
         #loader {
             position: fixed;
             inset: 0;
-            background: #0c0d12;
-            z-index: 9999;
+            background: #08090c;
+            z-index: 9999999;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -253,10 +262,8 @@
 </head>
 <body class="selection:bg-gray-300 selection:text-black rhythm-text">
 
-    <!-- Latar Belakang Meja Catur -->
-    <div class="checkerboard-bg"></div>
+    <div class="grid-bg-reference"></div>
 
-    <!-- Loading Screen -->
     <div id="loader">
         <div class="text-center space-y-4">
             <h2 class="text-xl sm:text-2xl font-black tracking-widest text-gray-200">RUDI IRAWAN</h2>
@@ -268,8 +275,8 @@
         </div>
     </div>
 
-    <!-- HEADER 1: Tetap di Atas (Fixed Header 1 Asli) -->
-    <header class="fixed top-3 sm:top-4 left-0 right-0 z-50 px-3 sm:px-4 flex justify-center pointer-events-none">
+    <!-- HEADER 1 (Tetap di atas posisi awal) -->
+    <header class="fixed top-3 sm:top-4 left-0 right-0 z-40 px-3 sm:px-4 flex justify-center pointer-events-none">
         <div class="w-full max-w-2xl fixed-top-nav rounded-2xl px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between pointer-events-auto border border-gray-200/25 shadow-xl">
             <a href="#" class="flex items-center group">
                 <div class="w-9 h-9 sm:w-10 sm:h-10 p-0.5 bg-transparent flex items-center justify-center overflow-hidden logo-glow">
@@ -277,7 +284,6 @@
                 </div>
             </a>
             
-            <!-- Tambahan Teks Animasi Bergerak di Komputer untuk List Menu Header -->
             <div class="hidden md:flex items-center space-x-6 text-xs font-bold uppercase tracking-wider">
                 <a href="#" class="nav-animated-text">Home</a>
                 <a href="#about" class="nav-animated-text">Tentang</a>
@@ -289,7 +295,6 @@
                 <i id="menu-icon-1" class="fas fa-bars text-base sm:text-lg"></i>
             </button>
 
-            <!-- Dropdown Menu untuk Header 1 -->
             <div id="dropdown-menu-1" class="absolute top-16 right-3 left-3 sm:left-auto sm:right-4 sm:w-64 glass-card rounded-2xl p-3 shadow-2xl hidden flex-col space-y-1 border border-gray-200/20 z-50">
                 <a href="#" onclick="toggleMenu1()" class="px-4 py-2.5 rounded-xl hover:bg-white/10 text-sm font-bold text-gray-100 transition-all flex items-center justify-between">
                     <span>Home</span> <i class="fas fa-home text-gray-300 text-xs"></i>
@@ -310,16 +315,15 @@
         </div>
     </header>
 
-    <!-- HEADER 2: Otomatis Muncul Mulus Saat Digulir ke Bawah -->
+    <!-- HEADER 2: Header Kedua yang Muncul Penuh Saat Scroll -->
     <div id="scroll-header" class="scroll-reveal-header">
-        <div class="w-full max-w-2xl floating-nav rounded-2xl px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between border border-gray-200/25">
+        <div class="floating-nav px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between border border-gray-200/25">
             <a href="#" class="flex items-center group">
                 <div class="w-9 h-9 sm:w-10 sm:h-10 p-0.5 bg-transparent flex items-center justify-center overflow-hidden">
                     <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Logo Transparan" class="w-full h-full object-contain bg-transparent" style="filter: drop-shadow(0 0 2px rgba(255,255,255,0.3));">
                 </div>
             </a>
             
-            <!-- Animasi Teks Bergerak di Header Scroll Desktop -->
             <div class="hidden md:flex items-center space-x-6 text-xs font-bold uppercase tracking-wider">
                 <a href="#" class="nav-animated-text">Home</a>
                 <a href="#about" class="nav-animated-text">Tentang</a>
@@ -331,7 +335,6 @@
                 <i id="menu-icon-2" class="fas fa-bars text-base sm:text-lg"></i>
             </button>
 
-            <!-- Dropdown Menu untuk Header 2 -->
             <div id="dropdown-menu-2" class="absolute top-16 right-3 left-3 sm:left-auto sm:right-4 sm:w-64 glass-card rounded-2xl p-3 shadow-2xl hidden flex-col space-y-1 border border-gray-200/20 z-50">
                 <a href="#" onclick="toggleMenu2()" class="px-4 py-2.5 rounded-xl hover:bg-white/10 text-sm font-bold text-gray-100 transition-all flex items-center justify-between">
                     <span>Home</span> <i class="fas fa-home text-gray-300 text-xs"></i>
@@ -350,60 +353,66 @@
                 </a>
             </div>
 
-            <!-- Garis Indikator Putih Tipis Menempel di Bawah Lengkungan Header 2 -->
             <div id="scroll-timer-bar"></div>
         </div>
     </div>
 
-    <!-- MAIN CONTAINER (Padding atas disesuaikan agar langsung pas terlihat tanpa scroll) -->
-    <main class="max-w-5xl mx-auto px-4 sm:px-8 pt-20 sm:pt-24 pb-16 sm:pb-24 space-y-12 sm:space-y-16 relative z-10">
+    <!-- MAIN CONTAINER -->
+    <main class="max-w-5xl mx-auto px-4 sm:px-8 pt-24 sm:pt-28 pb-16 sm:pb-24 space-y-12 sm:space-y-16 relative z-10">
 
-        <!-- Hero Section (Banner Atas Tetap Utuh) -->
-        <section class="text-center space-y-5 max-w-4xl mx-auto">
-            <div class="trio-container">
-                <div id="spring-left" class="spring-photo w-28 sm:w-44 opacity-80 scale-90 -rotate-3 translate-x-8 sm:translate-x-12 z-10 drop-shadow-[0_15px_25px_rgba(0,0,0,0.6)]">
-                    <img src="https://i.ibb.co.com/PGK1mLbC/11851.png" alt="Banner Kiri" class="w-full h-auto object-contain mx-auto pointer-events-none">
-                </div>
-                <div id="spring-center" class="spring-photo w-44 sm:w-64 z-30 scale-105 drop-shadow-[0_25px_40px_rgba(0,0,0,0.9)]">
-                    <img src="https://i.ibb.co.com/PGK1mLbC/11851.png" alt="Banner Utama" class="w-full h-auto object-contain mx-auto pointer-events-none">
-                </div>
-                <div id="spring-right" class="spring-photo w-28 sm:w-44 opacity-80 scale-90 rotate-3 -translate-x-8 sm:-translate-x-12 z-10 drop-shadow-[0_15px_25px_rgba(0,0,0,0.6)]">
-                    <img src="https://i.ibb.co.com/PGK1mLbC/11851.png" alt="Banner Kanan" class="w-full h-auto object-contain mx-auto pointer-events-none">
-                </div>
-            </div>
-            
-            <div>
-                <span class="text-[11px] text-gray-400 uppercase tracking-widest font-semibold"><i class="fas fa-hand-pointer mr-1"></i>)</span>
-            </div>
-
-            <div class="space-y-3 px-2">
-                <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
-                    Halo! Saya <span class="text-gray-300">RUDI IRAWAN</span>
-                </h1>
-                <p class="text-gray-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
-                    Spesialis pembuatan website profesional untuk Undangan Pernikahan, Toko Online, Profil Sekolah, Kampus Universitas, hingga UMKM & Pedagang.
-                </p>
-
-                <!-- Countdown Timer -->
-                <div class="pt-1">
-                    <div class="modern-world-card p-3 sm:p-4 rounded-3xl border border-gray-200/30 max-w-md mx-auto shadow-lg">
-                        <div class="text-[11px] font-bold uppercase tracking-widest text-gray-300 mb-2 flex items-center justify-center gap-1.5">
-                            <i class="fas fa-clock animate-pulse"></i> Promo Diskon Spesial Berakhir Dalam:
+        <!-- Hero Section: Bingkai Tunggal Berdampingan (Foto & Teks Intro Halo Rudi Irawan) -->
+        <section class="max-w-4xl mx-auto">
+            <div class="modern-world-card rounded-3xl p-6 sm:p-10 border border-gray-200/20 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                
+                <!-- Kolom Kiri: 3 Foto Banner Interaktif -->
+                <div class="space-y-4 text-center">
+                    <div class="trio-container">
+                        <div id="spring-left" class="spring-photo w-24 sm:w-32 opacity-80 scale-90 -rotate-3 translate-x-6 sm:translate-x-8 z-10 drop-shadow-[0_15px_25px_rgba(0,0,0,0.6)]">
+                            <img src="https://i.ibb.co.com/PGK1mLbC/11851.png" alt="Banner Kiri" class="w-full h-auto object-contain mx-auto pointer-events-none">
                         </div>
-                        <div class="grid grid-cols-4 gap-2 text-center">
-                            <div class="bg-black/40 rounded-2xl p-2 border border-white/10"><span id="days" class="text-lg font-black text-white">00</span><p class="text-[8px] uppercase text-gray-400">Hari</p></div>
-                            <div class="bg-black/40 rounded-2xl p-2 border border-white/10"><span id="hours" class="text-lg font-black text-white">00</span><p class="text-[8px] uppercase text-gray-400">Jam</p></div>
-                            <div class="bg-black/40 rounded-2xl p-2 border border-white/10"><span id="minutes" class="text-lg font-black text-white">00</span><p class="text-[8px] uppercase text-gray-400">Menit</p></div>
-                            <div class="bg-black/40 rounded-2xl p-2 border border-white/10"><span id="seconds" class="text-lg font-black text-gray-300">00</span><p class="text-[8px] uppercase text-gray-400">Detik</p></div>
+                        <div id="spring-center" class="spring-photo w-36 sm:w-48 z-30 scale-105 drop-shadow-[0_25px_40px_rgba(0,0,0,0.9)]">
+                            <img src="https://i.ibb.co.com/PGK1mLbC/11851.png" alt="Banner Utama" class="w-full h-auto object-contain mx-auto pointer-events-none">
                         </div>
+                        <div id="spring-right" class="spring-photo w-24 sm:w-32 opacity-80 scale-90 rotate-3 -translate-x-6 sm:-translate-x-8 z-10 drop-shadow-[0_15px_25px_rgba(0,0,0,0.6)]">
+                            <img src="https://i.ibb.co.com/PGK1mLbC/11851.png" alt="Banner Kanan" class="w-full h-auto object-contain mx-auto pointer-events-none">
+                        </div>
+                    </div>
+                    <div>
+                        <span class="text-[10px] text-gray-400 uppercase tracking-widest font-semibold"><i class="fas fa-hand-pointer mr-1"></i> (Tarik foto ke segala arah)</span>
                     </div>
                 </div>
 
-                <div class="pt-2 flex justify-center">
-                    <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20ingin%20konsultasi%20pembuatan%20website." target="_blank" class="px-5 py-3 rounded-2xl bg-gray-100 text-black font-bold text-xs sm:text-sm hover:bg-white transition-all flex items-center gap-2 shadow-lg">
-                        <i class="fab fa-whatsapp text-lg text-green-600"></i> Hubungi WhatsApp
-                    </a>
+                <!-- Kolom Kanan: Teks "Halo! Saya Rudi Irawan" Intro, Countdown, & Tombol -->
+                <div class="space-y-4 text-center md:text-left">
+                    <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+                        Halo! Saya <span class="text-gray-300">RUDI IRAWAN</span>
+                    </h1>
+                    <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">
+                        Spesialis pembuatan website profesional untuk Undangan Pernikahan, Toko Online, Profil Sekolah, Kampus Universitas, hingga UMKM & Pedagang.
+                    </p>
+
+                    <!-- Countdown Timer -->
+                    <div class="pt-1">
+                        <div class="bg-black/40 p-3 rounded-2xl border border-white/10 max-w-sm mx-auto md:mx-0 shadow-lg">
+                            <div class="text-[10px] font-bold uppercase tracking-widest text-gray-300 mb-2 flex items-center justify-center md:justify-start gap-1.5">
+                                <i class="fas fa-clock animate-pulse"></i> Promo Diskon Spesial Berakhir Dalam:
+                            </div>
+                            <div class="grid grid-cols-4 gap-1.5 text-center">
+                                <div class="bg-white/5 rounded-xl p-1.5 border border-white/10"><span id="days" class="text-sm font-black text-white">00</span><p class="text-[7px] uppercase text-gray-400">Hari</p></div>
+                                <div class="bg-white/5 rounded-xl p-1.5 border border-white/10"><span id="hours" class="text-sm font-black text-white">00</span><p class="text-[7px] uppercase text-gray-400">Jam</p></div>
+                                <div class="bg-white/5 rounded-xl p-1.5 border border-white/10"><span id="minutes" class="text-sm font-black text-white">00</span><p class="text-[7px] uppercase text-gray-400">Menit</p></div>
+                                <div class="bg-white/5 rounded-xl p-1.5 border border-white/10"><span id="seconds" class="text-sm font-black text-gray-300">00</span><p class="text-[7px] uppercase text-gray-400">Detik</p></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 flex justify-center md:justify-start">
+                        <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20ingin%20konsultasi%20pembuatan%20website." target="_blank" class="px-4 py-2.5 rounded-xl bg-gray-100 text-black font-bold text-xs hover:bg-white transition-all flex items-center gap-2 shadow-lg">
+                            <i class="fab fa-whatsapp text-base text-green-600"></i> Hubungi WhatsApp
+                        </a>
+                    </div>
                 </div>
+
             </div>
         </section>
 
@@ -418,7 +427,7 @@
             </div>
         </div>
 
-        <!-- Banner Kedua Berdampingan dengan "Tentang Saya" -->
+        <!-- Tentang Saya -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center max-w-5xl mx-auto">
             <div class="w-full flex justify-center animate-float-slow drop-shadow-[0_20px_35px_rgba(0,0,0,0.7)]">
                 <img src="https://i.ibb.co.com/fdyqfy2V/11886.png" alt="Banner Kedua" class="w-full max-w-sm sm:max-w-md h-auto object-contain bg-transparent">
@@ -432,14 +441,12 @@
             </section>
         </div>
 
-        <!-- Services / Demo & Jasa Website -->
+        <!-- Services -->
         <section id="services" class="space-y-6">
             <div class="text-center space-y-2">
                 <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">Demo & Layanan Website</h2>
-                <p class="text-gray-400 text-sm"></p>
             </div>
 
-            <!-- Tombol Tab Menu Alihkan -->
             <div class="flex flex-wrap justify-center gap-2 pb-2 px-2">
                 <button onclick="filterCategory('all', this)" class="category-btn px-5 py-2.5 rounded-full bg-white text-black font-bold text-xs shadow-md transition-all">Semua</button>
                 <button onclick="filterCategory('undangan', this)" class="category-btn px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-gray-200 font-semibold text-xs border border-gray-200/20 transition-all">Undangan</button>
@@ -448,7 +455,6 @@
                 <button onclick="filterCategory('umkm', this)" class="category-btn px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-gray-200 font-semibold text-xs border border-gray-200/20 transition-all">UMKM</button>
             </div>
 
-            <!-- Tombol Navigasi Geser Kiri / Kanan -->
             <div class="relative max-w-5xl mx-auto px-4">
                 <button onclick="scrollSlider(-350)" class="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/70 hover:bg-black text-white border border-white/20 flex items-center justify-center shadow-xl transition-all">
                     <i class="fas fa-chevron-left"></i>
@@ -457,10 +463,8 @@
                     <i class="fas fa-chevron-right"></i>
                 </button>
 
-                <!-- Kontainer Slider Horizontal -->
                 <div id="slider-container" class="horizontal-scroll px-8">
                     
-                    <!-- Card 1 -->
                     <div class="scroll-item service-card modern-world-card p-6 rounded-3xl space-y-4 flex flex-col justify-between border border-gray-200/20" data-category="undangan">
                         <div>
                             <div class="w-12 h-12 rounded-2xl bg-gray-200/10 text-gray-200 flex items-center justify-center mb-4 border border-gray-200/20 p-2">
@@ -479,7 +483,6 @@
                         </div>
                     </div>
 
-                    <!-- Card 2 -->
                     <div class="scroll-item service-card modern-world-card p-6 rounded-3xl space-y-4 flex flex-col justify-between border border-gray-200/20" data-category="store">
                         <div>
                             <div class="w-12 h-12 rounded-2xl bg-gray-200/10 text-gray-200 flex items-center justify-center mb-4 border border-gray-200/20 p-2">
@@ -498,7 +501,6 @@
                         </div>
                     </div>
 
-                    <!-- Card 3 -->
                     <div class="scroll-item service-card modern-world-card p-6 rounded-3xl space-y-4 flex flex-col justify-between border border-gray-200/20" data-category="school">
                         <div>
                             <div class="w-12 h-12 rounded-2xl bg-gray-200/10 text-gray-200 flex items-center justify-center mb-4 border border-gray-200/20 p-2">
@@ -517,7 +519,6 @@
                         </div>
                     </div>
 
-                    <!-- Card 4 -->
                     <div class="scroll-item service-card modern-world-card p-6 rounded-3xl space-y-4 flex flex-col justify-between border border-gray-200/20" data-category="umkm">
                         <div>
                             <div class="w-12 h-12 rounded-2xl bg-gray-200/10 text-gray-200 flex items-center justify-center mb-4 border border-gray-200/20 p-2">
@@ -611,8 +612,26 @@
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-gray-200/10 py-8 text-center text-gray-400 text-xs relative z-10">
-        <p>&copy; 2026 Rudi Irawan byRUDid. All Rights Reserved.</p>
+    <footer class="w-full modern-world-card border-t border-gray-200/20 py-12 px-6 mt-20 relative z-10">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
+            <div class="space-y-2">
+                <div class="flex items-center justify-center md:justify-start gap-2">
+                    <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Logo" class="w-8 h-8 object-contain">
+                    <span class="font-extrabold text-white tracking-wider">byRUDid</span>
+                </div>
+                <p class="text-xs text-gray-400 max-w-xs">Solusi pembuatan website profesional, cepat, modern, dan terpercaya.</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-6 text-xs font-semibold text-gray-300">
+                <a href="#" class="hover:text-white transition-colors">Home</a>
+                <a href="#about" class="hover:text-white transition-colors">Tentang</a>
+                <a href="#services" class="hover:text-white transition-colors">Layanan</a>
+                <a href="#pricing" class="hover:text-white transition-colors">Harga</a>
+                <a href="#contact" class="hover:text-white transition-colors">Kontak</a>
+            </div>
+        </div>
+        <div class="max-w-5xl mx-auto border-t border-gray-800/60 mt-8 pt-6 text-center text-gray-400 text-xs">
+            <p>&copy; 2026 Rudi Irawan byRUDid. All Rights Reserved.</p>
+        </div>
     </footer>
 
     <!-- Demo Modal Popup -->
@@ -627,7 +646,15 @@
 
     <!-- Script Interaktif -->
     <script>
-        // Loading Screen
+        window.addEventListener('click', (e) => {
+            const ripple = document.createElement('div');
+            ripple.className = 'touch-ripple';
+            ripple.style.left = `${e.clientX}px`;
+            ripple.style.top = `${e.clientY}px`;
+            document.body.appendChild(ripple);
+            setTimeout(() => { ripple.remove(); }, 600);
+        });
+
         const loader = document.getElementById('loader');
         const loadingText = document.getElementById('loading-text');
         const loadingBar = document.getElementById('loading-bar');
@@ -654,22 +681,25 @@
 
         window.addEventListener('pageshow', () => { runLoader(); });
 
-        // Scroll Header
+        /* Script Logika Header Kedua & Garis Indikator Scroll */
         const scrollHeader = document.getElementById('scroll-header');
         window.addEventListener('scroll', () => {
             const scrollTop = window.scrollY;
             const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrollPercent = (scrollTop / docHeight) * 100;
-            document.getElementById('scroll-timer-bar').style.width = scrollPercent + '%';
+            const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            const timerBar = document.getElementById('scroll-timer-bar');
+            if (timerBar) {
+                timerBar.style.width = scrollPercent + '%';
+            }
 
-            if (scrollTop > 100) {
+            // Header kedua akan muncul mulus setelah discroll melewati 40px dan tetap tampil penuh melayang
+            if (scrollTop > 40) {
                 scrollHeader.classList.add('visible');
             } else {
                 scrollHeader.classList.remove('visible');
             }
         });
 
-        // Typing Effect
         const typingTextElement = document.getElementById('typing-text');
         const aboutMessage = "Saya menyediakan jasa pembuatan website fungsional, responsif, dan estetis dengan sentuhan animasi modern. Berpengalaman membantu individu, instansi, maupun pelaku usaha dalam membangun kehadiran digital yang profesional.";
         let charIndex = 0;
@@ -685,7 +715,6 @@
             safeType();
         }, 1200);
 
-        // Toggle Mobile Dropdown
         const menuBtn1 = document.getElementById('menu-btn-1');
         const dropdownMenu1 = document.getElementById('dropdown-menu-1');
         function toggleMenu1() { dropdownMenu1.classList.toggle('hidden'); dropdownMenu1.classList.toggle('flex'); }
@@ -701,7 +730,6 @@
             if(dropdownMenu2) dropdownMenu2.classList.add('hidden');
         });
 
-        // Slider Geser Horizontal & Filter Kategori
         function scrollSlider(offset) {
             const container = document.getElementById('slider-container');
             container.scrollBy({ left: offset, behavior: 'smooth' });
@@ -725,7 +753,6 @@
             });
         }
 
-        // Spring Physics untuk 3 Foto
         function initOmniSpringPhoto(elementId, stiffness = 0.1, damping = 0.8) {
             const el = document.getElementById(elementId);
             if (!el) return;
@@ -750,66 +777,8 @@
 
             el.addEventListener('pointerdown', (e) => {
                 isDragging = true;
-                startX = e.clientX - springX;
-                startY = e.clientY - springY;
-                el.setPointerCapture(e.pointerId);
-            });
-            el.addEventListener('pointermove', (e) => {
-                if (!isDragging) return;
-                currentX = e.clientX - startX;
-                currentY = e.clientY - startY;
-                springX = Math.max(-100, Math.min(100, currentX));
-                springY = Math.max(-50, Math.min(120, currentY));
-            });
-            el.addEventListener('pointerup', (e) => {
-                if (!isDragging) return;
-                isDragging = false;
-                velocityX = (springX - currentX) * 0.1;
-                velocityY = (springY - currentY) * 0.1;
-                el.releasePointerCapture(e.pointerId);
             });
         }
-
-        initOmniSpringPhoto('spring-left', 0.1, 0.75);
-        initOmniSpringPhoto('spring-center', 0.12, 0.78);
-        initOmniSpringPhoto('spring-right', 0.1, 0.75);
-
-        // Countdown Timer
-        const countdownDate = new Date().getTime() + (3 * 24 * 60 * 60 * 1000);
-        setInterval(() => {
-            const now = new Date().getTime();
-            const distance = countdownDate - now;
-            if (distance < 0) return;
-            document.getElementById("days").innerText = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
-            document.getElementById("hours").innerText = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-            document.getElementById("minutes").innerText = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-            document.getElementById("seconds").innerText = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
-        }, 1000);
-
-        // Modal Demo
-        const demoModal = document.getElementById('demo-modal');
-        const modalContent = document.getElementById('modal-content');
-        const demoData = {
-            store: { title: "Simulasi Demo: Toko Online", desc: "Katalog produk interaktif siap jual untuk bisnis Anda.", previewHtml: `<div class="grid grid-cols-2 gap-3"><div class="p-3 rounded-2xl bg-white/5 text-center"><h4 class="font-bold text-xs text-white">Kemeja Polos</h4><p class="text-[11px] text-gray-300 font-bold">Rp 150.000</p></div><div class="p-3 rounded-2xl bg-white/5 text-center"><h4 class="font-bold text-xs text-white">Sepatu Sneakers</h4><p class="text-[11px] text-gray-300 font-bold">Rp 299.000</p></div></div>` },
-            school: { title: "Simulasi Demo: Sekolah / Kampus", desc: "Portal informasi resmi dan pendaftaran online.", previewHtml: `<div class="p-4 rounded-2xl bg-white/5 text-center"><h3 class="text-sm font-bold text-white">Universitas Nusantara Jaya</h3><p class="text-xs text-gray-300">Pendaftaran PMB Dibuka!</p></div>` },
-            umkm: { title: "Simulasi Demo: UMKM & Pedagang", desc: "Profil usaha kuliner atau jasa lokal.", previewHtml: `<div class="p-4 rounded-2xl bg-white/5 text-center"><h3 class="text-sm font-bold text-white">Kedai Kopi Nusantara</h3><p class="text-xs text-gray-300">📍 Buka Setiap Hari</p></div>` }
-        };
-
-        function openDemo(type) {
-            const data = demoData[type];
-            if (!data) return;
-            modalContent.innerHTML = `
-                <h3 class="text-base font-bold text-white mb-2">${data.title}</h3>
-                <p class="text-xs text-gray-400 mb-4">${data.desc}</p>
-                <div class="mb-4">${data.previewHtml}</div>
-                <div class="flex gap-2">
-                    <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20tertarik%20dengan%20demo%20${encodeURIComponent(data.title)}" target="_blank" class="flex-1 py-2.5 rounded-xl bg-green-600 hover:bg-green-500 text-white font-bold text-xs text-center"><i class="fab fa-whatsapp"></i> Pesan via WhatsApp</a>
-                    <button onclick="closeDemo()" class="px-4 py-2.5 rounded-xl bg-white/10 text-white text-xs font-bold">Tutup</button>
-                </div>
-            `;
-            demoModal.classList.remove('hidden');
-        }
-        function closeDemo() { demoModal.classList.add('hidden'); }
     </script>
 </body>
 </html>
