@@ -9,13 +9,17 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,700&family=Cinzel:wght@600&family=Space+Grotesk:wght@300;700&family=Courier+Prime:wght@700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serifItalic: ['"Playfair Display"', 'serif'],
+                        cinzel: ['"Cinzel"', 'serif'],
+                        grotesk: ['"Space Grotesk"', 'sans-serif'],
+                        monoBold: ['"Courier Prime"', 'monospace'],
                     },
                     colors: {
                         darkBg: '#090a0f',
@@ -137,6 +141,24 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
+        /* GenDesign ID Inspired Modern Minimalist Hero Banner */
+        .hero-banner-outer {
+            background: #D6D6D6;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 2.5rem;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+            color: #171717;
+            overflow: hidden;
+            position: relative;
+        }
+        .hero-banner-inner {
+            background: #171717;
+            color: #f3f4f6;
+            border-radius: 2rem;
+            margin: 0.75rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
         .single-photo-container {
             display: flex;
             align-items: center;
@@ -167,19 +189,48 @@
             animation: floatSlow 5s ease-in-out infinite;
         }
 
-        /* Soft UI Pricing Card */
-        .soft-ui-pricing {
-            background: linear-gradient(135deg, rgba(20, 24, 33, 0.85), rgba(12, 14, 20, 0.95));
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 1.75rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        /* Modern Minimalist Monochrome Pricing Cards */
+        .pricing-card-light {
+            background: #ffffff;
+            color: #111827;
+            border-radius: 28px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
         }
-        .soft-ui-pricing:hover {
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        .pricing-card-light:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .pricing-card-dark {
+            background: #0f172a;
+            color: #f8fafc;
+            border-radius: 28px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .pricing-card-dark:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Contact Section Styling (#202020 background with dark grid) */
+        .contact-section-container {
+            background-color: #202020;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Typography Style Morphing Animation for "Order?" */
+        .morphing-font-container {
+            display: inline-block;
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
         /* Portfolio Carousel / Coverflow Slider dengan Peek/Partial Slides */
@@ -459,53 +510,55 @@
     <!-- MAIN CONTAINER -->
     <main class="max-w-5xl mx-auto px-4 sm:px-8 pt-24 sm:pt-28 pb-16 space-y-12 sm:space-y-16 relative z-10">
 
-        <!-- Hero Section dengan Foto Banner yang Diperbesar & Efek Mantul Segala Arah -->
+        <!-- HERO SECTION: GenDesign ID Inspired Modern Minimalist Light-Dark Layered Banner -->
         <section class="max-w-4xl mx-auto">
-            <div class="rounded-portfolio-card p-6 sm:p-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                
-                <!-- Kolom Kiri: Foto Banner Diperbesar dengan Efek Spring Segala Arah -->
-                <div class="space-y-3 text-center">
-                    <div class="single-photo-container">
-                        <div id="spring-center" class="spring-photo w-52 sm:w-64 z-30 drop-shadow-2xl">
-                            <img src="https://i.ibb.co.com/PGK1mLbC/11851.png" alt="Banner Utama" class="w-full h-auto object-contain mx-auto pointer-events-none">
+            <div class="hero-banner-outer">
+                <div class="hero-banner-inner p-6 sm:p-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    
+                    <!-- Kolom Kiri: Foto Banner Diperbesar dengan Efek Spring Segala Arah -->
+                    <div class="space-y-3 text-center">
+                        <div class="single-photo-container">
+                            <div id="spring-center" class="spring-photo w-52 sm:w-64 z-30 drop-shadow-2xl">
+                                <img src="https://i.ibb.co.com/PGK1mLbC/11851.png" alt="Banner Utama" class="w-full h-auto object-contain mx-auto pointer-events-none">
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <span class="text-[10px] text-gray-500 uppercase tracking-widest"><i class="fas fa-hand-pointer mr-1"></i> (Geser foto ke segala arah)</span>
-                    </div>
-                </div>
-
-                <!-- Kolom Kanan: Teks Estetik & Rapi -->
-                <div class="space-y-4 text-center md:text-left">
-                    <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-white leading-tight">
-                        Halo, Saya <span class="text-gray-300">RUDI IRAWAN</span>
-                    </h1>
-                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
-                        Spesialis pembuatan website profesional untuk Undangan Pernikahan, Toko Online, Profil Sekolah, Kampus Universitas, hingga UMKM & Pedagang.
-                    </p>
-
-                    <!-- Countdown Timer Elegan -->
-                    <div class="pt-1">
-                        <div class="bg-black/30 p-3 rounded-2xl border border-white/5 max-w-sm mx-auto md:mx-0">
-                            <div class="text-[10px] font-medium uppercase tracking-wider text-gray-400 mb-2 flex items-center justify-center md:justify-start gap-1.5">
-                                <i class="fas fa-clock text-gray-400"></i> Promo Diskon Berakhir Dalam:
-                            </div>
-                            <div class="grid grid-cols-4 gap-1.5 text-center">
-                                <div class="bg-white/5 rounded-xl p-1.5 border border-white/5"><span id="days" class="text-sm font-bold text-white">00</span><p class="text-[7px] uppercase text-gray-500">Hari</p></div>
-                                <div class="bg-white/5 rounded-xl p-1.5 border border-white/5"><span id="hours" class="text-sm font-bold text-white">00</span><p class="text-[7px] uppercase text-gray-500">Jam</p></div>
-                                <div class="bg-white/5 rounded-xl p-1.5 border border-white/5"><span id="minutes" class="text-sm font-bold text-white">00</span><p class="text-[7px] uppercase text-gray-500">Menit</p></div>
-                                <div class="bg-white/5 rounded-xl p-1.5 border border-white/5"><span id="seconds" class="text-sm font-bold text-gray-300">00</span><p class="text-[7px] uppercase text-gray-500">Detik</p></div>
-                            </div>
+                        <div>
+                            <span class="text-[10px] text-gray-400 uppercase tracking-widest"><i class="fas fa-hand-pointer mr-1"></i> (Geser foto ke segala arah)</span>
                         </div>
                     </div>
 
-                    <div class="pt-2 flex justify-center md:justify-start">
-                        <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20ingin%20konsultasi%20pembuatan%20website." target="_blank" class="px-5 py-2.5 rounded-full bg-white text-black font-semibold text-xs hover:bg-gray-200 transition-all flex items-center gap-2 shadow-md">
-                            <i class="fab fa-whatsapp text-sm text-green-600"></i> Hubungi WhatsApp
-                        </a>
-                    </div>
-                </div>
+                    <!-- Kolom Kanan: Teks Estetik & Rapi -->
+                    <div class="space-y-4 text-center md:text-left">
+                        <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-white leading-tight">
+                            Halo, Saya <span class="text-gray-300">RUDI IRAWAN</span>
+                        </h1>
+                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                            Spesialis pembuatan website profesional untuk Undangan Pernikahan, Toko Online, Profil Sekolah, Kampus Universitas, hingga UMKM & Pedagang.
+                        </p>
 
+                        <!-- Countdown Timer Elegan -->
+                        <div class="pt-1">
+                            <div class="bg-black/30 p-3 rounded-2xl border border-white/5 max-w-sm mx-auto md:mx-0">
+                                <div class="text-[10px] font-medium uppercase tracking-wider text-gray-400 mb-2 flex items-center justify-center md:justify-start gap-1.5">
+                                    <i class="fas fa-clock text-gray-400"></i> Promo Diskon Berakhir Dalam:
+                                </div>
+                                <div class="grid grid-cols-4 gap-1.5 text-center">
+                                    <div class="bg-white/5 rounded-xl p-1.5 border border-white/5"><span id="days" class="text-sm font-bold text-white">00</span><p class="text-[7px] uppercase text-gray-500">Hari</p></div>
+                                    <div class="bg-white/5 rounded-xl p-1.5 border border-white/5"><span id="hours" class="text-sm font-bold text-white">00</span><p class="text-[7px] uppercase text-gray-500">Jam</p></div>
+                                    <div class="bg-white/5 rounded-xl p-1.5 border border-white/5"><span id="minutes" class="text-sm font-bold text-white">00</span><p class="text-[7px] uppercase text-gray-500">Menit</p></div>
+                                    <div class="bg-white/5 rounded-xl p-1.5 border border-white/5"><span id="seconds" class="text-sm font-bold text-gray-300">00</span><p class="text-[7px] uppercase text-gray-500">Detik</p></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-2 flex justify-center md:justify-start">
+                            <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20ingin%20konsultasi%20pembuatan%20website." target="_blank" class="px-5 py-2.5 rounded-full bg-white text-black font-semibold text-xs hover:bg-gray-200 transition-all flex items-center gap-2 shadow-md">
+                                <i class="fab fa-whatsapp text-sm text-green-600"></i> Hubungi WhatsApp
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </section>
 
@@ -672,7 +725,7 @@
             </div>
         </section>
 
-        <!-- AUTO-SCROLLING TESTIMONIALS SECTION (5 Testimoni Vertikal Infinite Marquee Seamless) -->
+        <!-- AUTO-SCROLLING TESTIMONIALS SECTION -->
         <section id="testimonials" class="testimonial-section space-y-6">
             <div class="text-center space-y-2">
                 <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">Apa Kata Klien Kami?</h2>
@@ -681,7 +734,7 @@
             <div class="max-w-xl mx-auto testimonial-container-vertical">
                 <div id="testimonial-track" class="testimonial-track-vertical">
                     
-                    <!-- Testimoni 1: Tiar Virgiawan -->
+                    <!-- Testimoni 1 -->
                     <div class="testimonial-card flex flex-col gap-2.5">
                         <div class="flex items-center gap-3">
                             <img src="https://i.ibb.co.com/PGq5wyqg/IMG-20261013-WA0000.jpg" alt="Tiar Virgiawan" class="w-12 h-12 rounded-full object-cover border-2 border-white/20 shadow-md">
@@ -693,7 +746,7 @@
                         <p class="text-gray-300 text-[11px] sm:text-xs leading-relaxed">"Pembuatan undangan digital di sini super cepat dan hasilnya sangat elegan! Tamu-tamu undangan banyak yang memuji."</p>
                     </div>
 
-                    <!-- Testimoni 2: Tio scumb4g -->
+                    <!-- Testimoni 2 -->
                     <div class="testimonial-card flex flex-col gap-2.5">
                         <div class="flex items-center gap-3">
                             <img src="https://i.ibb.co.com/d47jL0ny/IMG-20261013-WA0001.jpg" alt="Tio scumb4g" class="w-12 h-12 rounded-full object-cover border-2 border-white/20 shadow-md">
@@ -705,7 +758,7 @@
                         <p class="text-gray-300 text-[11px] sm:text-xs leading-relaxed">"Toko online saya jadi terlihat jauh lebih profesional dan omset penjualan meningkat drastis. Mantap banget pelayanannya!"</p>
                     </div>
 
-                    <!-- Testimoni 3: Rud Customer -->
+                    <!-- Testimoni 3 -->
                     <div class="testimonial-card flex flex-col gap-2.5">
                         <div class="flex items-center gap-3">
                             <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Rud Customer" class="w-12 h-12 rounded-full object-contain bg-black/40 border-2 border-white/20 p-1.5 shadow-md">
@@ -717,7 +770,7 @@
                         <p class="text-gray-300 text-[11px] sm:text-xs leading-relaxed">"Website profil sekolah kami kini lebih mudah diakses wali murid dan pendaftaran siswa baru online berjalan sangat lancar."</p>
                     </div>
 
-                    <!-- Testimoni 4: Rud Customer -->
+                    <!-- Testimoni 4 -->
                     <div class="testimonial-card flex flex-col gap-2.5">
                         <div class="flex items-center gap-3">
                             <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Rud Customer" class="w-12 h-12 rounded-full object-contain bg-black/40 border-2 border-white/20 p-1.5 shadow-md">
@@ -729,7 +782,7 @@
                         <p class="text-gray-300 text-[11px] sm:text-xs leading-relaxed">"Pelayanan ramah, revisi cepat tanpa ribet, dan harganya sangat bersahabat untuk kualitas sekeren ini. Sangat recommended!"</p>
                     </div>
 
-                    <!-- Testimoni 5: Rud Customer -->
+                    <!-- Testimoni 5 -->
                     <div class="testimonial-card flex flex-col gap-2.5">
                         <div class="flex items-center gap-3">
                             <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Rud Customer" class="w-12 h-12 rounded-full object-contain bg-black/40 border-2 border-white/20 p-1.5 shadow-md">
@@ -745,68 +798,116 @@
             </div>
         </section>
 
-        <!-- Pricing Section dengan Soft UI Pricing Card -->
+        <!-- PRICING SECTION -->
         <section id="pricing" class="space-y-8">
-            <div class="text-center space-y-2">
-                <h2 class="text-2xl sm:text-3xl font-bold text-white">Paket Harga</h2>
+            <div class="text-center space-y-3">
+                <h2 class="text-2xl sm:text-3xl font-bold text-white flex items-center justify-center gap-2 flex-wrap">
+                    <span>Paket</span>
+                    <span class="bg-white text-black px-4 py-1 rounded-full text-xl sm:text-2xl font-bold tracking-tight inline-block shadow-sm">Harga</span>
+                </h2>
                 <p class="text-gray-400 text-xs sm:text-sm">Pilih paket pembuatan website yang sesuai dengan kebutuhan Anda!</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="soft-ui-pricing p-6 sm:p-8 space-y-6 flex flex-col justify-between">
-                    <div>
-                        <span class="text-[10px] uppercase tracking-widest text-gray-400 font-semibold">Starter</span>
-                        <h3 class="text-xl font-bold mt-1 text-white">Basic Website</h3>
-                        <div class="mt-3 mb-5"><span class="text-2xl font-black text-white">Rp 150.000</span></div>
-                        <ul class="space-y-2.5 text-xs text-gray-300">
-                            <li><i class="fas fa-check text-gray-400 mr-2"></i> 1 Halaman Responsif</li>
-                            <li><i class="fas fa-check text-gray-400 mr-2"></i> 2x Revisi</li>
-                            <li><i class="fas fa-check text-gray-400 mr-2"></i> Pengerjaan Cepat (1-2 Hari)</li>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto items-stretch">
+                
+                <!-- Paket 1 -->
+                <div class="pricing-card-light p-6 sm:p-8 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <span class="text-[10px] uppercase tracking-widest text-gray-500 font-bold bg-gray-100 px-3 py-1 rounded-full">Starter</span>
+                        <div>
+                            <h3 class="text-xl font-extrabold text-gray-900 mt-2">Basic Website</h3>
+                            <p class="text-xs text-gray-500 mt-0.5">Solusi cepat untuk kebutuhan landing page personal.</p>
+                        </div>
+                        <div class="py-2">
+                            <span class="text-2xl sm:text-3xl font-black text-gray-900">Rp 150.000</span>
+                        </div>
+                        <hr class="border-gray-100 my-2">
+                        <ul class="space-y-3 text-xs text-gray-600">
+                            <li class="flex items-center"><i class="fas fa-check text-emerald-600 mr-2.5 font-bold"></i> 1 Halaman Responsif</li>
+                            <li class="flex items-center"><i class="fas fa-check text-emerald-600 mr-2.5 font-bold"></i> 2x Revisi</li>
+                            <li class="flex items-center"><i class="fas fa-check text-emerald-600 mr-2.5 font-bold"></i> Pengerjaan Cepat (1-2 Hari)</li>
                         </ul>
                     </div>
-                    <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20ingin%20pesan%20Paket%20Basic%20Website." target="_blank" class="w-full py-3 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs text-center transition-all border border-white/10">Pesan Sekarang</a>
+                    <div class="pt-6">
+                        <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20ingin%20pesan%20Paket%20Basic%20Website." target="_blank" class="w-full py-3 rounded-2xl bg-gray-900 hover:bg-black text-white font-semibold text-xs text-center transition-all block shadow-md">Pesan Sekarang</a>
+                    </div>
                 </div>
 
-                <div class="soft-ui-pricing p-6 sm:p-8 space-y-6 flex flex-col justify-between border-2 border-white/40 relative shadow-xl">
-                    <div class="absolute -top-3 right-6 bg-white text-black text-[10px] font-bold px-3 py-0.5 rounded-full uppercase tracking-wider">Populer</div>
-                    <div>
-                        <span class="text-[10px] uppercase tracking-widest text-gray-300 font-semibold">Professional</span>
-                        <h3 class="text-xl font-bold mt-1 text-white">Standard Website</h3>
-                        <div class="mt-3 mb-5"><span class="text-2xl font-black text-white">Rp 350.000</span></div>
-                        <ul class="space-y-2.5 text-xs text-gray-300">
-                            <li><i class="fas fa-check text-white mr-2"></i> Multi-Halaman / Fitur Lengkap</li>
-                            <li><i class="fas fa-check text-white mr-2"></i> 5x Revisi</li>
-                            <li><i class="fas fa-check text-white mr-2"></i> Integrasi WhatsApp & Maps</li>
-                            <li><i class="fas fa-check text-white mr-2"></i> Desain Estetik & Modern</li>
+                <!-- Paket 2 -->
+                <div class="pricing-card-dark p-6 sm:p-8 flex flex-col justify-between relative">
+                    <div class="absolute -top-3.5 right-6 bg-white text-black text-[10px] font-bold px-3.5 py-1 rounded-full uppercase tracking-wider shadow-md">Populer</div>
+                    <div class="space-y-4">
+                        <span class="text-[10px] uppercase tracking-widest text-gray-400 font-bold bg-white/10 px-3 py-1 rounded-full">Professional</span>
+                        <div>
+                            <h3 class="text-xl font-extrabold text-white mt-2">Standard Website</h3>
+                            <p class="text-xs text-gray-400 mt-0.5">Pilihan terbaik untuk bisnis & instansi profesional.</p>
+                        </div>
+                        <div class="py-2">
+                            <span class="text-2xl sm:text-3xl font-black text-white">Rp 350.000</span>
+                        </div>
+                        <hr class="border-white/10 my-2">
+                        <ul class="space-y-3 text-xs text-gray-300">
+                            <li class="flex items-center"><i class="fas fa-check text-white mr-2.5 font-bold"></i> Multi-Halaman / Fitur Lengkap</li>
+                            <li class="flex items-center"><i class="fas fa-check text-white mr-2.5 font-bold"></i> 5x Revisi</li>
+                            <li class="flex items-center"><i class="fas fa-check text-white mr-2.5 font-bold"></i> Integrasi WhatsApp & Maps</li>
+                            <li class="flex items-center"><i class="fas fa-check text-white mr-2.5 font-bold"></i> Desain Estetik & Modern</li>
                         </ul>
                     </div>
-                    <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20ingin%20pesan%20Paket%20Standard%20Website." target="_blank" class="w-full py-3 rounded-2xl bg-white hover:bg-gray-200 text-black font-semibold text-xs text-center transition-all shadow-md">Pesan Sekarang</a>
+                    <div class="pt-6">
+                        <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20ingin%20pesan%20Paket%20Standard%20Website." target="_blank" class="w-full py-3 rounded-2xl bg-white hover:bg-gray-100 text-black font-semibold text-xs text-center transition-all block shadow-lg">Pesan Sekarang</a>
+                    </div>
                 </div>
 
-                <div class="soft-ui-pricing p-6 sm:p-8 space-y-6 flex flex-col justify-between">
-                    <div>
-                        <span class="text-[10px] uppercase tracking-widest text-gray-400 font-semibold">Enterprise</span>
-                        <h3 class="text-xl font-bold mt-1 text-white">Premium Custom</h3>
-                        <div class="mt-3 mb-5"><span class="text-2xl font-black text-white">Rp 650.000+</span></div>
-                        <ul class="space-y-2.5 text-xs text-gray-300">
-                            <li><i class="fas fa-check text-gray-400 mr-2"></i> Fitur Custom Sesuai Request</li>
-                            <li><i class="fas fa-check text-gray-400 mr-2"></i> Unlimited Revisi Kecil</li>
-                            <li><i class="fas fa-check text-gray-400 mr-2"></i> Domain & Hosting Setup</li>
-                            <li><i class="fas fa-check text-gray-400 mr-2"></i> Prioritas Dukungan Penuh</li>
+                <!-- Paket 3 -->
+                <div class="pricing-card-light p-6 sm:p-8 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <span class="text-[10px] uppercase tracking-widest text-gray-500 font-bold bg-gray-100 px-3 py-1 rounded-full">Enterprise</span>
+                        <div>
+                            <h3 class="text-xl font-extrabold text-gray-900 mt-2">Premium Custom</h3>
+                            <p class="text-xs text-gray-500 mt-0.5">Kustomisasi penuh sesuai permintaan khusus.</p>
+                        </div>
+                        <div class="py-2">
+                            <span class="text-2xl sm:text-3xl font-black text-gray-900">Rp 650.000+</span>
+                        </div>
+                        <hr class="border-gray-100 my-2">
+                        <ul class="space-y-3 text-xs text-gray-600">
+                            <li class="flex items-center"><i class="fas fa-check text-emerald-600 mr-2.5 font-bold"></i> Fitur Custom Sesuai Request</li>
+                            <li class="flex items-center"><i class="fas fa-check text-emerald-600 mr-2.5 font-bold"></i> Unlimited Revisi Kecil</li>
+                            <li class="flex items-center"><i class="fas fa-check text-emerald-600 mr-2.5 font-bold"></i> Domain & Hosting Setup</li>
+                            <li class="flex items-center"><i class="fas fa-check text-emerald-600 mr-2.5 font-bold"></i> Prioritas Dukungan Penuh</li>
                         </ul>
                     </div>
-                    <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20ingin%20pesan%20Paket%20Premium%20Custom%20Website." target="_blank" class="w-full py-3 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs text-center transition-all border border-white/10">Pesan Sekarang</a>
+                    <div class="pt-6">
+                        <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20ingin%20pesan%20Paket%20Premium%20Custom%20Website." target="_blank" class="w-full py-3 rounded-2xl bg-gray-900 hover:bg-black text-white font-semibold text-xs text-center transition-all block shadow-md">Pesan Sekarang</a>
+                    </div>
                 </div>
+
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="rounded-portfolio-card p-8 sm:p-12 text-center space-y-5 max-w-4xl mx-auto">
-            <h2 class="text-2xl sm:text-3xl font-bold text-white">ORDER? Contact Us.</h2>
-            <p class="text-gray-400 text-xs sm:text-sm max-w-md mx-auto">Klik salah satu ikon di bawah ini untuk memulai konsultasi dan pemesanan website profesional Anda!</p>
-            <div class="flex justify-center gap-4 pt-2">
-                <a href="https://instagram.com/rudiirwnke20" target="_blank" class="w-14 h-14 rounded-2xl bg-white/5 hover:bg-white/10 text-gray-300 flex items-center justify-center text-xl transition-all border border-white/10 shadow"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20ingin%20membuat%20website." target="_blank" class="w-14 h-14 rounded-2xl bg-white/5 hover:bg-white/10 text-green-400 flex items-center justify-center text-xl transition-all border border-white/10 shadow"><i class="fab fa-whatsapp"></i></a>
+        <!-- CONTACT US SECTION (Charcoal bg, Animated Typography Style Morphing on "Order?", Frameless IG & WA icons only) -->
+        <section id="contact" class="contact-section-container p-8 sm:p-12 text-center space-y-8 max-w-4xl mx-auto">
+            <div class="space-y-2">
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight flex items-center justify-center gap-3 flex-wrap leading-tight">
+                    <span id="morphing-order-text" class="text-gray-300 morphing-font-container">Order?</span>
+                    <span class="font-extrabold text-white">Contact Us.</span>
+                </h2>
+                <p class="text-gray-400 text-xs sm:text-sm max-w-md mx-auto pt-2">Hubungi kami melalui salah satu platform di bawah ini untuk memulai konsultasi dan pemesanan website profesional Anda!</p>
+            </div>
+
+            <!-- Tombol Ikon Saja (Tanpa Teks Username/Nomor, Tanpa Bingkai) -->
+            <div class="flex items-center justify-center gap-8 pt-4">
+                
+                <!-- Instagram Icon Button -->
+                <a href="https://instagram.com/rudiirwnke20" target="_blank" aria-label="Instagram" class="w-14 h-14 rounded-full bg-white/5 hover:bg-white/15 text-gray-200 hover:text-white flex items-center justify-center text-2xl transition-all duration-300 hover:scale-110 shadow-md">
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+                <!-- WhatsApp Icon Button -->
+                <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20ingin%20membuat%20website." target="_blank" aria-label="WhatsApp" class="w-14 h-14 rounded-full bg-green-500/10 hover:bg-green-500/25 text-green-400 hover:text-green-300 flex items-center justify-center text-2xl transition-all duration-300 hover:scale-110 shadow-md">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+
             </div>
         </section>
 
@@ -874,6 +975,37 @@
                 scrollHeader.classList.remove('visible');
             }
         });
+
+        /* Typography Style Morphing untuk tulisan "Order?" */
+        const fontStyles = [
+            { family: '"Plus Jakarta Sans", sans-serif', weight: '300', italic: 'normal' },
+            { family: '"Playfair Display", serif', weight: '400', italic: 'italic' },
+            { family: '"Cinzel", serif', weight: '600', italic: 'normal' },
+            { family: '"Space Grotesk", sans-serif', weight: '700', italic: 'normal' },
+            { family: '"Courier Prime", monospace', weight: '700', italic: 'normal' }
+        ];
+        
+        let currentStyleIndex = 0;
+        const orderTextEl = document.getElementById('morphing-order-text');
+
+        if (orderTextEl) {
+            setInterval(() => {
+                orderTextEl.style.opacity = '0';
+                orderTextEl.style.transform = 'translateY(4px)';
+                
+                setTimeout(() => {
+                    currentStyleIndex = (currentStyleIndex + 1) % fontStyles.length;
+                    const style = fontStyles[currentStyleIndex];
+                    
+                    orderTextEl.style.fontFamily = style.family;
+                    orderTextEl.style.fontWeight = style.weight;
+                    orderTextEl.style.fontStyle = style.italic;
+                    
+                    orderTextEl.style.opacity = '1';
+                    orderTextEl.style.transform = 'translateY(0px)';
+                }, 250);
+            }, 1300);
+        }
 
         const typingTextElement = document.getElementById('typing-text');
         const aboutMessage = "Saya menyediakan jasa pembuatan website fungsional, responsif, dan estetis dengan tata letak modern. Berpengalaman membantu individu, instansi, maupun pelaku usaha dalam membangun kehadiran digital yang profesional.";
