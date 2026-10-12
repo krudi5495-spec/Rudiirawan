@@ -70,7 +70,7 @@
             100% { transform: translate(-50%, -50%) scale(12); opacity: 0; }
         }
 
-       /* Header Tetap di Atas (Fixed Header 1 Asli) */
+        /* Header 1 */
         .fixed-top-nav {
             background: rgba(18, 21, 28, 0.95);
             backdrop-filter: blur(20px);
@@ -78,37 +78,39 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
-        /* Header Kedua yang Muncul Mulus Saat Scroll (Asli) */
+        /* Header 2 (Sticky / Mengikuti Scroll di Komputer & HP dengan z-index tertinggi) */
         .scroll-reveal-header {
-            position: sticky;
+            position: fixed;
             top: 16px;
-            z-index: 40;
+            left: 0;
+            right: 0;
+            z-index: 9999;
             display: flex;
             justify-content: center;
             padding: 0 12px;
             opacity: 0;
             visibility: hidden;
             transform: translateY(-20px);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
         }
         .scroll-reveal-header.visible {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
+            pointer-events: auto;
         }
 
         .floating-nav {
-            background: rgba(18, 21, 28, 0.9);
+            background: rgba(18, 21, 28, 0.95);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
             position: relative;
             overflow: hidden;
-            border-bottom-left-radius: 1rem;
-            border-bottom-right-radius: 1rem;
+            border-radius: 1rem;
         }
 
-        /* Garis Indikator Putih Tipis Mengikuti Bentuk Lengkung Bawah Header */
         #scroll-timer-bar {
             position: absolute;
             bottom: 0;
@@ -134,7 +136,6 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
         }
 
-        /* Kartu Modern Berkelas Dunia dengan Sentuhan Abu-Abu Muda (#e5e7eb) */
         .modern-world-card {
             background: linear-gradient(135deg, rgba(31, 35, 45, 0.9), rgba(18, 21, 28, 0.95));
             backdrop-filter: blur(20px);
@@ -147,7 +148,6 @@
             box-shadow: 0 20px 40px rgba(229, 231, 235, 0.1);
         }
 
-        /* Animasi Teks Bergerak di Header Desktop */
         @keyframes textBounceMove {
             0%, 100% { transform: translateY(0); color: #d1d5db; }
             50% { transform: translateY(-3px); color: #ffffff; text-shadow: 0 0 8px rgba(255,255,255,0.6); }
@@ -159,6 +159,7 @@
         .nav-animated-text:nth-child(2) { animation-delay: 0.5s; }
         .nav-animated-text:nth-child(3) { animation-delay: 1s; }
         .nav-animated-text:nth-child(4) { animation-delay: 1.5s; }
+
         .trio-container {
             display: flex;
             align-items: center;
@@ -251,7 +252,7 @@
             position: fixed;
             inset: 0;
             background: #08090c;
-            z-index: 9999999;
+            z-index: 9999;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -275,8 +276,8 @@
         </div>
     </div>
 
-    <!-- HEADER 1 (Tetap di atas posisi awal) -->
-    <header class="fixed top-3 sm:top-4 left-0 right-0 z-40 px-3 sm:px-4 flex justify-center pointer-events-none">
+    <!-- HEADER 1 -->
+    <header class="fixed top-3 sm:top-4 left-0 right-0 z-50 px-3 sm:px-4 flex justify-center pointer-events-none">
         <div class="w-full max-w-2xl fixed-top-nav rounded-2xl px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between pointer-events-auto border border-gray-200/25 shadow-xl">
             <a href="#" class="flex items-center group">
                 <div class="w-9 h-9 sm:w-10 sm:h-10 p-0.5 bg-transparent flex items-center justify-center overflow-hidden logo-glow">
@@ -315,9 +316,9 @@
         </div>
     </header>
 
-    <!-- HEADER 2: Header Kedua yang Muncul Penuh Saat Scroll -->
+    <!-- HEADER 2: Mengikuti Scroll Sepenuhnya & Berada di Lapisan Terdepan (z-index: 9999) -->
     <div id="scroll-header" class="scroll-reveal-header">
-        <div class="floating-nav px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between border border-gray-200/25">
+        <div class="w-full max-w-2xl floating-nav rounded-2xl px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between border border-gray-200/25">
             <a href="#" class="flex items-center group">
                 <div class="w-9 h-9 sm:w-10 sm:h-10 p-0.5 bg-transparent flex items-center justify-center overflow-hidden">
                     <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Logo Transparan" class="w-full h-full object-contain bg-transparent" style="filter: drop-shadow(0 0 2px rgba(255,255,255,0.3));">
@@ -358,7 +359,7 @@
     </div>
 
     <!-- MAIN CONTAINER -->
-    <main class="max-w-5xl mx-auto px-4 sm:px-8 pt-24 sm:pt-28 pb-16 sm:pb-24 space-y-12 sm:space-y-16 relative z-10">
+    <main class="max-w-5xl mx-auto px-4 sm:px-8 pt-20 sm:pt-24 pb-16 sm:pb-24 space-y-12 sm:space-y-16 relative z-10">
 
         <!-- Hero Section: Bingkai Tunggal Berdampingan (Foto & Teks Intro Halo Rudi Irawan) -->
         <section class="max-w-4xl mx-auto">
@@ -681,7 +682,7 @@
 
         window.addEventListener('pageshow', () => { runLoader(); });
 
-        /* Script Logika Header Kedua & Garis Indikator Scroll */
+        /* Script Logika Header Kedua & Garis Indikator Scroll (Diperbaiki agar konsisten dari atas hingga bawah) */
         const scrollHeader = document.getElementById('scroll-header');
         window.addEventListener('scroll', () => {
             const scrollTop = window.scrollY;
@@ -692,7 +693,7 @@
                 timerBar.style.width = scrollPercent + '%';
             }
 
-            // Header kedua akan muncul mulus setelah discroll melewati 40px dan tetap tampil penuh melayang
+            // Header kedua akan muncul setelah scroll lebih dari 40px dan tetap ada sampai halaman paling bawah
             if (scrollTop > 40) {
                 scrollHeader.classList.add('visible');
             } else {
@@ -777,8 +778,64 @@
 
             el.addEventListener('pointerdown', (e) => {
                 isDragging = true;
+                startX = e.clientX - springX;
+                startY = e.clientY - springY;
+                el.setPointerCapture(e.pointerId);
+            });
+            el.addEventListener('pointermove', (e) => {
+                if (!isDragging) return;
+                currentX = e.clientX - startX;
+                currentY = e.clientY - startY;
+                springX = Math.max(-100, Math.min(100, currentX));
+                springY = Math.max(-50, Math.min(120, currentY));
+            });
+            el.addEventListener('pointerup', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                velocityX = (springX - currentX) * 0.1;
+                velocityY = (springY - currentY) * 0.1;
+                el.releasePointerCapture(e.pointerId);
             });
         }
+
+        initOmniSpringPhoto('spring-left', 0.1, 0.75);
+        initOmniSpringPhoto('spring-center', 0.12, 0.78);
+        initOmniSpringPhoto('spring-right', 0.1, 0.75);
+
+        const countdownDate = new Date().getTime() + (3 * 24 * 60 * 60 * 1000);
+        setInterval(() => {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+            if (distance < 0) return;
+            document.getElementById("days").innerText = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
+            document.getElementById("hours").innerText = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+            document.getElementById("minutes").innerText = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+            document.getElementById("seconds").innerText = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
+        }, 1000);
+
+        const demoModal = document.getElementById('demo-modal');
+        const modalContent = document.getElementById('modal-content');
+        const demoData = {
+            store: { title: "Simulasi Demo: Toko Online", desc: "Katalog produk interaktif siap jual untuk bisnis Anda.", previewHtml: `<div class="grid grid-cols-2 gap-3"><div class="p-3 rounded-2xl bg-white/5 text-center"><h4 class="font-bold text-xs text-white">Kemeja Polos</h4><p class="text-[11px] text-gray-300 font-bold">Rp 150.000</p></div><div class="p-3 rounded-2xl bg-white/5 text-center"><h4 class="font-bold text-xs text-white">Sepatu Sneakers</h4><p class="text-[11px] text-gray-300 font-bold">Rp 299.000</p></div></div>` },
+            school: { title: "Simulasi Demo: Sekolah / Kampus", desc: "Portal informasi resmi dan pendaftaran online.", previewHtml: `<div class="p-4 rounded-2xl bg-white/5 text-center"><h3 class="text-sm font-bold text-white">Universitas Nusantara Jaya</h3><p class="text-xs text-gray-300">Pendaftaran PMB Dibuka!</p></div>` },
+            umkm: { title: "Simulasi Demo: UMKM & Pedagang", desc: "Profil usaha kuliner atau jasa lokal.", previewHtml: `<div class="p-4 rounded-2xl bg-white/5 text-center"><h3 class="text-sm font-bold text-white">Kedai Kopi Nusantara</h3><p class="text-xs text-gray-300">📍 Buka Setiap Hari</p></div>` }
+        };
+
+        function openDemo(type) {
+            const data = demoData[type];
+            if (!data) return;
+            modalContent.innerHTML = `
+                <h3 class="text-base font-bold text-white mb-2">${data.title}</h3>
+                <p class="text-xs text-gray-400 mb-4">${data.desc}</p>
+                <div class="mb-4">${data.previewHtml}</div>
+                <div class="flex gap-2">
+                    <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20tertarik%20dengan%20demo%20${encodeURIComponent(data.title)}" target="_blank" class="flex-1 py-2.5 rounded-xl bg-green-600 hover:bg-green-500 text-white font-bold text-xs text-center"><i class="fab fa-whatsapp"></i> Pesan via WhatsApp</a>
+                    <button onclick="closeDemo()" class="px-4 py-2.5 rounded-xl bg-white/10 text-white text-xs font-bold">Tutup</button>
+                </div>
+            `;
+            demoModal.classList.remove('hidden');
+        }
+        function closeDemo() { demoModal.classList.add('hidden'); }
     </script>
 </body>
 </html>
