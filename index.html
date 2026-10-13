@@ -47,11 +47,64 @@
             background-attachment: fixed;
         }
 
-        /* Custom Kursor Logo Khusus Komputer (Desktop) */
-        @media (min-width: 768px) {
-            body, a, button, input {
-                cursor: url('https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png'), auto !important;
+        /* Custom Cursor byRUDid: hanya untuk perangkat dengan mouse */
+        @media (hover: hover) and (pointer: fine) {
+            body, body a, body button, body input, body textarea, body select,
+            body [role="button"] {
+                cursor: none !important;
             }
+            #rud-cursor-ring, #rud-cursor-dot {
+                position: fixed;
+                top: 0;
+                left: 0;
+                pointer-events: none;
+                border-radius: 50%;
+                z-index: 10000000;
+                opacity: 0;
+                will-change: left, top, transform;
+            }
+            #rud-cursor-ring {
+                width: 36px;
+                height: 36px;
+                border: 1.5px solid #171717;
+                transform: translate(-50%, -50%);
+                transition: width .22s ease, height .22s ease, background .22s ease, border-color .22s ease, opacity .15s ease;
+            }
+            #rud-cursor-dot {
+                width: 6px;
+                height: 6px;
+                background: #171717;
+                transform: translate(-50%, -50%);
+                transition: opacity .15s ease;
+            }
+            #rud-cursor-ring.rud-hover {
+                width: 52px;
+                height: 52px;
+                background: rgba(23, 23, 23, .07);
+            }
+            #rud-cursor-ring.rud-click {
+                width: 26px;
+                height: 26px;
+            }
+        }
+        #rud-cursor-ring, #rud-cursor-dot { display: none; }
+        @media (hover: hover) and (pointer: fine) {
+            #rud-cursor-ring, #rud-cursor-dot { display: block; }
+        }
+        /* Efek sentuhan ringan pada HP/tablet */
+        #rud-touch-effect {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            border: 1.5px solid #171717;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000000;
+            transform: translate(-50%, -50%);
+            animation: rudTouchRipple .45s ease-out forwards;
+        }
+        @keyframes rudTouchRipple {
+            to { opacity: 0; transform: translate(-50%, -50%) scale(3.5); }
         }
 
         /* =========================================================
@@ -1544,5 +1597,76 @@
 
         function closeDemo() { demoModal.classList.add('hidden'); }
     </script>
+
+    <!-- Custom Cursor byRUDid: mouse di desktop, ripple sentuhan di HP -->
+    <div id="rud-cursor-ring" aria-hidden="true"></div>
+    <div id="rud-cursor-dot" aria-hidden="true"></div>
+    <script>
+    (function () {
+        const ring = document.getElementById('rud-cursor-ring');
+        const dot = document.getElementById('rud-cursor-dot');
+        if (!ring || !dot) return;
+
+        const mouseQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
+        if (mouseQuery.matches) {
+            let mouseX = -100, mouseY = -100, ringX = -100, ringY = -100;
+            let rafRunning = false;
+
+            function animateRing() {
+                ringX += (mouseX - ringX) * 0.2;
+                ringY += (mouseY - ringY) * 0.2;
+                ring.style.left = ringX + 'px';
+                ring.style.top = ringY + 'px';
+                requestAnimationFrame(animateRing);
+            }
+
+            document.addEventListener('mousemove', function (event) {
+                mouseX = event.clientX;
+                mouseY = event.clientY;
+                dot.style.left = mouseX + 'px';
+                dot.style.top = mouseY + 'px';
+                dot.style.opacity = '1';
+                ring.style.opacity = '1';
+                if (!rafRunning) {
+                    ringX = mouseX;
+                    ringY = mouseY;
+                    rafRunning = true;
+                    animateRing();
+                }
+            }, { passive: true });
+
+            document.addEventListener('mouseover', function (event) {
+                const target = event.target;
+                if (target && target.closest && target.closest('a, button, input, textarea, select, [role="button"]')) {
+                    ring.classList.add('rud-hover');
+                } else {
+                    ring.classList.remove('rud-hover');
+                }
+            });
+
+            document.addEventListener('mousedown', function () {
+                ring.classList.add('rud-click');
+            });
+            document.addEventListener('mouseup', function () {
+                ring.classList.remove('rud-click');
+            });
+            document.addEventListener('mouseleave', function () {
+                ring.style.opacity = '0';
+                dot.style.opacity = '0';
+            });
+        }
+
+        document.addEventListener('pointerdown', function (event) {
+            if (event.pointerType !== 'touch') return;
+            const effect = document.createElement('div');
+            effect.id = 'rud-touch-effect';
+            effect.style.left = event.clientX + 'px';
+            effect.style.top = event.clientY + 'px';
+            document.body.appendChild(effect);
+            effect.addEventListener('animationend', function () { effect.remove(); }, { once: true });
+        }, { passive: true });
+    })();
+    </script>
+
 </body>
 </html>
