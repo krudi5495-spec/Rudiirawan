@@ -20,39 +20,31 @@
                         cinzel: ['"Cinzel"', 'serif'],
                         grotesk: ['"Space Grotesk"', 'sans-serif'],
                         monoBold: ['"Courier Prime"', 'monospace'],
-                    },
-                    colors: {
-                        darkBg: '#090a0f',
-                        cardBg: '#131620',
                     }
                 }
             }
         }
     </script>
     <style>
+        /* 1. Background Global Abu-abu Muda dan Pola Grid Menyambung */
         html, body {
-            background-color: #090a0f;
-            color: #f3f4f6;
+            background-color: #EAEAEA;
+            color: #1f2937;
             font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
             margin: 0;
             padding: 0;
             min-height: 100vh;
+            background-image: 
+                linear-gradient(to right, rgba(184, 184, 184, 0.45) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(184, 184, 184, 0.45) 1px, transparent 1px);
+            background-size: 45px 45px;
+            background-attachment: fixed;
         }
 
-        /* Technical Grid Background */
-        .technical-grid-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            background-color: #090a0f;
-            background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-            background-size: 45px 45px;
+        /* Hapus Sekat Solid Antarseksi */
+        section, main, footer {
+            background: transparent !important;
         }
 
         /* Efek Sentuhan Ripple Halus */
@@ -61,7 +53,7 @@
             width: 20px;
             height: 20px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%);
+            background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 70%);
             transform: translate(-50%, -50%) scale(0);
             animation: rippleEffect 0.5s ease-out forwards;
             pointer-events: none;
@@ -75,11 +67,11 @@
 
         /* Glassmorphism Floating Pill Navbar */
         .pill-navbar {
-            background: rgba(19, 22, 32, 0.85);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             border-radius: 9999px;
         }
 
@@ -107,11 +99,11 @@
         }
 
         .floating-pill-container {
-            background: rgba(19, 22, 32, 0.92);
+            background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
             border-radius: 9999px;
             width: 100%;
             max-width: 44rem;
@@ -125,28 +117,40 @@
             left: 0;
             width: 0%;
             height: 2px;
-            background: rgba(255, 255, 255, 0.9);
+            background: #111827;
             border-bottom-left-radius: 9999px;
             border-bottom-right-radius: 9999px;
             transition: width 0.08s linear;
         }
 
-        /* Rounded Portfolio Card */
+        /* Rounded Card / Container Styling Umum */
         .rounded-portfolio-card {
-            background: linear-gradient(135deg, rgba(24, 28, 38, 0.9), rgba(13, 15, 22, 0.95));
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: #F5F5F5;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.65);
             border-radius: 2rem;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+            color: #1f2937;
+        }
+
+        /* Bingkai Section Transparan dengan Garis Abu-abu Lembut */
+        .transparent-section-frame {
+            background: transparent !important;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(120, 120, 120, 0.45);
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+            color: #1f2937;
         }
 
         /* GenDesign ID Inspired Modern Minimalist Hero Banner */
         .hero-banner-outer {
             background: #D6D6D6;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(0, 0, 0, 0.65);
             border-radius: 2.5rem;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
             color: #171717;
             overflow: hidden;
             position: relative;
@@ -159,12 +163,13 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
+        /* Area Foto Diperbesar agar Mantul-mantul Lebih Luas */
         .single-photo-container {
             display: flex;
             align-items: center;
             justify-content: center;
             width: 100%;
-            height: 340px;
+            height: 420px;
             position: relative;
             overflow: visible;
             touch-action: none;
@@ -189,10 +194,35 @@
             animation: floatSlow 5s ease-in-out infinite;
         }
 
+        /* Tipografi Intro ala GendesignID */
+        .intro-greeting {
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: #9ca3af;
+            letter-spacing: -0.01em;
+        }
+        .intro-name-title {
+            font-size: clamp(2rem, 4.5vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            color: #ffffff;
+            margin-top: 0.25rem;
+            margin-bottom: 1rem;
+        }
+        .intro-desc-text {
+            font-size: 0.85rem;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #d1d5db;
+            max-width: 380px;
+        }
+
         /* Modern Minimalist Monochrome Pricing Cards */
         .pricing-card-light {
             background: #ffffff;
             color: #111827;
+            border: 1px solid rgba(0, 0, 0, 0.65);
             border-radius: 28px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
@@ -205,46 +235,31 @@
         .pricing-card-dark {
             background: #0f172a;
             color: #f8fafc;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 28px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         .pricing-card-dark:hover {
             transform: translateY(-5px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
         }
 
-        /* Contact Section Styling (#202020 background with dark grid) */
-        .contact-section-container {
-            background-color: #202020;
-            background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 30px 30px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 2.5rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        /* Typography Style Morphing Animation for "Order?" */
+        /* Typography Style Morphing Animation */
         .morphing-font-container {
             display: inline-block;
             transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
-        /* Portfolio Carousel / Coverflow Slider dengan Peek/Partial Slides */
-        .portfolio-section {
-            position: relative;
-        }
+        /* Portfolio Design Symmetrical Overlap Carousel Styles (Responsif HP) */
         .portfolio-slider {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
             scrollbar-width: none;
             -ms-overflow-style: none;
-            padding: 1.5rem 1rem;
+            padding: 1.5rem 0.75rem;
             scroll-behavior: smooth;
         }
         .portfolio-slider::-webkit-scrollbar {
@@ -252,50 +267,50 @@
         }
         .portfolio-track {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
+            align-items: center;
+            will-change: transform;
         }
         .portfolio-card {
-            flex: 0 0 280px;
+            flex: 0 0 240px;
             scroll-snap-align: center;
-            background: linear-gradient(135deg, rgba(22, 26, 36, 0.9), rgba(14, 16, 23, 0.98));
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.09);
-            border-radius: 2rem;
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.75);
+            border-radius: 1.5rem;
             overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transform: scale(0.95);
-            opacity: 0.75;
+            color: #1f2937;
+            transform: scale(0.9) translateY(8px);
+            opacity: 0.65;
+            z-index: 10;
+            margin: 0 -0.5rem;
         }
-        .portfolio-card.active-coverflow, .portfolio-card:hover {
-            transform: scale(1);
+        .portfolio-card.is-center {
+            transform: scale(1.05) translateY(0px);
             opacity: 1;
-            border-color: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
-        }
-        @media (min-width: 640px) {
-            .portfolio-card {
-                flex: 0 0 340px;
-            }
+            z-index: 30;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.18);
+            border: 1.5px solid #111827;
         }
         .portfolio-image {
             position: relative;
             overflow: hidden;
             width: 100%;
-            height: 220px;
-            background: rgba(0,0,0,0.3);
+            height: 150px;
+            background: #E5E5E5;
             display: flex;
             align-items: center;
             justify-content: center;
         }
         .device-mockup {
-            width: 85%;
-            height: 85%;
+            width: 90%;
+            height: 90%;
             object-fit: contain;
-            border-radius: 1rem;
+            border-radius: 0.75rem;
             transition: transform 0.5s ease;
         }
         .portfolio-card:hover .device-mockup {
@@ -304,62 +319,64 @@
         .portfolio-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(9, 10, 15, 0.9) 0%, transparent 60%);
+            background: linear-gradient(to top, rgba(255, 255, 255, 0.9) 0%, transparent 60%);
             z-index: 10;
             pointer-events: none;
         }
         .slider-arrow {
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            background: rgba(0, 0, 0, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: #ffffff;
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.75);
+            color: #1f2937;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
             transition: all 0.2s ease;
-            z-index: 20;
+            z-index: 40;
         }
         .slider-arrow:hover {
-            background: #000000;
-            border-color: rgba(255, 255, 255, 0.4);
+            background: #111827;
+            color: #ffffff;
+            border-color: #111827;
             transform: scale(1.05);
         }
         .portfolio-caption {
-            padding: 1.25rem;
+            padding: 1rem;
             display: flex;
             flex-direction: column;
-            gap: 0.75rem;
+            gap: 0.5rem;
         }
         .instagram-link {
             display: inline-flex;
             align-items: center;
             gap: 0.5px;
-            color: #f3f4f6;
+            color: #4b5563;
             font-size: 11px;
             font-weight: 600;
             transition: color 0.2s ease;
         }
         .instagram-link:hover {
-            color: #ffffff;
+            color: #111827;
             text-decoration: underline;
         }
 
-        /* Seamless Vertical Infinite Marquee Testimonials */
-        .testimonial-section {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
+        /* Testimoni Section: Tanpa Bingkai Luar, Kartu Abu-abu Tua (#555555) */
+        .testimonial-container-clean {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            padding: 0 !important;
         }
         .testimonial-container-vertical {
-            height: 420px;
+            height: 390px;
             overflow: hidden;
             position: relative;
-            mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
-            -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+            mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
         }
         .testimonial-track-vertical {
             display: flex;
@@ -375,26 +392,34 @@
             0% { transform: translateY(0); }
             100% { transform: translateY(-50%); }
         }
-        .testimonial-card {
-            background: linear-gradient(135deg, rgba(20, 24, 33, 0.85), rgba(12, 14, 20, 0.95));
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 1.5rem;
+        .testimonial-card-dark {
+            background: #555555;
+            color: #f9fafb;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 1.25rem;
             padding: 1.25rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
             transition: all 0.3s ease;
         }
-        .testimonial-card:hover {
-            border-color: rgba(255, 255, 255, 0.25);
+        .testimonial-card-dark:hover {
+            background: #5e5e5e;
             transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Contact Us Clean Minimalist Container (Tanpa Bingkai Luar) */
+        .contact-clean-container {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            padding: 0 !important;
         }
 
         /* Kursor Mengetik Rapi */
         .typing-cursor::after {
             content: '|';
             animation: blink 1s infinite;
-            color: #9ca3af;
+            color: #4b5563;
             font-weight: normal;
         }
         @keyframes blink {
@@ -413,48 +438,46 @@
         }
     </style>
 </head>
-<body class="selection:bg-gray-200 selection:text-black">
-
-    <div class="technical-grid-bg"></div>
+<body class="selection:bg-gray-800 selection:text-white">
 
     <!-- HEADER 1: Glassmorphism Floating Pill Navbar -->
     <header class="fixed top-3 sm:top-4 left-0 right-0 z-40 px-3 sm:px-4 flex justify-center pointer-events-none">
         <div class="w-full max-w-3xl pill-navbar px-5 sm:px-8 py-2.5 flex items-center justify-between pointer-events-auto">
             <a href="#" class="flex items-center group">
                 <div class="w-8 h-8 p-0.5 bg-transparent flex items-center justify-center overflow-hidden">
-                    <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Logo" class="w-full h-full object-contain">
+                    <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Logo" class="w-full h-full object-contain filter invert">
                 </div>
             </a>
             
-            <div class="hidden md:flex items-center space-x-7 text-xs font-semibold text-gray-300 tracking-wider">
-                <a href="#" class="hover:text-white transition-colors">Home</a>
-                <a href="#about" class="hover:text-white transition-colors">Tentang</a>
-                <a href="#services" class="hover:text-white transition-colors">Demo & Layanan</a>
-                <a href="#testimonials" class="hover:text-white transition-colors">Testimoni</a>
-                <a href="#pricing" class="hover:text-white transition-colors">Harga</a>
+            <div class="hidden md:flex items-center space-x-7 text-xs font-semibold text-gray-700 tracking-wider">
+                <a href="#" class="hover:text-black transition-colors">Home</a>
+                <a href="#about" class="hover:text-black transition-colors">Tentang</a>
+                <a href="#services" class="hover:text-black transition-colors">Demo & Layanan</a>
+                <a href="#testimonials" class="hover:text-black transition-colors">Testimoni</a>
+                <a href="#pricing" class="hover:text-black transition-colors">Harga</a>
             </div>
 
-            <button id="menu-btn-1" class="w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 text-gray-200 flex items-center justify-center transition-all focus:outline-none">
+            <button id="menu-btn-1" class="w-9 h-9 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-800 flex items-center justify-center transition-all focus:outline-none">
                 <i id="menu-icon-1" class="fas fa-bars text-sm"></i>
             </button>
 
-            <div id="dropdown-menu-1" class="absolute top-16 right-3 left-3 sm:left-auto sm:right-4 sm:w-64 soft-ui-pricing rounded-3xl p-3 shadow-2xl hidden flex-col space-y-1 z-50">
-                <a href="#" onclick="toggleMenu1()" class="px-4 py-2.5 rounded-2xl hover:bg-white/5 text-sm font-medium text-gray-200 transition-all flex items-center justify-between">
-                    <span>Home</span> <i class="fas fa-home text-xs text-gray-400"></i>
+            <div id="dropdown-menu-1" class="absolute top-16 right-3 left-3 sm:left-auto sm:right-4 sm:w-64 rounded-3xl p-3 shadow-2xl hidden flex-col space-y-1 z-50 bg-[#F5F5F5] backdrop-blur-xl border border-black/30">
+                <a href="#" onclick="toggleMenu1()" class="px-4 py-2.5 rounded-2xl hover:bg-gray-200 text-sm font-medium text-gray-800 transition-all flex items-center justify-between">
+                    <span>Home</span> <i class="fas fa-home text-xs text-gray-500"></i>
                 </a>
-                <a href="#about" onclick="toggleMenu1()" class="px-4 py-2.5 rounded-2xl hover:bg-white/5 text-sm font-medium text-gray-200 transition-all flex items-center justify-between">
-                    <span>Tentang Saya</span> <i class="fas fa-user text-xs text-gray-400"></i>
+                <a href="#about" onclick="toggleMenu1()" class="px-4 py-2.5 rounded-2xl hover:bg-gray-200 text-sm font-medium text-gray-800 transition-all flex items-center justify-between">
+                    <span>Tentang Saya</span> <i class="fas fa-user text-xs text-gray-500"></i>
                 </a>
-                <a href="#services" onclick="toggleMenu1()" class="px-4 py-2.5 rounded-2xl hover:bg-white/5 text-sm font-medium text-gray-200 transition-all flex items-center justify-between">
-                    <span>Demo & Layanan</span> <i class="fas fa-layer-group text-xs text-gray-400"></i>
+                <a href="#services" onclick="toggleMenu1()" class="px-4 py-2.5 rounded-2xl hover:bg-gray-200 text-sm font-medium text-gray-800 transition-all flex items-center justify-between">
+                    <span>Demo & Layanan</span> <i class="fas fa-layer-group text-xs text-gray-500"></i>
                 </a>
-                <a href="#testimonials" onclick="toggleMenu1()" class="px-4 py-2.5 rounded-2xl hover:bg-white/5 text-sm font-medium text-gray-200 transition-all flex items-center justify-between">
-                    <span>Testimoni</span> <i class="fas fa-comments text-xs text-gray-400"></i>
+                <a href="#testimonials" onclick="toggleMenu1()" class="px-4 py-2.5 rounded-2xl hover:bg-gray-200 text-sm font-medium text-gray-800 transition-all flex items-center justify-between">
+                    <span>Testimoni</span> <i class="fas fa-comments text-xs text-gray-500"></i>
                 </a>
-                <a href="#pricing" onclick="toggleMenu1()" class="px-4 py-2.5 rounded-2xl hover:bg-white/5 text-sm font-medium text-gray-200 transition-all flex items-center justify-between">
-                    <span>Prices (Harga)</span> <i class="fas fa-tag text-xs text-gray-400"></i>
+                <a href="#pricing" onclick="toggleMenu1()" class="px-4 py-2.5 rounded-2xl hover:bg-gray-200 text-sm font-medium text-gray-800 transition-all flex items-center justify-between">
+                    <span>Prices (Harga)</span> <i class="fas fa-tag text-xs text-gray-500"></i>
                 </a>
-                <a href="#contact" onclick="toggleMenu1()" class="px-4 py-2.5 rounded-2xl bg-green-500/10 hover:bg-green-500/20 text-sm font-semibold text-green-400 transition-all flex items-center justify-between border-t border-white/5 mt-1 pt-3">
+                <a href="#contact" onclick="toggleMenu1()" class="px-4 py-2.5 rounded-2xl bg-green-100 hover:bg-green-200 text-sm font-semibold text-green-700 transition-all flex items-center justify-between border-t border-gray-300 mt-1 pt-3">
                     <span>WhatsApp Order</span> <i class="fab fa-whatsapp text-base"></i>
                 </a>
             </div>
@@ -466,39 +489,39 @@
         <div class="floating-pill-container px-5 sm:px-8 py-2.5 flex items-center justify-between">
             <a href="#" class="flex items-center group">
                 <div class="w-8 h-8 p-0.5 bg-transparent flex items-center justify-center overflow-hidden">
-                    <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Logo" class="w-full h-full object-contain">
+                    <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Logo" class="w-full h-full object-contain filter invert">
                 </div>
             </a>
             
-            <div class="hidden md:flex items-center space-x-7 text-xs font-semibold text-gray-300 tracking-wider">
-                <a href="#" class="hover:text-white transition-colors">Home</a>
-                <a href="#about" class="hover:text-white transition-colors">Tentang</a>
-                <a href="#services" class="hover:text-white transition-colors">Demo & Layanan</a>
-                <a href="#testimonials" class="hover:text-white transition-colors">Testimoni</a>
-                <a href="#pricing" class="hover:text-white transition-colors">Harga</a>
+            <div class="hidden md:flex items-center space-x-7 text-xs font-semibold text-gray-700 tracking-wider">
+                <a href="#" class="hover:text-black transition-colors">Home</a>
+                <a href="#about" class="hover:text-black transition-colors">Tentang</a>
+                <a href="#services" class="hover:text-black transition-colors">Demo & Layanan</a>
+                <a href="#testimonials" class="hover:text-black transition-colors">Testimoni</a>
+                <a href="#pricing" class="hover:text-black transition-colors">Harga</a>
             </div>
 
-            <button id="menu-btn-2" class="w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 text-gray-200 flex items-center justify-center transition-all focus:outline-none">
+            <button id="menu-btn-2" class="w-9 h-9 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-800 flex items-center justify-center transition-all focus:outline-none">
                 <i id="menu-icon-2" class="fas fa-bars text-sm"></i>
             </button>
 
-            <div id="dropdown-menu-2" class="absolute top-16 right-3 left-3 sm:left-auto sm:right-4 sm:w-64 soft-ui-pricing rounded-3xl p-3 shadow-2xl hidden flex-col space-y-1 z-50">
-                <a href="#" onclick="toggleMenu2()" class="px-4 py-2.5 rounded-2xl hover:bg-white/5 text-sm font-medium text-gray-200 transition-all flex items-center justify-between">
-                    <span>Home</span> <i class="fas fa-home text-xs text-gray-400"></i>
+            <div id="dropdown-menu-2" class="absolute top-16 right-3 left-3 sm:left-auto sm:right-4 sm:w-64 rounded-3xl p-3 shadow-2xl hidden flex-col space-y-1 z-50 bg-[#F5F5F5] backdrop-blur-xl border border-black/30">
+                <a href="#" onclick="toggleMenu2()" class="px-4 py-2.5 rounded-2xl hover:bg-gray-200 text-sm font-medium text-gray-800 transition-all flex items-center justify-between">
+                    <span>Home</span> <i class="fas fa-home text-xs text-gray-500"></i>
                 </a>
-                <a href="#about" onclick="toggleMenu2()" class="px-4 py-2.5 rounded-2xl hover:bg-white/5 text-sm font-medium text-gray-200 transition-all flex items-center justify-between">
-                    <span>Tentang Saya</span> <i class="fas fa-user text-xs text-gray-400"></i>
+                <a href="#about" onclick="toggleMenu2()" class="px-4 py-2.5 rounded-2xl hover:bg-gray-200 text-sm font-medium text-gray-800 transition-all flex items-center justify-between">
+                    <span>Tentang Saya</span> <i class="fas fa-user text-xs text-gray-500"></i>
                 </a>
-                <a href="#services" onclick="toggleMenu2()" class="px-4 py-2.5 rounded-2xl hover:bg-white/5 text-sm font-medium text-gray-200 transition-all flex items-center justify-between">
-                    <span>Demo & Layanan</span> <i class="fas fa-layer-group text-xs text-gray-400"></i>
+                <a href="#services" onclick="toggleMenu2()" class="px-4 py-2.5 rounded-2xl hover:bg-gray-200 text-sm font-medium text-gray-800 transition-all flex items-center justify-between">
+                    <span>Demo & Layanan</span> <i class="fas fa-layer-group text-xs text-gray-500"></i>
                 </a>
-                <a href="#testimonials" onclick="toggleMenu2()" class="px-4 py-2.5 rounded-2xl hover:bg-white/5 text-sm font-medium text-gray-200 transition-all flex items-center justify-between">
-                    <span>Testimoni</span> <i class="fas fa-comments text-xs text-gray-400"></i>
+                <a href="#testimonials" onclick="toggleMenu2()" class="px-4 py-2.5 rounded-2xl hover:bg-gray-200 text-sm font-medium text-gray-800 transition-all flex items-center justify-between">
+                    <span>Testimoni</span> <i class="fas fa-comments text-xs text-gray-500"></i>
                 </a>
-                <a href="#pricing" onclick="toggleMenu2()" class="px-4 py-2.5 rounded-2xl hover:bg-white/5 text-sm font-medium text-gray-200 transition-all flex items-center justify-between">
-                    <span>Prices (Harga)</span> <i class="fas fa-tag text-xs text-gray-400"></i>
+                <a href="#pricing" onclick="toggleMenu2()" class="px-4 py-2.5 rounded-2xl hover:bg-gray-200 text-sm font-medium text-gray-800 transition-all flex items-center justify-between">
+                    <span>Prices (Harga)</span> <i class="fas fa-tag text-xs text-gray-500"></i>
                 </a>
-                <a href="#contact" onclick="toggleMenu2()" class="px-4 py-2.5 rounded-2xl bg-green-500/10 hover:bg-green-500/20 text-sm font-semibold text-green-400 transition-all flex items-center justify-between border-t border-white/5 mt-1 pt-3">
+                <a href="#contact" onclick="toggleMenu2()" class="px-4 py-2.5 rounded-2xl bg-green-100 hover:bg-green-200 text-sm font-semibold text-green-700 transition-all flex items-center justify-between border-t border-gray-300 mt-1 pt-3">
                     <span>WhatsApp Order</span> <i class="fab fa-whatsapp text-base"></i>
                 </a>
             </div>
@@ -508,45 +531,46 @@
     </div>
 
     <!-- MAIN CONTAINER -->
-    <main class="max-w-5xl mx-auto px-4 sm:px-8 pt-24 sm:pt-28 pb-16 space-y-12 sm:space-y-16 relative z-10">
+    <main class="max-w-6xl mx-auto px-4 sm:px-8 pt-24 sm:pt-28 pb-16 space-y-12 sm:space-y-16 relative z-10">
 
-        <!-- HERO SECTION: GenDesign ID Inspired Modern Minimalist Light-Dark Layered Banner -->
+        <!-- HERO SECTION (byRUDid.store dengan Gaya Morphing Font Contact Us) -->
         <section class="max-w-4xl mx-auto">
             <div class="hero-banner-outer">
                 <div class="hero-banner-inner p-6 sm:p-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                     
-                    <!-- Kolom Kiri: Foto Banner Diperbesar dengan Efek Spring Segala Arah -->
                     <div class="space-y-3 text-center">
                         <div class="single-photo-container">
-                            <div id="spring-center" class="spring-photo w-52 sm:w-64 z-30 drop-shadow-2xl">
+                            <div id="spring-center" class="spring-photo w-64 sm:w-80 z-30 drop-shadow-2xl">
                                 <img src="https://i.ibb.co.com/PGK1mLbC/11851.png" alt="Banner Utama" class="w-full h-auto object-contain mx-auto pointer-events-none">
                             </div>
                         </div>
                         <div>
-                            <span class="text-[10px] text-gray-400 uppercase tracking-widest"><i class="fas fa-hand-pointer mr-1"></i> (Geser foto ke segala arah)</span>
+                            <span class="text-[10px] text-gray-400 uppercase tracking-widest"><i class="fas fa-hand-pointer mr-1"></</span>
                         </div>
                     </div>
 
-                    <!-- Kolom Kanan: Teks Estetik & Rapi -->
                     <div class="space-y-4 text-center md:text-left">
-                        <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-white leading-tight">
-                            Halo, Saya <span class="text-gray-300">RUDI IRAWAN</span>
-                        </h1>
-                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
-                            Spesialis pembuatan website profesional untuk Undangan Pernikahan, Toko Online, Profil Sekolah, Kampus Universitas, hingga UMKM & Pedagang.
-                        </p>
+                        <!-- Intro dengan "byRUDid.store" yang menggunakan efek morphing font dinamis -->
+                        <div>
+                            <p class="intro-greeting">Halo, Saya <span class="text-white font-semibold">RUDI IRAWAN</span></p>
+                            <h1 class="intro-name-title">
+                                <span id="morphing-hero-text" class="morphing-font-container">byRUDid.store</span>
+                            </h1>
+                            <p class="intro-desc-text">
+                                Spesialis pembuatan website profesional untuk Undangan Pernikahan, Toko Online, Profil Sekolah, Kampus Universitas, hingga UMKM & Pedagang.
+                            </p>
+                        </div>
 
-                        <!-- Countdown Timer Elegan -->
                         <div class="pt-1">
-                            <div class="bg-black/30 p-3 rounded-2xl border border-white/5 max-w-sm mx-auto md:mx-0">
+                            <div class="bg-black/30 p-3 rounded-2xl border border-white/10 max-w-sm mx-auto md:mx-0">
                                 <div class="text-[10px] font-medium uppercase tracking-wider text-gray-400 mb-2 flex items-center justify-center md:justify-start gap-1.5">
                                     <i class="fas fa-clock text-gray-400"></i> Promo Diskon Berakhir Dalam:
                                 </div>
                                 <div class="grid grid-cols-4 gap-1.5 text-center">
-                                    <div class="bg-white/5 rounded-xl p-1.5 border border-white/5"><span id="days" class="text-sm font-bold text-white">00</span><p class="text-[7px] uppercase text-gray-500">Hari</p></div>
-                                    <div class="bg-white/5 rounded-xl p-1.5 border border-white/5"><span id="hours" class="text-sm font-bold text-white">00</span><p class="text-[7px] uppercase text-gray-500">Jam</p></div>
-                                    <div class="bg-white/5 rounded-xl p-1.5 border border-white/5"><span id="minutes" class="text-sm font-bold text-white">00</span><p class="text-[7px] uppercase text-gray-500">Menit</p></div>
-                                    <div class="bg-white/5 rounded-xl p-1.5 border border-white/5"><span id="seconds" class="text-sm font-bold text-gray-300">00</span><p class="text-[7px] uppercase text-gray-500">Detik</p></div>
+                                    <div class="bg-white/5 rounded-xl p-1.5 border border-white/10"><span id="days" class="text-sm font-bold text-white">00</span><p class="text-[7px] uppercase text-gray-400">Hari</p></div>
+                                    <div class="bg-white/5 rounded-xl p-1.5 border border-white/10"><span id="hours" class="text-sm font-bold text-white">00</span><p class="text-[7px] uppercase text-gray-400">Jam</p></div>
+                                    <div class="bg-white/5 rounded-xl p-1.5 border border-white/10"><span id="minutes" class="text-sm font-bold text-white">00</span><p class="text-[7px] uppercase text-gray-400">Menit</p></div>
+                                    <div class="bg-white/5 rounded-xl p-1.5 border border-white/10"><span id="seconds" class="text-sm font-bold text-gray-300">00</span><p class="text-[7px] uppercase text-gray-400">Detik</p></div>
                                 </div>
                             </div>
                         </div>
@@ -562,9 +586,9 @@
             </div>
         </section>
 
-        <!-- Marquee Banner Bersih -->
-        <div class="py-3 bg-white/5 border-y border-white/10 overflow-hidden whitespace-nowrap rounded-2xl backdrop-blur-md">
-            <div class="animate-marquee flex space-x-12 text-xs font-bold uppercase tracking-widest text-gray-400">
+        <!-- Marquee Banner -->
+        <div class="py-3 bg-[#E5E5E5] border-y border-black/30 overflow-hidden whitespace-nowrap rounded-2xl shadow-sm">
+            <div class="animate-marquee flex space-x-12 text-xs font-bold uppercase tracking-widest text-gray-700">
                 <span>✦ Jasa Pembuatan Website Profesional</span>
                 <span>✦ Undangan Pernikahan</span>
                 <span>✦ Toko Online & E-Commerce</span>
@@ -580,220 +604,150 @@
             </div>
 
             <section id="about" class="rounded-portfolio-card p-8 sm:p-10">
-                <h2 class="text-xl sm:text-2xl font-bold mb-4 flex items-center gap-3 text-white">
-                    <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Logo" class="w-6 h-6 object-contain inline-block bg-transparent"> Tentang Saya
+                <h2 class="text-xl sm:text-2xl font-bold mb-4 flex items-center gap-3 text-gray-900">
+                    <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Logo" class="w-6 h-6 object-contain inline-block bg-transparent filter invert"> Tentang Saya
                 </h2>
-                <p id="typing-text" class="text-gray-400 leading-relaxed text-xs sm:text-sm typing-cursor min-h-[90px] sm:min-h-[80px]"></p>
+                <p id="typing-text" class="text-gray-700 leading-relaxed text-xs sm:text-sm typing-cursor min-h-[90px] sm:min-h-[80px]"></p>
             </section>
         </div>
 
-        <!-- DEMO & LAYANAN SECTION -->
-        <section id="services" class="portfolio-section space-y-6">
-            <div class="text-center space-y-2">
-                <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">Demo & layanan</h2>
-            </div>
-
-            <div class="flex flex-wrap justify-center gap-2 pb-2 px-2">
-                <button onclick="filterCategory('all', this)" class="category-btn px-4 py-2 rounded-full bg-white text-black font-semibold text-xs shadow transition-all">Semua</button>
-                <button onclick="filterCategory('undangan', this)" class="category-btn px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 text-gray-300 font-medium text-xs border border-white/10 transition-all">Undangan</button>
-                <button onclick="filterCategory('store', this)" class="category-btn px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 text-gray-300 font-medium text-xs border border-white/10 transition-all">Toko Online</button>
-                <button onclick="filterCategory('school', this)" class="category-btn px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 text-gray-300 font-medium text-xs border border-white/10 transition-all">Sekolah</button>
-                <button onclick="filterCategory('umkm', this)" class="category-btn px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 text-gray-300 font-medium text-xs border border-white/10 transition-all">UMKM</button>
-            </div>
-
-            <div class="relative max-w-5xl mx-auto px-2 sm:px-6">
-                <button onclick="scrollPortfolioSlider(-340)" class="slider-arrow absolute left-1 sm:-left-3 top-1/2 -translate-y-1/2">
-                    <i class="fas fa-chevron-left text-xs"></i>
-                </button>
-                <button onclick="scrollPortfolioSlider(340)" class="slider-arrow absolute right-1 sm:-right-3 top-1/2 -translate-y-1/2">
-                    <i class="fas fa-chevron-right text-xs"></i>
-                </button>
-
-                <div id="portfolio-slider" class="portfolio-slider px-4 sm:px-8">
-                    <div class="portfolio-track">
-                        
-                        <!-- Portfolio Card 1 -->
-                        <div class="portfolio-card service-card" data-category="undangan">
-                            <div class="portfolio-image">
-                                <div class="portfolio-overlay"></div>
-                                <img src="https://i.ibb.co.com/YTXYn11s/RUD-Website-Mockup-Collection-1-r1-c1.png" alt="Undangan Pernikahan" class="device-mockup">
-                            </div>
-                            <div class="portfolio-caption">
-                                <div>
-                                    <h3 class="font-bold text-base mb-1 text-white">Undangan Pernikahan Digital</h3>
-                                    <p class="text-gray-400 text-xs leading-relaxed">Website undangan modern lengkap dengan hitung mundur, peta lokasi, buku tamu, dan musik romantis.</p>
-                                </div>
-                                <div class="space-y-2 pt-2 border-t border-white/5">
-                                    <button onclick="openDemo('undangan')" class="w-full py-2 rounded-xl bg-white/10 hover:bg-white/20 text-gray-200 font-semibold text-xs transition-all flex items-center justify-center gap-2">
-                                        <i class="fas fa-eye text-[10px]"></i> Lihat Demo Simulasi
-                                    </button>
-                                    <div class="flex items-center justify-between pt-1">
-                                        <a href="https://instagram.com/rudiirwnke20" target="_blank" class="instagram-link">
-                                            <i class="fab fa-instagram mr-1 text-sm"></i> @rudiirwnke20
-                                        </a>
-                                        <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20mau%20pesan%20Website%20Undangan%20Pernikahan." target="_blank" class="text-xs font-semibold text-green-400 hover:underline">
-                                            <i class="fab fa-whatsapp"></i> Pesan
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Portfolio Card 2 -->
-                        <div class="portfolio-card service-card" data-category="store">
-                            <div class="portfolio-image">
-                                <div class="portfolio-overlay"></div>
-                                <img src="https://i.ibb.co.com/jkPZktLX/RUD-Website-Mockup-Collection-1-r1-c2.png" alt="Toko Online" class="device-mockup">
-                            </div>
-                            <div class="portfolio-caption">
-                                <div>
-                                    <h3 class="font-bold text-base mb-1 text-white">Toko Online / E-Commerce</h3>
-                                    <p class="text-gray-400 text-xs leading-relaxed">Katalog produk interaktif siap jual untuk mendongkrak penjualan bisnis online Anda.</p>
-                                </div>
-                                <div class="space-y-2 pt-2 border-t border-white/5">
-                                    <button onclick="openDemo('store')" class="w-full py-2 rounded-xl bg-white/10 hover:bg-white/20 text-gray-200 font-semibold text-xs transition-all flex items-center justify-center gap-2">
-                                        <i class="fas fa-eye text-[10px]"></i> Lihat Demo Simulasi
-                                    </button>
-                                    <div class="flex items-center justify-between pt-1">
-                                        <a href="https://instagram.com/rudiirwnke20" target="_blank" class="instagram-link">
-                                            <i class="fab fa-instagram mr-1 text-sm"></i> @rudiirwnke20
-                                        </a>
-                                        <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20mau%20pesan%20Website%20Toko%20Online." target="_blank" class="text-xs font-semibold text-green-400 hover:underline">
-                                            <i class="fab fa-whatsapp"></i> Pesan
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Portfolio Card 3 -->
-                        <div class="portfolio-card service-card" data-category="school">
-                            <div class="portfolio-image">
-                                <div class="portfolio-overlay"></div>
-                                <img src="https://i.ibb.co.com/vvxMwqQM/RUD-Website-Mockup-Collection-1-r2-c1.png" alt="Universitas & Sekolah" class="device-mockup">
-                            </div>
-                            <div class="portfolio-caption">
-                                <div>
-                                    <h3 class="font-bold text-base mb-1 text-white">Universitas & Sekolah</h3>
-                                    <p class="text-gray-400 text-xs leading-relaxed">Portal informasi akademik resmi, profil institusi, dan pendaftaran siswa baru online.</p>
-                                </div>
-                                <div class="space-y-2 pt-2 border-t border-white/5">
-                                    <button onclick="openDemo('school')" class="w-full py-2 rounded-xl bg-white/10 hover:bg-white/20 text-gray-200 font-semibold text-xs transition-all flex items-center justify-center gap-2">
-                                        <i class="fas fa-eye text-[10px]"></i> Lihat Demo Simulasi
-                                    </button>
-                                    <div class="flex items-center justify-between pt-1">
-                                        <a href="https://instagram.com/rudiirwnke20" target="_blank" class="instagram-link">
-                                            <i class="fab fa-instagram mr-1 text-sm"></i> @rudiirwnke20
-                                        </a>
-                                        <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20mau%20pesan%20Website%20Sekolah." target="_blank" class="text-xs font-semibold text-green-400 hover:underline">
-                                            <i class="fab fa-whatsapp"></i> Pesan
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Portfolio Card 4 -->
-                        <div class="portfolio-card service-card" data-category="umkm">
-                            <div class="portfolio-image">
-                                <div class="portfolio-overlay"></div>
-                                <img src="https://i.ibb.co.com/TqLx6Qp6/RUD-Website-Mockup-Collection-1-r2-c2.png" alt="UMKM & Pedagang Lokal" class="device-mockup">
-                            </div>
-                            <div class="portfolio-caption">
-                                <div>
-                                    <h3 class="font-bold text-base mb-1 text-white">UMKM & Pedagang Lokal</h3>
-                                    <p class="text-gray-400 text-xs leading-relaxed">Website profil usaha kecil dan menengah agar produk atau jasa lebih mudah ditemukan di Google.</p>
-                                </div>
-                                <div class="space-y-2 pt-2 border-t border-white/5">
-                                    <button onclick="openDemo('umkm')" class="w-full py-2 rounded-xl bg-white/10 hover:bg-white/20 text-gray-200 font-semibold text-xs transition-all flex items-center justify-center gap-2">
-                                        <i class="fas fa-eye text-[10px]"></i> Lihat Demo Simulasi
-                                    </button>
-                                    <div class="flex items-center justify-between pt-1">
-                                        <a href="https://instagram.com/rudiirwnke20" target="_blank" class="instagram-link">
-                                            <i class="fab fa-instagram mr-1 text-sm"></i> @rudiirwnke20
-                                        </a>
-                                        <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20mau%20pesan%20Website%20UMKM." target="_blank" class="text-xs font-semibold text-green-400 hover:underline">
-                                            <i class="fab fa-whatsapp"></i> Pesan
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+        <!-- DEMO & LAYANAN -->
+        <section id="services" class="portfolio-section space-y-5 transparent-section-frame p-6 sm:p-8 flex flex-col justify-between">
+            <div class="space-y-4">
+                <div class="text-center sm:text-left space-y-1">
+                    <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-gray-900">Demo & Layanan</h2>
                 </div>
-            </div>
-        </section>
 
-        <!-- AUTO-SCROLLING TESTIMONIALS SECTION -->
-        <section id="testimonials" class="testimonial-section space-y-6">
-            <div class="text-center space-y-2">
-                <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">Apa Kata Klien Kami?</h2>
-            </div>
+                <!-- Kategori Pil Tombol -->
+                <div class="flex flex-wrap justify-center sm:justify-start gap-1.5 p-1.5 bg-black/5 rounded-2xl border border-black/10">
+                    <button onclick="filterCategory('all', this)" class="category-btn px-3.5 py-1.5 rounded-xl bg-gray-900 text-white font-semibold text-[11px] shadow transition-all">Semua</button>
+                    <button onclick="filterCategory('undangan', this)" class="category-btn px-3.5 py-1.5 rounded-xl bg-white hover:bg-gray-200 text-gray-700 font-medium text-[11px] transition-all">Undangan</button>
+                    <button onclick="filterCategory('store', this)" class="category-btn px-3.5 py-1.5 rounded-xl bg-white hover:bg-gray-200 text-gray-700 font-medium text-[11px] transition-all">Toko Online</button>
+                    <button onclick="filterCategory('school', this)" class="category-btn px-3.5 py-1.5 rounded-xl bg-white hover:bg-gray-200 text-gray-700 font-medium text-[11px] transition-all">Sekolah</button>
+                    <button onclick="filterCategory('umkm', this)" class="category-btn px-3.5 py-1.5 rounded-xl bg-white hover:bg-gray-200 text-gray-700 font-medium text-[11px] transition-all">UMKM</button>
+                </div>
 
-            <div class="max-w-xl mx-auto testimonial-container-vertical">
-                <div id="testimonial-track" class="testimonial-track-vertical">
-                    
-                    <!-- Testimoni 1 -->
-                    <div class="testimonial-card flex flex-col gap-2.5">
-                        <div class="flex items-center gap-3">
-                            <img src="https://i.ibb.co.com/PGq5wyqg/IMG-20261013-WA0000.jpg" alt="Tiar Virgiawan" class="w-12 h-12 rounded-full object-cover border-2 border-white/20 shadow-md">
-                            <div>
-                                <h4 class="font-bold text-xs sm:text-sm text-white">Tiar Virgiawan</h4>
-                                <div class="text-amber-400 text-[10px] mt-0.5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <div class="relative px-1 pt-2">
+                    <button onclick="scrollPortfolioSlider(-240)" class="slider-arrow absolute -left-3 top-1/2 -translate-y-1/2">
+                        <i class="fas fa-chevron-left text-xs"></i>
+                    </button>
+                    <button onclick="scrollPortfolioSlider(240)" class="slider-arrow absolute -right-3 top-1/2 -translate-y-1/2">
+                        <i class="fas fa-chevron-right text-xs"></i>
+                    </button>
+
+                    <div id="portfolio-slider" class="portfolio-slider px-4">
+                        <div id="portfolio-track" class="portfolio-track">
+                            
+                            <!-- Portfolio Card 1 -->
+                            <div class="portfolio-card service-card" data-category="undangan">
+                                <div class="portfolio-image">
+                                    <div class="portfolio-overlay"></div>
+                                    <img src="https://i.ibb.co.com/YTXYn11s/RUD-Website-Mockup-Collection-1-r1-c1.png" alt="Undangan Pernikahan" class="device-mockup">
+                                </div>
+                                <div class="portfolio-caption">
+                                    <div>
+                                        <h3 class="font-bold text-sm mb-1 text-gray-900">Undangan Pernikahan</h3>
+                                        <p class="text-gray-600 text-[11px] leading-relaxed">Website undangan modern lengkap dengan hitung mundur & peta lokasi.</p>
+                                    </div>
+                                    <div class="space-y-2 pt-2 border-t border-gray-300">
+                                        <button onclick="openDemo('undangan')" class="w-full py-2 rounded-xl bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold text-xs transition-all flex items-center justify-center gap-1.5">
+                                            <i class="fas fa-eye text-[10px]"></i> Lihat Demo
+                                        </button>
+                                        <div class="flex items-center justify-between pt-0.5">
+                                            <a href="https://instagram.com/rudiirwnke20" target="_blank" class="instagram-link">
+                                                <i class="fab fa-instagram mr-1 text-xs"></i> @rudiirwnke20
+                                            </a>
+                                            <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20mau%20pesan%20Website%20Undangan%20Pernikahan." target="_blank" class="text-xs font-semibold text-green-600 hover:underline">
+                                                <i class="fab fa-whatsapp"></i> Pesan
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <p class="text-gray-300 text-[11px] sm:text-xs leading-relaxed">"Pembuatan undangan digital di sini super cepat dan hasilnya sangat elegan! Tamu-tamu undangan banyak yang memuji."</p>
-                    </div>
 
-                    <!-- Testimoni 2 -->
-                    <div class="testimonial-card flex flex-col gap-2.5">
-                        <div class="flex items-center gap-3">
-                            <img src="https://i.ibb.co.com/d47jL0ny/IMG-20261013-WA0001.jpg" alt="Tio scumb4g" class="w-12 h-12 rounded-full object-cover border-2 border-white/20 shadow-md">
-                            <div>
-                                <h4 class="font-bold text-xs sm:text-sm text-white">Tio scumb4g</h4>
-                                <div class="text-amber-400 text-[10px] mt-0.5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <!-- Portfolio Card 2 -->
+                            <div class="portfolio-card service-card" data-category="store">
+                                <div class="portfolio-image">
+                                    <div class="portfolio-overlay"></div>
+                                    <img src="https://i.ibb.co.com/jkPZktLX/RUD-Website-Mockup-Collection-1-r1-c2.png" alt="Toko Online" class="device-mockup">
+                                </div>
+                                <div class="portfolio-caption">
+                                    <div>
+                                        <h3 class="font-bold text-sm mb-1 text-gray-900">Toko Online / E-Commerce</h3>
+                                        <p class="text-gray-600 text-[11px] leading-relaxed">Katalog produk interaktif siap jual untuk mendongkrak penjualan bisnis.</p>
+                                    </div>
+                                    <div class="space-y-2 pt-2 border-t border-gray-300">
+                                        <button onclick="openDemo('store')" class="w-full py-2 rounded-xl bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold text-xs transition-all flex items-center justify-center gap-1.5">
+                                            <i class="fas fa-eye text-[10px]"></i> Lihat Demo
+                                        </button>
+                                        <div class="flex items-center justify-between pt-0.5">
+                                            <a href="https://instagram.com/rudiirwnke20" target="_blank" class="instagram-link">
+                                                <i class="fab fa-instagram mr-1 text-xs"></i> @rudiirwnke20
+                                            </a>
+                                            <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20mau%20pesan%20Website%20Toko%20Online." target="_blank" class="text-xs font-semibold text-green-600 hover:underline">
+                                                <i class="fab fa-whatsapp"></i> Pesan
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <p class="text-gray-300 text-[11px] sm:text-xs leading-relaxed">"Toko online saya jadi terlihat jauh lebih profesional dan omset penjualan meningkat drastis. Mantap banget pelayanannya!"</p>
-                    </div>
 
-                    <!-- Testimoni 3 -->
-                    <div class="testimonial-card flex flex-col gap-2.5">
-                        <div class="flex items-center gap-3">
-                            <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Rud Customer" class="w-12 h-12 rounded-full object-contain bg-black/40 border-2 border-white/20 p-1.5 shadow-md">
-                            <div>
-                                <h4 class="font-bold text-xs sm:text-sm text-white">Rud Customer</h4>
-                                <div class="text-amber-400 text-[10px] mt-0.5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <!-- Portfolio Card 3 -->
+                            <div class="portfolio-card service-card" data-category="school">
+                                <div class="portfolio-image">
+                                    <div class="portfolio-overlay"></div>
+                                    <img src="https://i.ibb.co.com/vvxMwqQM/RUD-Website-Mockup-Collection-1-r2-c1.png" alt="Universitas & Sekolah" class="device-mockup">
+                                </div>
+                                <div class="portfolio-caption">
+                                    <div>
+                                        <h3 class="font-bold text-sm mb-1 text-gray-900">Universitas & Sekolah</h3>
+                                        <p class="text-gray-600 text-[11px] leading-relaxed">Portal informasi akademik resmi dan pendaftaran siswa baru online.</p>
+                                    </div>
+                                    <div class="space-y-2 pt-2 border-t border-gray-300">
+                                        <button onclick="openDemo('school')" class="w-full py-2 rounded-xl bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold text-xs transition-all flex items-center justify-center gap-1.5">
+                                            <i class="fas fa-eye text-[10px]"></i> Lihat Demo
+                                        </button>
+                                        <div class="flex items-center justify-between pt-0.5">
+                                            <a href="https://instagram.com/rudiirwnke20" target="_blank" class="instagram-link">
+                                                <i class="fab fa-instagram mr-1 text-xs"></i> @rudiirwnke20
+                                            </a>
+                                            <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20mau%20pesan%20Website%20Sekolah." target="_blank" class="text-xs font-semibold text-green-600 hover:underline">
+                                                <i class="fab fa-whatsapp"></i> Pesan
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <p class="text-gray-300 text-[11px] sm:text-xs leading-relaxed">"Website profil sekolah kami kini lebih mudah diakses wali murid dan pendaftaran siswa baru online berjalan sangat lancar."</p>
-                    </div>
 
-                    <!-- Testimoni 4 -->
-                    <div class="testimonial-card flex flex-col gap-2.5">
-                        <div class="flex items-center gap-3">
-                            <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Rud Customer" class="w-12 h-12 rounded-full object-contain bg-black/40 border-2 border-white/20 p-1.5 shadow-md">
-                            <div>
-                                <h4 class="font-bold text-xs sm:text-sm text-white">Rud Customer</h4>
-                                <div class="text-amber-400 text-[10px] mt-0.5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <!-- Portfolio Card 4 -->
+                            <div class="portfolio-card service-card" data-category="umkm">
+                                <div class="portfolio-image">
+                                    <div class="portfolio-overlay"></div>
+                                    <img src="https://i.ibb.co.com/TqLx6Qp6/RUD-Website-Mockup-Collection-1-r2-c2.png" alt="UMKM & Pedagang Lokal" class="device-mockup">
+                                </div>
+                                <div class="portfolio-caption">
+                                    <div>
+                                        <h3 class="font-bold text-sm mb-1 text-gray-900">UMKM & Pedagang Lokal</h3>
+                                        <p class="text-gray-600 text-[11px] leading-relaxed">Website profil usaha agar produk lebih mudah ditemukan di Google.</p>
+                                    </div>
+                                    <div class="space-y-2 pt-2 border-t border-gray-300">
+                                        <button onclick="openDemo('umkm')" class="w-full py-2 rounded-xl bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold text-xs transition-all flex items-center justify-center gap-1.5">
+                                            <i class="fas fa-eye text-[10px]"></i> Lihat Demo
+                                        </button>
+                                        <div class="flex items-center justify-between pt-0.5">
+                                            <a href="https://instagram.com/rudiirwnke20" target="_blank" class="instagram-link">
+                                                <i class="fab fa-instagram mr-1 text-xs"></i> @rudiirwnke20
+                                            </a>
+                                            <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20mau%20pesan%20Website%20UMKM." target="_blank" class="text-xs font-semibold text-green-600 hover:underline">
+                                                <i class="fab fa-whatsapp"></i> Pesan
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <p class="text-gray-300 text-[11px] sm:text-xs leading-relaxed">"Pelayanan ramah, revisi cepat tanpa ribet, dan harganya sangat bersahabat untuk kualitas sekeren ini. Sangat recommended!"</p>
-                    </div>
 
-                    <!-- Testimoni 5 -->
-                    <div class="testimonial-card flex flex-col gap-2.5">
-                        <div class="flex items-center gap-3">
-                            <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Rud Customer" class="w-12 h-12 rounded-full object-contain bg-black/40 border-2 border-white/20 p-1.5 shadow-md">
-                            <div>
-                                <h4 class="font-bold text-xs sm:text-sm text-white">Rud Customer</h4>
-                                <div class="text-amber-400 text-[10px] mt-0.5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            </div>
                         </div>
-                        <p class="text-gray-300 text-[11px] sm:text-xs leading-relaxed">"UMKM kuliner saya sekarang punya website sendiri yang keren. Pelanggan jadi gampang cek menu lewat HP."</p>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -801,19 +755,24 @@
         <!-- PRICING SECTION -->
         <section id="pricing" class="space-y-8">
             <div class="text-center space-y-3">
-                <h2 class="text-2xl sm:text-3xl font-bold text-white flex items-center justify-center gap-2 flex-wrap">
+                <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 flex items-center justify-center gap-2 flex-wrap">
                     <span>Paket</span>
-                    <span class="bg-white text-black px-4 py-1 rounded-full text-xl sm:text-2xl font-bold tracking-tight inline-block shadow-sm">Harga</span>
+                    <span class="bg-gray-900 text-white px-4 py-1 rounded-full text-xl sm:text-2xl font-bold tracking-tight inline-block shadow-sm">Harga</span>
                 </h2>
-                <p class="text-gray-400 text-xs sm:text-sm">Pilih paket pembuatan website yang sesuai dengan kebutuhan Anda!</p>
+                <p class="text-gray-600 text-xs sm:text-sm">Pilih paket pembuatan website yang sesuai dengan kebutuhan Anda!</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto items-stretch">
                 
-                <!-- Paket 1 -->
+                <!-- Paket 1: Starter -->
                 <div class="pricing-card-light p-6 sm:p-8 flex flex-col justify-between">
                     <div class="space-y-4">
-                        <span class="text-[10px] uppercase tracking-widest text-gray-500 font-bold bg-gray-100 px-3 py-1 rounded-full">Starter</span>
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] uppercase tracking-widest text-gray-500 font-bold bg-gray-100 px-3 py-1 rounded-full border border-gray-300">Starter</span>
+                            <div class="w-8 h-8 rounded-full bg-gray-100 border border-gray-300 p-1 flex items-center justify-center shadow-sm">
+                                <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Logo" class="w-full h-full object-contain filter invert">
+                            </div>
+                        </div>
                         <div>
                             <h3 class="text-xl font-extrabold text-gray-900 mt-2">Basic Website</h3>
                             <p class="text-xs text-gray-500 mt-0.5">Solusi cepat untuk kebutuhan landing page personal.</p>
@@ -821,7 +780,7 @@
                         <div class="py-2">
                             <span class="text-2xl sm:text-3xl font-black text-gray-900">Rp 150.000</span>
                         </div>
-                        <hr class="border-gray-100 my-2">
+                        <hr class="border-gray-200 my-2">
                         <ul class="space-y-3 text-xs text-gray-600">
                             <li class="flex items-center"><i class="fas fa-check text-emerald-600 mr-2.5 font-bold"></i> 1 Halaman Responsif</li>
                             <li class="flex items-center"><i class="fas fa-check text-emerald-600 mr-2.5 font-bold"></i> 2x Revisi</li>
@@ -833,11 +792,16 @@
                     </div>
                 </div>
 
-                <!-- Paket 2 -->
+                <!-- Paket 2: Professional -->
                 <div class="pricing-card-dark p-6 sm:p-8 flex flex-col justify-between relative">
                     <div class="absolute -top-3.5 right-6 bg-white text-black text-[10px] font-bold px-3.5 py-1 rounded-full uppercase tracking-wider shadow-md">Populer</div>
                     <div class="space-y-4">
-                        <span class="text-[10px] uppercase tracking-widest text-gray-400 font-bold bg-white/10 px-3 py-1 rounded-full">Professional</span>
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] uppercase tracking-widest text-gray-400 font-bold bg-white/10 px-3 py-1 rounded-full">Professional</span>
+                            <div class="w-8 h-8 rounded-full bg-white/10 border border-white/20 p-1 flex items-center justify-center shadow-sm">
+                                <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Logo" class="w-full h-full object-contain">
+                            </div>
+                        </div>
                         <div>
                             <h3 class="text-xl font-extrabold text-white mt-2">Standard Website</h3>
                             <p class="text-xs text-gray-400 mt-0.5">Pilihan terbaik untuk bisnis & instansi profesional.</p>
@@ -858,10 +822,15 @@
                     </div>
                 </div>
 
-                <!-- Paket 3 -->
+                <!-- Paket 3: Enterprise -->
                 <div class="pricing-card-light p-6 sm:p-8 flex flex-col justify-between">
                     <div class="space-y-4">
-                        <span class="text-[10px] uppercase tracking-widest text-gray-500 font-bold bg-gray-100 px-3 py-1 rounded-full">Enterprise</span>
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] uppercase tracking-widest text-gray-500 font-bold bg-gray-100 px-3 py-1 rounded-full border border-gray-300">Enterprise</span>
+                            <div class="w-8 h-8 rounded-full bg-gray-100 border border-gray-300 p-1 flex items-center justify-center shadow-sm">
+                                <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Logo" class="w-full h-full object-contain filter invert">
+                            </div>
+                        </div>
                         <div>
                             <h3 class="text-xl font-extrabold text-gray-900 mt-2">Premium Custom</h3>
                             <p class="text-xs text-gray-500 mt-0.5">Kustomisasi penuh sesuai permintaan khusus.</p>
@@ -869,7 +838,7 @@
                         <div class="py-2">
                             <span class="text-2xl sm:text-3xl font-black text-gray-900">Rp 650.000+</span>
                         </div>
-                        <hr class="border-gray-100 my-2">
+                        <hr class="border-gray-200 my-2">
                         <ul class="space-y-3 text-xs text-gray-600">
                             <li class="flex items-center"><i class="fas fa-check text-emerald-600 mr-2.5 font-bold"></i> Fitur Custom Sesuai Request</li>
                             <li class="flex items-center"><i class="fas fa-check text-emerald-600 mr-2.5 font-bold"></i> Unlimited Revisi Kecil</li>
@@ -885,62 +854,138 @@
             </div>
         </section>
 
-        <!-- CONTACT US SECTION (Charcoal bg, Animated Typography Style Morphing on "Order?", Frameless IG & WA icons only) -->
-        <section id="contact" class="contact-section-container p-8 sm:p-12 text-center space-y-8 max-w-4xl mx-auto">
-            <div class="space-y-2">
-                <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight flex items-center justify-center gap-3 flex-wrap leading-tight">
-                    <span id="morphing-order-text" class="text-gray-300 morphing-font-container">Order?</span>
-                    <span class="font-extrabold text-white">Contact Us.</span>
-                </h2>
-                <p class="text-gray-400 text-xs sm:text-sm max-w-md mx-auto pt-2">Hubungi kami melalui salah satu platform di bawah ini untuk memulai konsultasi dan pemesanan website profesional Anda!</p>
-            </div>
+        <!-- CONTACT US (KIRI) & TESTIMONI (KANAN) DI PALING BAWAH -->
+        <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-8 items-stretch w-full pt-4">
+            
+            <!-- Kolom Kiri: Contact Us (Tanpa Bingkai Luar) -->
+            <section id="contact" class="contact-clean-container p-4 sm:p-6 text-center lg:text-left flex flex-col justify-center space-y-6">
+                <div class="space-y-2">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight flex items-center justify-center lg:justify-start gap-3 flex-wrap leading-tight">
+                        <span id="morphing-order-text" class="text-gray-600 morphing-font-container">Order?</span>
+                        <span class="font-extrabold text-gray-900">Contact Us.</span>
+                    </h2>
+                    <p class="text-gray-600 text-xs sm:text-sm max-w-sm mx-auto lg:mx-0 pt-1">Hubungi kami melalui salah satu platform di bawah ini untuk memulai konsultasi dan pemesanan website profesional Anda!</p>
+                </div>
 
-            <!-- Tombol Ikon Saja (Tanpa Teks Username/Nomor, Tanpa Bingkai) -->
-            <div class="flex items-center justify-center gap-8 pt-4">
-                
-                <!-- Instagram Icon Button -->
-                <a href="https://instagram.com/rudiirwnke20" target="_blank" aria-label="Instagram" class="w-14 h-14 rounded-full bg-white/5 hover:bg-white/15 text-gray-200 hover:text-white flex items-center justify-center text-2xl transition-all duration-300 hover:scale-110 shadow-md">
-                    <i class="fab fa-instagram"></i>
-                </a>
+                <!-- Tombol Ikon Saja -->
+                <div class="flex items-center justify-center lg:justify-start gap-6 pt-2">
+                    
+                    <!-- Instagram Icon Button -->
+                    <a href="https://instagram.com/rudiirwnke20" target="_blank" aria-label="Instagram" class="w-14 h-14 rounded-full bg-white hover:bg-gray-200 text-gray-800 hover:text-black flex items-center justify-center text-2xl transition-all duration-300 hover:scale-110 shadow-md border border-black/30">
+                        <i class="fab fa-instagram"></i>
+                    </a>
 
-                <!-- WhatsApp Icon Button -->
-                <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20ingin%20membuat%20website." target="_blank" aria-label="WhatsApp" class="w-14 h-14 rounded-full bg-green-500/10 hover:bg-green-500/25 text-green-400 hover:text-green-300 flex items-center justify-center text-2xl transition-all duration-300 hover:scale-110 shadow-md">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
+                    <!-- WhatsApp Icon Button -->
+                    <a href="https://wa.me/62895635427099?text=Halo%20Rudi,%20saya%20ingin%20membuat%20website." target="_blank" aria-label="WhatsApp" class="w-14 h-14 rounded-full bg-green-100 hover:bg-green-200 text-green-700 hover:text-green-800 flex items-center justify-center text-2xl transition-all duration-300 hover:scale-110 shadow-md border border-green-300">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
 
-            </div>
-        </section>
+                </div>
+            </section>
+
+            <!-- Kolom Kanan: Testimoni (Tanpa Judul "Apa Kata Klien Kami?") -->
+            <section id="testimonials" class="testimonial-section space-y-5 testimonial-container-clean p-4 sm:p-6 flex flex-col justify-center">
+                <div class="space-y-4">
+                    <div class="testimonial-container-vertical pt-1">
+                        <div id="testimonial-track" class="testimonial-track-vertical">
+                            
+                            <!-- Testimoni 1 -->
+                            <div class="testimonial-card-dark flex flex-col gap-2">
+                                <div class="flex items-center gap-2.5">
+                                    <img src="https://i.ibb.co.com/PGq5wyqg/IMG-20261013-WA0000.jpg" alt="Tiar Virgiawan" class="w-10 h-10 rounded-full object-cover border-2 border-gray-400 shadow-sm">
+                                    <div>
+                                        <h4 class="font-bold text-xs text-white">Tiar Virgiawan</h4>
+                                        <div class="text-amber-400 text-[9px] mt-0.5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-100 text-[11px] leading-relaxed">"Pembuatan undangan digital di sini super cepat dan hasilnya sangat elegan! Tamu-tamu undangan banyak yang memuji."</p>
+                            </div>
+
+                            <!-- Testimoni 2 -->
+                            <div class="testimonial-card-dark flex flex-col gap-2">
+                                <div class="flex items-center gap-2.5">
+                                    <img src="https://i.ibb.co.com/d47jL0ny/IMG-20261013-WA0001.jpg" alt="Tio scumb4g" class="w-10 h-10 rounded-full object-cover border-2 border-gray-400 shadow-sm">
+                                    <div>
+                                        <h4 class="font-bold text-xs text-white">Tio scumb4g</h4>
+                                        <div class="text-amber-400 text-[9px] mt-0.5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-100 text-[11px] leading-relaxed">"Toko online saya jadi terlihat jauh lebih profesional dan omset penjualan meningkat drastis. Mantap banget pelayanannya!"</p>
+                            </div>
+
+                            <!-- Testimoni 3 -->
+                            <div class="testimonial-card-dark flex flex-col gap-2">
+                                <div class="flex items-center gap-2.5">
+                                    <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Rud Customer" class="w-10 h-10 rounded-full object-contain bg-gray-700 border-2 border-gray-400 p-1 shadow-sm">
+                                    <div>
+                                        <h4 class="font-bold text-xs text-white">Rud Customer</h4>
+                                        <div class="text-amber-400 text-[9px] mt-0.5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-100 text-[11px] leading-relaxed">"Website profil sekolah kami kini lebih mudah diakses wali murid dan pendaftaran siswa baru online berjalan sangat lancar."</p>
+                            </div>
+
+                            <!-- Testimoni 4 -->
+                            <div class="testimonial-card-dark flex flex-col gap-2">
+                                <div class="flex items-center gap-2.5">
+                                    <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Rud Customer" class="w-10 h-10 rounded-full object-contain bg-gray-700 border-2 border-gray-400 p-1 shadow-sm">
+                                    <div>
+                                        <h4 class="font-bold text-xs text-white">Rud Customer</h4>
+                                        <div class="text-amber-400 text-[9px] mt-0.5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-100 text-[11px] leading-relaxed">"Pelayanan ramah, revisi cepat tanpa ribet, dan harganya sangat bersahabat untuk kualitas sekeren ini. Sangat recommended!"</p>
+                            </div>
+
+                            <!-- Testimoni 5 -->
+                            <div class="testimonial-card-dark flex flex-col gap-2">
+                                <div class="flex items-center gap-2.5">
+                                    <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Rud Customer" class="w-10 h-10 rounded-full object-contain bg-gray-700 border-2 border-gray-400 p-1 shadow-sm">
+                                    <div>
+                                        <h4 class="font-bold text-xs text-white">Rud Customer</h4>
+                                        <div class="text-amber-400 text-[9px] mt-0.5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-100 text-[11px] leading-relaxed">"UMKM kuliner saya sekarang punya website sendiri yang keren. Pelanggan jadi gampang cek menu lewat HP."</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
 
     </main>
 
     <!-- Footer -->
-    <footer class="w-full rounded-portfolio-card border-t border-white/10 py-10 px-6 mt-20 relative z-10">
-        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+    <footer class="w-full rounded-portfolio-card border-t border-black/30 py-10 px-6 mt-20 relative z-10">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
             <div class="space-y-1.5">
                 <div class="flex items-center justify-center md:justify-start gap-2">
-                    <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Logo" class="w-6 h-6 object-contain">
-                    <span class="font-bold text-white text-sm tracking-wide">byRUDid</span>
+                    <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Logo" class="w-6 h-6 object-contain filter invert">
+                    <span class="font-bold text-gray-900 text-sm tracking-wide">byRUDid</span>
                 </div>
-                <p class="text-xs text-gray-400 max-w-xs">Solusi pembuatan website profesional, cepat, modern, dan terpercaya.</p>
+                <p class="text-xs text-gray-600 max-w-xs">Solusi pembuatan website profesional, cepat, modern, dan terpercaya.</p>
             </div>
-            <div class="flex flex-wrap justify-center gap-6 text-xs font-medium text-gray-400">
-                <a href="#" class="hover:text-white transition-colors">Home</a>
-                <a href="#about" class="hover:text-white transition-colors">Tentang</a>
-                <a href="#services" class="hover:text-white transition-colors">Demo & Layanan</a>
-                <a href="#testimonials" class="hover:text-white transition-colors">Testimoni</a>
-                <a href="#pricing" class="hover:text-white transition-colors">Harga</a>
-                <a href="#contact" class="hover:text-white transition-colors">Kontak</a>
+            <div class="flex flex-wrap justify-center gap-6 text-xs font-medium text-gray-600">
+                <a href="#" class="hover:text-black transition-colors">Home</a>
+                <a href="#about" class="hover:text-black transition-colors">Tentang</a>
+                <a href="#services" class="hover:text-black transition-colors">Demo & Layanan</a>
+                <a href="#testimonials" class="hover:text-black transition-colors">Testimoni</a>
+                <a href="#pricing" class="hover:text-black transition-colors">Harga</a>
+                <a href="#contact" class="hover:text-black transition-colors">Kontak</a>
             </div>
         </div>
-        <div class="max-w-5xl mx-auto border-t border-white/5 mt-6 pt-4 text-center text-gray-500 text-[11px]">
+        <div class="max-w-6xl mx-auto border-t border-gray-300 mt-6 pt-4 text-center text-gray-500 text-[11px]">
             <p>&copy; 2026 Rudi Irawan byRUDid. All Rights Reserved.</p>
         </div>
     </footer>
 
     <!-- Demo Modal Popup -->
-    <div id="demo-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
-        <div class="rounded-portfolio-card w-full max-w-md p-6 relative shadow-2xl space-y-4">
-            <button onclick="closeDemo()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all">
+    <div id="demo-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden">
+        <div class="rounded-portfolio-card w-full max-w-md p-6 relative shadow-2xl space-y-4 bg-[#F5F5F5]">
+            <button onclick="closeDemo()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-800 flex items-center justify-center transition-all">
                 <i class="fas fa-times text-xs"></i>
             </button>
             <div id="modal-content"></div>
@@ -976,7 +1021,7 @@
             }
         });
 
-        /* Typography Style Morphing untuk tulisan "Order?" */
+        /* Typography Style Morphing untuk "Order?" dan "byRUDid.store" */
         const fontStyles = [
             { family: '"Plus Jakarta Sans", sans-serif', weight: '300', italic: 'normal' },
             { family: '"Playfair Display", serif', weight: '400', italic: 'italic' },
@@ -987,28 +1032,43 @@
         
         let currentStyleIndex = 0;
         const orderTextEl = document.getElementById('morphing-order-text');
+        const heroTextEl = document.getElementById('morphing-hero-text');
 
-        if (orderTextEl) {
+        if (orderTextEl || heroTextEl) {
             setInterval(() => {
-                orderTextEl.style.opacity = '0';
-                orderTextEl.style.transform = 'translateY(4px)';
+                if(orderTextEl) {
+                    orderTextEl.style.opacity = '0';
+                    orderTextEl.style.transform = 'translateY(4px)';
+                }
+                if(heroTextEl) {
+                    heroTextEl.style.opacity = '0';
+                    heroTextEl.style.transform = 'translateY(4px)';
+                }
                 
                 setTimeout(() => {
                     currentStyleIndex = (currentStyleIndex + 1) % fontStyles.length;
                     const style = fontStyles[currentStyleIndex];
                     
-                    orderTextEl.style.fontFamily = style.family;
-                    orderTextEl.style.fontWeight = style.weight;
-                    orderTextEl.style.fontStyle = style.italic;
-                    
-                    orderTextEl.style.opacity = '1';
-                    orderTextEl.style.transform = 'translateY(0px)';
+                    if(orderTextEl) {
+                        orderTextEl.style.fontFamily = style.family;
+                        orderTextEl.style.fontWeight = style.weight;
+                        orderTextEl.style.fontStyle = style.italic;
+                        orderTextEl.style.opacity = '1';
+                        orderTextEl.style.transform = 'translateY(0px)';
+                    }
+                    if(heroTextEl) {
+                        heroTextEl.style.fontFamily = style.family;
+                        heroTextEl.style.fontWeight = style.weight;
+                        heroTextEl.style.fontStyle = style.italic;
+                        heroTextEl.style.opacity = '1';
+                        heroTextEl.style.transform = 'translateY(0px)';
+                    }
                 }, 250);
             }, 1300);
         }
 
         const typingTextElement = document.getElementById('typing-text');
-        const aboutMessage = "Saya menyediakan jasa pembuatan website fungsional, responsif, dan estetis dengan tata letak modern. Berpengalaman membantu individu, instansi, maupun pelaku usaha dalam membangun kehadiran digital yang profesional.";
+        const aboutMessage = "Halo! Saya Rudi Irawan, seorang web developer berpengalaman yang siap membantu Anda mewujudkan website profesional untuk berbagai keperluan bisnis, instansi, maupun acara spesial.";
         let charIndex = 0;
 
         setTimeout(() => {
@@ -1037,38 +1097,79 @@
             if(dropdownMenu2) dropdownMenu2.classList.add('hidden');
         });
 
-        function scrollPortfolioSlider(offset) {
-            const container = document.getElementById('portfolio-slider');
-            container.scrollBy({ left: offset, behavior: 'smooth' });
+        /* Infinite Seamless Cloning & Symmetrical Center Card Detector */
+        window.addEventListener('DOMContentLoaded', () => {
+            const track = document.getElementById('portfolio-track');
+            const slider = document.getElementById('portfolio-slider');
+            
+            if(track) {
+                track.innerHTML += track.innerHTML + track.innerHTML;
+                
+                setTimeout(() => {
+                    slider.scrollLeft = (track.scrollWidth - slider.clientWidth) / 2;
+                    updateCenterCard();
+                }, 100);
+            }
+
+            const testTrack = document.getElementById('testimonial-track');
+            if(testTrack) {
+                testTrack.innerHTML += testTrack.innerHTML;
+            }
+        });
+
+        const portfolioSlider = document.getElementById('portfolio-slider');
+        
+        function updateCenterCard() {
+            if (!portfolioSlider) return;
+            const cards = portfolioSlider.querySelectorAll('.portfolio-card');
+            const sliderRect = portfolioSlider.getBoundingClientRect();
+            const sliderCenter = sliderRect.left + sliderRect.width / 2;
+
+            let closestCard = null;
+            let minDistance = Infinity;
+
+            cards.forEach(card => {
+                const cardRect = card.getBoundingClientRect();
+                const cardCenter = cardRect.left + cardRect.width / 2;
+                const distance = Math.abs(sliderCenter - cardCenter);
+
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    closestCard = card;
+                }
+            });
+
+            cards.forEach(card => card.classList.remove('is-center'));
+            if (closestCard) {
+                closestCard.classList.add('is-center');
+            }
         }
 
-        /* Coverflow Active Card Highlight saat Slider digeser */
-        const portfolioSlider = document.getElementById('portfolio-slider');
         if(portfolioSlider) {
             portfolioSlider.addEventListener('scroll', () => {
-                const cards = portfolioSlider.querySelectorAll('.portfolio-card');
-                const sliderRect = portfolioSlider.getBoundingClientRect();
-                const sliderCenter = sliderRect.left + sliderRect.width / 2;
-
-                cards.forEach(card => {
-                    const cardRect = card.getBoundingClientRect();
-                    const cardCenter = cardRect.left + cardRect.width / 2;
-                    if (Math.abs(sliderCenter - cardCenter) < 160) {
-                        card.classList.add('active-coverflow');
-                    } else {
-                        card.classList.remove('active-coverflow');
-                    }
-                });
+                updateCenterCard();
+                
+                if (portfolioSlider.scrollLeft <= 50) {
+                    portfolioSlider.scrollLeft = portfolioSlider.scrollWidth / 3;
+                } else if (portfolioSlider.scrollLeft >= (portfolioSlider.scrollWidth - portfolioSlider.clientWidth - 50)) {
+                    portfolioSlider.scrollLeft = portfolioSlider.scrollWidth / 3;
+                }
             });
+        }
+
+        function scrollPortfolioSlider(offset) {
+            if(portfolioSlider) {
+                portfolioSlider.scrollBy({ left: offset, behavior: 'smooth' });
+            }
         }
 
         function filterCategory(category, btn) {
             document.querySelectorAll('.category-btn').forEach(b => {
-                b.classList.remove('bg-white', 'text-black', 'font-semibold');
-                b.classList.add('bg-white/5', 'text-gray-300', 'font-medium');
+                b.classList.remove('bg-gray-900', 'text-white', 'font-semibold');
+                b.classList.add('bg-white', 'text-gray-700', 'font-medium');
             });
-            btn.classList.remove('bg-white/5', 'text-gray-300', 'font-medium');
-            btn.classList.add('bg-white', 'text-black', 'font-semibold');
+            btn.classList.remove('bg-white', 'text-gray-700', 'font-medium');
+            btn.classList.add('bg-gray-900', 'text-white', 'font-semibold');
 
             const cards = document.querySelectorAll('.service-card');
             cards.forEach(card => {
@@ -1078,17 +1179,10 @@
                     card.style.display = 'none';
                 }
             });
+            setTimeout(updateCenterCard, 50);
         }
 
-        /* Seamless Infinite Testimonial Cloning */
-        window.addEventListener('DOMContentLoaded', () => {
-            const track = document.getElementById('testimonial-track');
-            if(track) {
-                track.innerHTML += track.innerHTML;
-            }
-        });
-
-        /* Spring Physics untuk Foto Banner Atas (Mantul Segala Arah) */
+        /* Spring Physics untuk Foto Banner Atas */
         function initSingleSpringPhoto(elementId, stiffness = 0.1, damping = 0.8) {
             const el = document.getElementById(elementId);
             if (!el) return;
@@ -1121,8 +1215,8 @@
                 if (!isDragging) return;
                 currentX = e.clientX - startX;
                 currentY = e.clientY - startY;
-                springX = Math.max(-120, Math.min(120, currentX));
-                springY = Math.max(-90, Math.min(90, currentY));
+                springX = Math.max(-150, Math.min(150, currentX));
+                springY = Math.max(-120, Math.min(120, currentY));
             });
             el.addEventListener('pointerup', (e) => {
                 if (!isDragging) return;
@@ -1182,17 +1276,17 @@
             modalContent.innerHTML = `
                 <div class="space-y-3">
                     <div>
-                        <h3 class="text-sm font-bold text-white mb-1">${data.title}</h3>
-                        <p class="text-[11px] text-gray-400">${data.desc}</p>
+                        <h3 class="text-sm font-bold text-gray-900 mb-1">${data.title}</h3>
+                        <p class="text-[11px] text-gray-600">${data.desc}</p>
                     </div>
-                    <div class="w-full h-48 bg-black/40 rounded-xl overflow-hidden border border-white/10 flex items-center justify-center p-2">
+                    <div class="w-full h-48 bg-gray-200 rounded-xl overflow-hidden border border-black/30 flex items-center justify-center p-2">
                         <img src="${data.img}" alt="${data.title}" class="w-full h-full object-contain rounded-lg">
                     </div>
                     <div class="flex gap-2 pt-2">
                         <a href="https://wa.me/62895635427099?text=${encodeURIComponent(data.waText)}" target="_blank" class="flex-1 py-2.5 rounded-2xl bg-green-600 hover:bg-green-500 text-white font-semibold text-xs text-center flex items-center justify-center gap-1.5 shadow">
                             <i class="fab fa-whatsapp text-sm"></i> Pesan via WhatsApp
                         </a>
-                        <button onclick="closeDemo()" class="px-4 py-2.5 rounded-2xl bg-white/10 hover:bg-white/20 text-white text-xs font-medium transition-all">Tutup</button>
+                        <button onclick="closeDemo()" class="px-4 py-2.5 rounded-2xl bg-gray-200 hover:bg-gray-300 text-gray-800 text-xs font-medium transition-all">Tutup</button>
                     </div>
                 </div>
             `;
