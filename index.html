@@ -54,6 +54,126 @@
             }
         }
 
+        /* =========================================================
+           BYRUD-INTRO: Animasi Intro Preloader Selalu Muncul
+           ========================================================= */
+        #byrud-intro {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100dvh;
+            background-color: #EAEAEA;
+            background-image:
+                linear-gradient(to right, rgba(184, 184, 184, 0.45) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(184, 184, 184, 0.45) 1px, transparent 1px);
+            background-size: 45px 45px;
+            color: #1f2937;
+            z-index: 9999999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.6s ease;
+        }
+        #byrud-intro.slide-up-exit {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Angka Persentase Loading Besar di Tengah */
+        .byrud-intro-percent-display {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 800;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -0.03em;
+            color: #171717;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: scale(0.9);
+            animation: byrudFadeInScale 0.5s ease forwards 0.1s;
+        }
+
+        /* Loading Bar Tipis Minimalis */
+        .byrud-intro-loading-track {
+            width: 260px;
+            height: 3px;
+            background: rgba(23, 23, 23, 0.15);
+            border-radius: 9999px;
+            overflow: hidden;
+            opacity: 0;
+            animation: byrudFadeInScale 0.5s ease forwards 0.2s;
+        }
+        .byrud-intro-loading-fill {
+            width: 0%;
+            height: 100%;
+            background: #171717;
+            box-shadow: 0 0 8px rgba(23, 23, 23, 0.25);
+            transition: width 0.05s linear;
+        }
+
+        /* Kontainer Teks Slogan Intro */
+        .byrud-intro-content {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 0 1.5rem;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(15px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .byrud-intro-content.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+        .byrud-intro-subtitle {
+            font-size: 0.9rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: #555555;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .byrud-intro-title {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 800;
+            color: #171717;
+            letter-spacing: -0.02em;
+        }
+
+        /* Logo Asli byRUDid pada Intro (Untuk Efek Transisi FLIP) */
+        .byrud-intro-logo-box {
+            position: absolute;
+            width: 64px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        .byrud-intro-logo-box.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .byrud-intro-logo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.18));
+        }
+
+        @keyframes byrudFadeInScale {
+            to { opacity: 1; transform: scale(1); }
+        }
+        /* ========================================================= */
+
         /* Animasi Efek Air (Fluid/Liquid Background Glow) Otomatis di Komputer Tanpa Klik */
         @media (min-width: 768px) {
             body::before {
@@ -479,11 +599,39 @@
 </head>
 <body class="selection:bg-gray-800 selection:text-white">
 
+    <!-- INTRO PRELOADER SELALU MUNCUL SETIAP KALI HALAMAN DIBUKA/REFRESH -->
+    <div id="byrud-intro">
+        <!-- Tahap 1: Loading Persentase & Bar (0 - 2 detik) -->
+        <div id="byrud-step-loading" class="flex flex-col items-center justify-center">
+            <div id="byrud-pct-text" class="byrud-intro-percent-display">0%</div>
+            <div class="byrud-intro-loading-track">
+                <div id="byrud-loading-fill" class="byrud-intro-loading-fill"></div>
+            </div>
+        </div>
+
+        <!-- Tahap 2: Teks Perkenalan RUDI IRAWAN (2 - 3.5 detik) -->
+        <div id="byrud-step-text-1" class="byrud-intro-content">
+            <p class="byrud-intro-subtitle">Halo, Saya</p>
+            <h2 class="byrud-intro-title">RUDI IRAWAN</h2>
+        </div>
+
+        <!-- Tahap 3: Teks Spesialisasi (3.5 - 5 detik) -->
+        <div id="byrud-step-text-2" class="byrud-intro-content">
+            <p class="byrud-intro-subtitle">Spesialis Pembuatan</p>
+            <h2 class="byrud-intro-title">Website Profesional</h2>
+        </div>
+
+        <!-- Tahap 4: Logo byRUDid Berpindah ke Header (5 - 6.5 detik) -->
+        <div id="byrud-intro-logo" class="byrud-intro-logo-box">
+            <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="byRUDid Logo">
+        </div>
+    </div>
+
     <!-- HEADER 1: Glassmorphism Floating Pill Navbar -->
     <header class="fixed top-3 sm:top-4 left-0 right-0 z-40 px-3 sm:px-4 flex justify-center pointer-events-none">
         <div class="w-full max-w-3xl pill-navbar px-5 sm:px-8 py-2.5 flex items-center justify-between pointer-events-auto">
             <a href="#" class="flex items-center group">
-                <div class="w-8 h-8 p-0.5 bg-transparent flex items-center justify-center overflow-hidden">
+                <div id="header-logo-target" class="w-8 h-8 p-0.5 bg-transparent flex items-center justify-center overflow-hidden">
                     <img src="https://i.ibb.co.com/kg3hDq6Z/Futuristic-White-RUD-Logo-2.png" alt="Logo" class="w-full h-full object-contain filter invert">
                 </div>
             </a>
@@ -1031,8 +1179,81 @@
         </div>
     </div>
 
-    <!-- Script Interaktif -->
+    <!-- Script Interaktif & Timeline Intro Preloader -->
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const introEl = document.getElementById('byrud-intro');
+            const stepLoading = document.getElementById('byrud-step-loading');
+            const pctText = document.getElementById('byrud-pct-text');
+            const loadingFill = document.getElementById('byrud-loading-fill');
+            const stepText1 = document.getElementById('byrud-step-text-1');
+            const stepText2 = document.getElementById('byrud-step-text-2');
+            const introLogo = document.getElementById('byrud-intro-logo');
+            const headerLogoTarget = document.getElementById('header-logo-target');
+
+            if (introEl) {
+                // Intro sengaja dijalankan setiap kali halaman dimuat, termasuk saat refresh.
+                // Jangan melewati intro berdasarkan pengaturan reduced-motion perangkat.
+
+                // Timeline intro yang lebih mudah terlihat, dengan perpindahan logo lebih lembut.
+                let pct = 0;
+                const loadInterval = setInterval(() => {
+                    pct = Math.min(100, pct + 2);
+                    if (pctText) pctText.textContent = pct + '%';
+                    if (loadingFill) loadingFill.style.width = pct + '%';
+                    if (pct >= 100) clearInterval(loadInterval);
+                }, 45); // sekitar 2,25 detik untuk loading 0-100%
+
+                // Teks perkenalan tampil cukup lama untuk dibaca.
+                setTimeout(() => {
+                    if (stepLoading) stepLoading.style.display = 'none';
+                    if (stepText1) stepText1.classList.add('active');
+                }, 2300);
+
+                setTimeout(() => {
+                    if (stepText1) stepText1.classList.remove('active');
+                    if (stepText2) stepText2.classList.add('active');
+                }, 3800);
+
+                // Tampilkan logo, beri jeda agar terlihat, lalu gerakkan perlahan ke navbar.
+                setTimeout(() => {
+                    if (stepText2) stepText2.classList.remove('active');
+                    if (introLogo) introLogo.classList.add('active');
+
+                    setTimeout(() => {
+                        try {
+                            if (!introLogo || !headerLogoTarget) throw new Error('Elemen logo intro/navbar tidak ditemukan.');
+                            const firstRect = introLogo.getBoundingClientRect();
+                            const lastRect = headerLogoTarget.getBoundingClientRect();
+
+                            if (!firstRect.width || !firstRect.height || !lastRect.width || !lastRect.height) {
+                                throw new Error('Ukuran elemen logo tidak valid.');
+                            }
+
+                            const deltaX = (lastRect.left + lastRect.width / 2) - (firstRect.left + firstRect.width / 2);
+                            const deltaY = (lastRect.top + lastRect.height / 2) - (firstRect.top + firstRect.height / 2);
+                            const scale = Math.min(lastRect.width / firstRect.width, lastRect.height / firstRect.height);
+
+                            introLogo.style.transition = 'transform 1.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease';
+                            introLogo.style.transformOrigin = 'center center';
+                            introLogo.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${scale})`;
+
+                            setTimeout(() => {
+                                introEl.classList.add('slide-up-exit');
+                                setTimeout(() => {
+                                    introEl.style.display = 'none';
+                                }, 850);
+                            }, 1550);
+                        } catch (e) {
+                            // Fallback: jangan sampai intro menutupi website jika animasi gagal.
+                            introEl.style.opacity = '0';
+                            setTimeout(() => { introEl.style.display = 'none'; }, 650);
+                        }
+                    }, 700);
+                }, 5300);
+            }
+        });
+
         window.addEventListener('click', (e) => {
             const ripple = document.createElement('div');
             ripple.className = 'touch-ripple';
@@ -1119,7 +1340,7 @@
                 }
             }
             safeType();
-        }, 1000);
+        }, 1500);
 
         const menuBtn1 = document.getElementById('menu-btn-1');
         const dropdownMenu1 = document.getElementById('dropdown-menu-1');
