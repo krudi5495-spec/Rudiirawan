@@ -199,7 +199,7 @@
             letter-spacing: -0.02em;
         }
 
-        /* Logo Asli byRUDid pada Intro (Untuk Efek Transisi FLIP) */
+        /* Logo Asli byRUDid pada Intro (Untuk Efek Transisi FLIP) - Diberi filter invert agar tampak hitam */
         .byrud-intro-logo-box {
             position: absolute;
             width: 64px;
@@ -219,7 +219,7 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.18));
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.18)) invert(1);
         }
 
         @keyframes byrudFadeInScale {
